@@ -1,0 +1,516 @@
+package com.backbencherslab.gymbuddy;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.backbencherslab.gymbuddy.adapter.PeopleNearbyListAdapter;
+import com.backbencherslab.gymbuddy.app.App;
+import com.backbencherslab.gymbuddy.constants.Constants;
+import com.backbencherslab.gymbuddy.dialogs.PeopleNearbySettingsDialog1;
+import com.backbencherslab.gymbuddy.maps.*;
+import com.backbencherslab.gymbuddy.maps.MainActivity;
+import com.backbencherslab.gymbuddy.model.Profile;
+import com.backbencherslab.gymbuddy.util.CustomRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class PeopleNearbyFragment1 extends Fragment implements Constants, SwipeRefreshLayout.OnRefreshListener {
+
+    private static final String STATE_LIST = "State Adapter Data";
+
+    Menu MainMenu;
+
+    ListView mListView;
+    TextView mMessage, mDetails;
+    ImageView mSplash, mCloseSpotLight;
+
+    SwipeRefreshLayout mItemsContainer;
+Fragment fragment;
+    LinearLayout mSpotLight;
+
+    private ArrayList<Profile> itemsList;
+    private PeopleNearbyListAdapter itemsAdapter;
+
+    private int itemId = 0;
+    private int arrayLength = 0;
+    private Boolean loadingMore = false;
+    private Boolean viewMore = false;
+    private Boolean restore = false;
+    private Boolean spotlight = true;
+
+    private int distance = 5;      // im miles
+
+    public PeopleNearbyFragment1() {
+        // Required empty public constructor
+    }
+    public static PeopleNearbyFragment1 newInstance() {
+        PeopleNearbyFragment1 fragment = new PeopleNearbyFragment1();
+        return fragment;
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+//        setRetainInstance(true);
+
+        setHasOptionsMenu(true);
+
+        if (savedInstanceState != null) {
+
+            itemsList = savedInstanceState.getParcelableArrayList(STATE_LIST);
+            itemsAdapter = new PeopleNearbyListAdapter(getActivity(), itemsList);
+
+            restore = savedInstanceState.getBoolean("restore");
+            spotlight = savedInstanceState.getBoolean("spotlight");
+            itemId = savedInstanceState.getInt("itemId");
+            distance = savedInstanceState.getInt("distance");
+
+        } else {
+
+            itemsList = new ArrayList<Profile>();
+            itemsAdapter = new PeopleNearbyListAdapter(getActivity(), itemsList);
+
+            restore = false;
+            spotlight = true;
+            itemId = 0;
+            distance = 50;
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_people_nearby1, container, false);
+
+
+        mItemsContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.container_items);
+        mItemsContainer.setOnRefreshListener(this);
+
+        mMessage = (TextView) rootView.findViewById(R.id.message);
+        mSplash = (ImageView) rootView.findViewById(R.id.splash);
+
+        mSpotLight = (LinearLayout) rootView.findViewById(R.id.spotlight);
+        mDetails = (TextView) rootView.findViewById(R.id.openLocationSettings);
+        mCloseSpotLight = (ImageView) rootView.findViewById(R.id.closeSpotlight);
+
+        mListView = (ListView) rootView.findViewById(R.id.listView);
+        mListView.setAdapter(itemsAdapter);
+
+        if (itemsAdapter.getCount() == 0) {
+
+            showMessage(getText(R.string.label_empty_list).toString());
+
+        } else {
+
+            hideMessage();
+        }
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                Profile profile = (Profile) adapterView.getItemAtPosition(position);
+
+                Intent intent = new Intent(getActivity(), ProfileActivity.class);
+                intent.putExtra("profileId", profile.getId());
+                startActivity(intent);
+            }
+        });
+
+        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+                int lastInScreen = firstVisibleItem + visibleItemCount;
+
+                if ((lastInScreen == totalItemCount) && !(loadingMore) && (viewMore) && !(mItemsContainer.isRefreshing())) {
+
+                    if (App.getInstance().isConnected()) {
+
+                        loadingMore = true;
+
+                        getItems();
+                    }
+                }
+            }
+        });
+
+        if (!restore) {
+
+            showMessage(getText(R.string.msg_loading_2).toString());
+
+            getItems();
+        }
+
+        mCloseSpotLight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mSpotLight.setVisibility(View.GONE);
+
+                spotlight = false;
+            }
+        });
+
+
+        mDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(getActivity(), LocationActivity.class);
+                startActivityForResult(i, 101);
+            }
+        });
+
+        updateSpotLight();
+
+
+        // Inflate the layout for this fragment
+        return rootView;
+    }
+
+    public void updateSpotLight() {
+
+        if (spotlight) {
+
+            if (App.getInstance().getLat() != 0.000000 && App.getInstance().getLng() != 0.000000) {
+
+                mSpotLight.setVisibility(View.GONE);
+
+                spotlight = false;
+
+            } else {
+
+                mSpotLight.setVisibility(View.VISIBLE);
+            }
+
+        } else {
+
+            mSpotLight.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onStart() {
+
+        super.onStart();
+
+        updateSpotLight();
+    }
+
+    @Override
+    public void onRefresh() {
+
+        if (App.getInstance().isConnected()) {
+
+            if (App.getInstance().getLat() != 0.000000 && App.getInstance().getLng() != 0.000000) {
+
+                itemId = 0;
+                getItems();
+
+            } else {
+
+                mItemsContainer.setRefreshing(false);
+            }
+
+        } else {
+
+            mItemsContainer.setRefreshing(false);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+
+        super.onSaveInstanceState(outState);
+
+        outState.putBoolean("restore", true);
+        outState.putBoolean("spotlight", spotlight);
+        outState.putInt("itemId", itemId);
+        outState.putInt("distance", distance);
+        outState.putParcelableArrayList(STATE_LIST, itemsList);
+    }
+
+    public void onChangeDistance(int position) {
+
+        switch (position) {
+
+            case 0: {
+
+                distance = 5;
+
+                itemId = 0;
+
+                getItems();
+
+                break;
+            }
+
+            case 1: {
+
+                distance = 10;
+
+                itemId = 0;
+
+                getItems();
+
+                break;
+            }
+
+            case 2: {
+
+                distance = 20;
+
+                itemId = 0;
+
+                getItems();
+
+                break;
+            }
+
+            case 3: {
+
+                distance = 40;
+
+                itemId = 0;
+
+                getItems();
+
+                break;
+            }
+
+            case 4: {
+
+                distance = 100;
+
+                itemId = 0;
+
+                getItems();
+
+                break;
+            }
+
+            default: {
+
+                distance = 5;
+
+                itemId = 0;
+
+                getItems();
+
+                break;
+            }
+        }
+    }
+
+    public void getItems() {
+
+        if (App.getInstance().getLat() != 0.000000 && App.getInstance().getLng() != 0.000000) {
+
+            mItemsContainer.setRefreshing(true);
+
+            CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_PROFILE_PEOPLE_NEARBY_GET, null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            if (!loadingMore) {
+
+                                itemsList.clear();
+                            }
+
+                            try {
+
+                                arrayLength = 0;
+
+                                if (!response.getBoolean("error")) {
+
+                                    itemId = response.getInt("itemId");
+
+                                    if (response.has("items")) {
+
+                                        JSONArray usersArray = response.getJSONArray("items");
+
+                                        arrayLength = usersArray.length();
+
+                                        if (arrayLength > 0) {
+
+                                            for (int i = 0; i < usersArray.length(); i++) {
+
+                                                JSONObject userObj = (JSONObject) usersArray.get(i);
+
+                                                Profile profile = new Profile(userObj);
+
+                                                itemsList.add(profile);
+                                            }
+                                        }
+                                    }
+
+                                }
+
+                            } catch (JSONException e) {
+
+                                e.printStackTrace();
+
+                            } finally {
+
+                                loadingComplete();
+//                            Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    loadingComplete();
+                }
+            }) {
+
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("accountId", Long.toString(App.getInstance().getId()));
+                    params.put("accessToken", App.getInstance().getAccessToken());
+                    params.put("distance", Integer.toString(distance));
+                    params.put("itemId", Long.toString(itemId));
+
+                    return params;
+                }
+            };
+
+            App.getInstance().addToRequestQueue(jsonReq);
+
+        }
+    }
+
+    public void loadingComplete() {
+
+        if (arrayLength == LIST_ITEMS) {
+
+            viewMore = true;
+
+        } else {
+
+            viewMore = false;
+        }
+
+        itemsAdapter.notifyDataSetChanged();
+
+        if (itemsAdapter.getCount() == 0) {
+
+            showMessage(getText(R.string.label_empty_list).toString());
+
+        } else {
+
+            hideMessage();
+        }
+
+        loadingMore = false;
+        mItemsContainer.setRefreshing(false);
+    }
+
+    public void showMessage(String message) {
+
+        mMessage.setText(message);
+        mMessage.setVisibility(View.VISIBLE);
+
+        mSplash.setVisibility(View.VISIBLE);
+    }
+
+    public void hideMessage() {
+
+        mMessage.setVisibility(View.GONE);
+
+        mSplash.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+
+        super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        super.onCreateOptionsMenu(menu, inflater);
+
+        menu.clear();
+
+        inflater.inflate(R.menu.menu_nearby1, menu);
+
+        MainMenu = menu;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+
+            case R.id.action_nearby_settings: {
+
+                android.app.FragmentManager fm = getActivity().getFragmentManager();
+                PeopleNearbySettingsDialog1 alert = new PeopleNearbySettingsDialog1();
+                Bundle b  = new Bundle();
+                b.putInt("distance", distance);
+                alert.setArguments(b);
+                alert.show(fm, "alert_dialog_nearby_settings");
+
+                return true;
+
+            }
+
+            default: {
+
+                return super.onOptionsItemSelected(item);
+            }
+        }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+}
