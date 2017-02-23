@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "459149047766",
+    "project_id": "gym-buddy-1354"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459149047766:android:570d501c174075d0",
+        "android_client_info": {
+          "package_name": "com.backbencherslab.gymbuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459149047766-6bclj9g0khtfo75jbaie5946o78gkjbm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.backbencherslab.gymbuddy",
+            "certificate_hash": "2C945E6388ECBED78B83F6C8F9CEB37BFC9D16D5"
+          }
+        },
+        {
+          "client_id": "459149047766-ftilqihtqbevvoj1u8rvefdc1vlg89jl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3_1S_mHVDu406loEGYlu25cW1CCfFl30"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

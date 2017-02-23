@@ -532,19 +532,9 @@ public class App extends Application implements Constants {
         this.allowGiftsGCM = allowGiftsGCM;
     }
 
-    public int getAllowGiftsGCM() {
-
-        return this.allowGiftsGCM;
-    }
-
     public void setAllowCommentReplyGCM(int allowCommentReplyGCM) {
 
         this.allowCommentReplyGCM = allowCommentReplyGCM;
-    }
-
-    public int getAllowCommentReplyGCM() {
-
-        return this.allowCommentReplyGCM;
     }
 
     public void setAllowFollowersGCM(int allowFollowersGCM) {
@@ -562,19 +552,9 @@ public class App extends Application implements Constants {
         this.allowCommentsGCM = allowCommentsGCM;
     }
 
-    public int getAllowCommentsGCM() {
-
-        return this.allowCommentsGCM;
-    }
-
     public void setAllowLikesGCM(int allowLikesGCM) {
 
         this.allowLikesGCM = allowLikesGCM;
-    }
-
-    public int getAllowLikesGCM() {
-
-        return this.allowLikesGCM;
     }
 
     public void setAllowMessages(int allowMessages) {
@@ -590,11 +570,6 @@ public class App extends Application implements Constants {
     public void setAllowComments(int allowComments) {
 
         this.allowComments = allowComments;
-    }
-
-    public int getAllowComments() {
-
-        return this.allowComments;
     }
 
     public void setAdmob(int admob) {
@@ -620,11 +595,6 @@ public class App extends Application implements Constants {
     public void setVip(int vip) {
 
         this.vip = vip;
-    }
-
-    public int getVip() {
-
-        return this.vip;
     }
 
     public void setBalance(int balance) {
@@ -772,16 +742,6 @@ public class App extends Application implements Constants {
         this.area = area;
     }
 
-    public String getArea() {
-
-        if (this.area == null) {
-
-            this.setArea("");
-        }
-
-        return this.area;
-    }
-
     public void setLat(Double lat) {
 
         if (this.lat == null) {
@@ -870,13 +830,7 @@ public class App extends Application implements Constants {
 	}
 
 	public <T> void addToRequestQueue(Request<T> req) {
-		req.setTag(TAG);
-		getRequestQueue().add(req);
-	}
-
-	public void cancelPendingRequests(Object tag) {
-		if (mRequestQueue != null) {
-			mRequestQueue.cancelAll(tag);
-		}
-	}
+        req.setTag(TAG);
+        getRequestQueue().add(req);
+    }
 }

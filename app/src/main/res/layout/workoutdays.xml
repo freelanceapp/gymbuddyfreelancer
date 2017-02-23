@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_marker_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/political_views_0"
+            android:id="@+id/checkBox"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox1"
+            android:drawableLeft="@drawable/mon"
+            android:layout_below="@+id/checkBox"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox2"
+            android:drawableLeft="@drawable/tue"
+            android:layout_below="@+id/checkBox1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox3"
+            android:drawableLeft="@drawable/wed"
+            android:layout_below="@+id/checkBox2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox4"
+            android:drawableLeft="@drawable/tue"
+            android:layout_below="@+id/checkBox3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox5"
+            android:drawableLeft="@drawable/tue"
+            android:layout_below="@+id/checkBox4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox6"
+            android:drawableLeft="@drawable/thu"
+            android:layout_below="@+id/checkBox3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox7"
+            android:drawableLeft="@drawable/fri"
+            android:layout_below="@+id/checkBox6"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox8"
+            android:drawableLeft="@drawable/sat"
+            android:layout_below="@+id/checkBox7"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+</ScrollView>
+
+
+
+
+</RelativeLayout>

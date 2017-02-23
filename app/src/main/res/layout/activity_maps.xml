@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:orientation="horizontal">
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:hint="@string/action_place"
+        android:layout_height="fill_parent"
+        android:id="@+id/editText" />
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@android:style/Widget.DeviceDefault.Button.Borderless"
+        android:text="@string/action_search"
+        android:padding="5dp"
+        android:layout_weight="4"
+        android:id="@+id/button"
+        android:layout_gravity="right" />
+
+</LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_coffee_shops"
+            android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="116dp" />
+
+</LinearLayout>
