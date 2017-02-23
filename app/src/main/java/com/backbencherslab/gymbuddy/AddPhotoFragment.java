@@ -575,7 +575,6 @@ public class AddPhotoFragment extends Fragment implements Constants {
 
                 sendSuccess();
 
-//                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         }) {
 
@@ -625,8 +624,6 @@ public class AddPhotoFragment extends Fragment implements Constants {
     public void onDetach() {
         super.onDetach();
     }
-
-
 
     public Boolean uploadFile(String serverURL, File file) {
 

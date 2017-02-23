@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import com.backbencherslab.gymbuddy.common.ActivityBase;
 
 public class SupportActivity extends ActivityBase {
-
     Toolbar mToolbar;
 
     Fragment fragment;
@@ -79,7 +78,6 @@ public class SupportActivity extends ActivityBase {
             }
 
             default: {
-
                 return super.onOptionsItemSelected(item);
             }
         }

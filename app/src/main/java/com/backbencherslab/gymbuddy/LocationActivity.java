@@ -79,7 +79,6 @@ public class LocationActivity extends ActivityBase {
 
     @Override
     public void onBackPressed() {
-        // your code.
 
         finish();
     }

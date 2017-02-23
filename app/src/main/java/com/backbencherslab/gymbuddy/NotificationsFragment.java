@@ -288,7 +288,6 @@ public class NotificationsFragment extends Fragment implements Constants, SwipeR
             public void onErrorResponse(VolleyError error) {
 
                 loadingComplete();
-//                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
             }
         }) {
 

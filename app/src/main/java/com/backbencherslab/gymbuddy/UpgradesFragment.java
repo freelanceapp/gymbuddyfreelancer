@@ -29,7 +29,6 @@ import com.backbencherslab.gymbuddy.constants.Constants;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 
 public class UpgradesFragment extends Fragment implements Constants {
-
     private ProgressDialog pDialog;
 
     Button mGetCreditsButton, mGhostModeButton, mVerifiedBadgeButton, mDisableAdsButton;
@@ -43,7 +42,6 @@ public class UpgradesFragment extends Fragment implements Constants {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         setRetainInstance(true);
@@ -53,7 +51,6 @@ public class UpgradesFragment extends Fragment implements Constants {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_upgrades, container, false);
 
         if (loading) {
@@ -135,13 +132,11 @@ public class UpgradesFragment extends Fragment implements Constants {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1945 && resultCode == getActivity().RESULT_OK && null != data) {
@@ -364,7 +359,7 @@ public class UpgradesFragment extends Fragment implements Constants {
 
                                 Toast.makeText(getActivity(), getString(R.string.msg_success_disable_ads), Toast.LENGTH_SHORT).show();
 
-                                ((MainActivity)getActivity()).hideAds();
+                                ((MainActivity) getActivity()).hideAds();
 
                                 update();
                             }

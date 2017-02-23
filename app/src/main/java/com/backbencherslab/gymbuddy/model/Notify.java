@@ -89,11 +89,6 @@ public class Notify extends Application implements Constants, Parcelable {
         this.fromUserState = fromUserState;
     }
 
-    public int getFromUserState() {
-
-        return this.fromUserState;
-    }
-
     public void setTimeAgo(String timeAgo) {
 
         this.timeAgo = timeAgo;
@@ -107,11 +102,6 @@ public class Notify extends Application implements Constants, Parcelable {
     public void setFromUserUsername(String fromUserUsername) {
 
         this.fromUserUsername = fromUserUsername;
-    }
-
-    public String getFromUserUsername() {
-
-        return this.fromUserUsername;
     }
 
     public void setFromUserFullname(String fromUserFullname) {
@@ -144,11 +134,6 @@ public class Notify extends Application implements Constants, Parcelable {
         this.createAt = createAt;
     }
 
-    public int getCreateAt() {
-
-        return this.createAt;
-    }
-
     public int describeContents(){
 
         return 0;
@@ -157,9 +142,6 @@ public class Notify extends Application implements Constants, Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
 
-//        dest.writeStringArray(new String[] {this.id,
-//                this.name,
-//                this.grade});
     }
     public static final Creator CREATOR = new Creator() {
 

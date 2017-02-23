@@ -25,7 +25,5 @@ public class PaymentStatusReceiver extends BroadcastReceiver {
         Log.d(TAG, "- product_name:    " + extras.getString("product_name"));
         Log.d(TAG, "- service_id:      " + extras.getString("service_id"));
         Log.d(TAG, "- user_id:         " + extras.getString("user_id"));
-
-
     }
 }

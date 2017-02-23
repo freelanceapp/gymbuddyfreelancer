@@ -159,7 +159,6 @@ public class DialogsFragment extends Fragment implements Constants, SwipeRefresh
             getConversations();
         }
 
-
         // Inflate the layout for this fragment
         return rootView;
     }
@@ -277,8 +276,6 @@ public class DialogsFragment extends Fragment implements Constants, SwipeRefresh
             @Override
             public void onErrorResponse(VolleyError error) {
 
-//                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
-
                 loadingComplete();
             }
         }) {
@@ -348,7 +345,4 @@ public class DialogsFragment extends Fragment implements Constants, SwipeRefresh
     public void onDetach() {
         super.onDetach();
     }
-
-
-
 }

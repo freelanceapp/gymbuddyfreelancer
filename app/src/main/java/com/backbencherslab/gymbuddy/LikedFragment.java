@@ -70,7 +70,7 @@ public class LikedFragment extends Fragment implements Constants, SwipeRefreshLa
 
         } else {
 
-            itemsList = new ArrayList<Profile>();
+            itemsList = new ArrayList<>();
             itemsAdapter = new PeopleListAdapter(getActivity(), itemsList);
 
             restore = false;

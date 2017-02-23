@@ -1,15 +1,10 @@
 package com.backbencherslab.gymbuddy;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,19 +16,11 @@ import com.android.volley.toolbox.ImageLoader;
 
 import com.backbencherslab.gymbuddy.app.App;
 import com.backbencherslab.gymbuddy.common.ActivityBase;
-import com.backbencherslab.gymbuddy.constants.Constants;
-import com.backbencherslab.gymbuddy.model.Profile;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.model.SharePhoto;
-import com.facebook.share.model.SharePhotoContent;
 import com.facebook.share.widget.ShareDialog;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-
 import uk.co.senab.photoview.PhotoViewAttacher;
-
 
 public class PhotoViewActivity extends ActivityBase {
 
@@ -54,13 +41,6 @@ public class PhotoViewActivity extends ActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_view);
 
-//        toolbar = (Toolbar) findViewById(R.id.toolbar);
-//
-//        if (toolbar != null) {
-//
-//            setSupportActionBar(toolbar);
-//        }
-
         Intent i = getIntent();
 
         imgUrl = i.getStringExtra("imgUrl");
@@ -73,8 +53,7 @@ public class PhotoViewActivity extends ActivityBase {
         mLoadingScreen = (RelativeLayout) findViewById(R.id.PhotoViewLoadingScreen);
 
         photoView = (ImageView) findViewById(R.id.photoImageView);
-//
-//        toolbar.getBackground().setAlpha(100);
+
         getSupportActionBar().setTitle("Progress Photos");
 
         showLoadingScreen();
@@ -98,7 +77,6 @@ public class PhotoViewActivity extends ActivityBase {
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

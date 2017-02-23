@@ -248,7 +248,6 @@ public class FriendsFragment extends Fragment implements Constants, SwipeRefresh
                         } finally {
 
                             loadingComplete();
-//                            Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {

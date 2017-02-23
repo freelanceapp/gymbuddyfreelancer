@@ -25,7 +25,6 @@ import com.backbencherslab.gymbuddy.constants.Constants;
 public class MyService extends Service implements Constants {
 
     SharedPreferences sharedPref;
-    SharedPreferences.Editor editor;
     int serverResponseCode = 0;
     String upLoadServerUri = null;
 

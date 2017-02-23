@@ -889,7 +889,6 @@ public class ChatFragment extends Fragment implements Constants {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-//                hidepDialog();
             }
         }) {
 
@@ -1055,7 +1054,6 @@ public class ChatFragment extends Fragment implements Constants {
 
                                 getActivity().finish();
 
-//                                Toast.makeText(getActivity(), getString(R.string.msg_send_msg_error), Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e) {
@@ -1195,7 +1193,6 @@ public class ChatFragment extends Fragment implements Constants {
     public void onDetach() {
         super.onDetach();
     }
-
 
     public Boolean uploadFile(String serverURL, File file) {
 

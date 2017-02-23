@@ -50,23 +50,6 @@ public class Helper extends Application {
             return false;
         }
     }
-
-    public boolean isValidSearchQuery(String query) {
-
-        String regExpn = "^([a-zA-Z]{1,24})?([a-zA-Z][a-zA-Z0-9_]{1,24})$";
-        CharSequence inputStr = query;
-        Pattern pattern = Pattern.compile(regExpn, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(inputStr);
-
-        if (matcher.matches()) {
-
-            return true;
-
-        } else {
-
-            return false;
-        }
-    }
     
     public boolean isValidPassword(String password) {
 

@@ -161,15 +161,11 @@ public class ServicesFragment extends Fragment implements Constants {
             @Override
             public void onCancel() {
 
-                // App code
-                // Cancel
             }
 
             @Override
             public void onError(FacebookException exception) {
 
-                // App code
-                // error
             }
         });
 
@@ -225,7 +221,6 @@ public class ServicesFragment extends Fragment implements Constants {
     }
 
     public void disconnectFromFacebook() {
-
         loading = true;
 
         showpDialog();

@@ -15,28 +15,12 @@ public class Photos {
     @SerializedName("width")
     private String width;
 
-    public String getPhotoReference() {
-        return photoReference;
-    }
-
-    public void setPhotoReference(String photoReference) {
-        this.photoReference = photoReference;
-    }
-
     public String getHeight() {
         return height;
     }
 
     public void setHeight(String height) {
         this.height = height;
-    }
-
-    public String[] getHtmlAttributions() {
-        return htmlAttributions;
-    }
-
-    public void setHtmlAttributions(String[] htmlAttributions) {
-        this.htmlAttributions = htmlAttributions;
     }
 
     public String getWidth() {

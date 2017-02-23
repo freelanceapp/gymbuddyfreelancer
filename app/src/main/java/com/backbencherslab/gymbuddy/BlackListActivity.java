@@ -82,8 +82,6 @@ public class BlackListActivity extends ActivityBase {
 
     @Override
     public void onBackPressed() {
-        // your code.
-
         finish();
     }
 }

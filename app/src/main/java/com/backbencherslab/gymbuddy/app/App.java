@@ -235,8 +235,6 @@ public class App extends Application implements Constants {
 
                             e.printStackTrace();
 
-                        } finally {
-
                         }
                     }
                 }, new Response.ErrorListener() {

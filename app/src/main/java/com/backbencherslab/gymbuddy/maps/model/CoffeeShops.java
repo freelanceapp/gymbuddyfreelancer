@@ -15,28 +15,8 @@ public class CoffeeShops {
     @SerializedName("status")
     private String status;
 
-    public String getNextPageToken() {
-        return nextPageToken;
-    }
-
-    public void setNextPageToken(String nextPageToken) {
-        this.nextPageToken = nextPageToken;
-    }
-
     public Results[] getResults() {
         return results;
-    }
-
-    public void setResults(Results[] results) {
-        this.results = results;
-    }
-
-    public String[] getHtmlAttributions() {
-        return htmlAttributions;
-    }
-
-    public void setHtmlAttributions(String[] htmlAttributions) {
-        this.htmlAttributions = htmlAttributions;
     }
 
     public String getStatus() {

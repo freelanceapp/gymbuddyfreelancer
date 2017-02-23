@@ -9,7 +9,6 @@ import android.view.MenuItem;
 
 import com.backbencherslab.gymbuddy.common.ActivityBase;
 
-
 public class ChangePasswordActivity extends ActivityBase {
 
     Toolbar mToolbar;

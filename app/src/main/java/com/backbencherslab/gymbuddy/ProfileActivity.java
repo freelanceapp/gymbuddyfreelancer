@@ -14,7 +14,6 @@ import com.backbencherslab.gymbuddy.dialogs.PhotoChooseDialog;
 import com.backbencherslab.gymbuddy.dialogs.ProfileBlockDialog;
 import com.backbencherslab.gymbuddy.dialogs.ProfileReportDialog;
 
-
 public class ProfileActivity extends ActivityBase implements PhotoChooseDialog.AlertPositiveListener, CoverChooseDialog.AlertPositiveListener, ProfileReportDialog.AlertPositiveListener, ProfileBlockDialog.AlertPositiveListener {
 
     Toolbar mToolbar;

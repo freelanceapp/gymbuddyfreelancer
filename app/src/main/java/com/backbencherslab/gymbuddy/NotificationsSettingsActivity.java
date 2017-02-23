@@ -8,7 +8,6 @@ import android.view.MenuItem;
 
 import com.backbencherslab.gymbuddy.common.ActivityBase;
 
-
 public class NotificationsSettingsActivity extends ActivityBase {
 
     Toolbar mToolbar;

@@ -24,7 +24,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -46,7 +45,6 @@ import com.backbencherslab.gymbuddy.model.Profile;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 
 public class SearchFragment extends Fragment implements Constants, SwipeRefreshLayout.OnRefreshListener {
-
     private static final String STATE_LIST = "State Adapter Data";
 
     SearchView searchView = null;
@@ -82,7 +80,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         setRetainInstance(true);
@@ -92,7 +89,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
 
         if (savedInstanceState != null) {
@@ -246,7 +242,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 SearchSettingsDialog alert = new SearchSettingsDialog();
 
                 /** Creating a bundle object to store the selected item's index */
-                Bundle b  = new Bundle();
+                Bundle b = new Bundle();
 
                 /** Storing the selected item's index in the bundle object */
                 b.putInt("searchGender", search_gender);
@@ -315,7 +311,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
     @Override
     public void onRefresh() {
-
         currentQuery = queryText;
         currentQuery = currentQuery.trim();
         if (App.getInstance().isConnected() && currentQuery.length() != 0) {
@@ -330,14 +325,12 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     }
 
     public String getCurrentQuery() {
-
         String searchText = searchView.getQuery().toString();
         searchText = searchText.trim();
         return searchText;
     }
 
     public void searchStart() {
-
         preload = false;
         currentQuery = getCurrentQuery();
 
@@ -353,7 +346,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-
         super.onSaveInstanceState(outState);
 
         outState.putString("queryText", queryText);
@@ -370,13 +362,12 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-//        MenuInflater menuInflater = getActivity().getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
 
         MenuItem searchItem = menu.findItem(R.id.options_menu_main_search);
 
 
-                SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
         if (searchItem != null) {
 
@@ -420,7 +411,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     }
 
     public void search() {
-
         mItemsContainer.setRefreshing(true);
 
         CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_SEARCH, null,
@@ -473,7 +463,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
                             Log.e("response", response.toString());
 
-//                            Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -505,9 +494,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     }
 
     public void preload() {
-
         if (preload) {
-
             mItemsContainer.setRefreshing(true);
 
             CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_SEARCH_PRELOAD, null,
@@ -556,7 +543,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
                                 loadingComplete();
 
-//                            Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -588,7 +574,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     }
 
     public void loadingComplete() {
-
         if (arrayLength == LIST_ITEMS) {
 
             viewMore = true;
@@ -635,7 +620,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     }
 
     public void hideMessage() {
-
         mMessage.setVisibility(View.GONE);
 
         mSplash.setVisibility(View.GONE);
@@ -650,7 +634,4 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     public void onDetach() {
         super.onDetach();
     }
-
-
-
 }

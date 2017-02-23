@@ -68,11 +68,6 @@ public class Guest extends Application implements Constants, Parcelable {
         this.guestTo = guestTo;
     }
 
-    public long getGuestTo() {
-
-        return this.guestTo;
-    }
-
     public void setGuestUserId(long guestUserId) {
 
         this.guestUserId = guestUserId;
@@ -88,19 +83,9 @@ public class Guest extends Application implements Constants, Parcelable {
         this.vip = guestUserVip;
     }
 
-    public int getGuestUserVip() {
-
-        return this.vip;
-    }
-
     public void setGuestUserVerify(int guestUserVerify) {
 
         this.verify = guestUserVerify;
-    }
-
-    public int getGusetUserVerify() {
-
-        return this.verify;
     }
 
     public Boolean isVerify() {

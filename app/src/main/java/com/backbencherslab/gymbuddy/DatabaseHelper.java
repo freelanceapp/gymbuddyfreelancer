@@ -91,6 +91,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.delete(STUDENT_TABLE, "name" + " = ?", new String[] { name });
         db.close();
     }
-
-
 }

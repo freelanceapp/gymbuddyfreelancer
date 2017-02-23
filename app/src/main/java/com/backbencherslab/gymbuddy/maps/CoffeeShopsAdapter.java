@@ -36,11 +36,6 @@ class CoffeeShopsAdapter extends RecyclerView.Adapter<CoffeeShopsAdapter.YourRec
         windowManager.getDefaultDisplay().getSize(displaySize);
     }
 
-    public void setDataSource(ArrayList<Results> listCoffeeShops) {
-        this.list = listCoffeeShops;
-        notifyItemRangeChanged(0, list.size());
-    }
-
     @Override
     public YourRecyclerViewHolder onCreateViewHolder(ViewGroup parent, int i) {
         View root = inflater.inflate(R.layout.custom_row, parent, false);
@@ -68,18 +63,6 @@ class CoffeeShopsAdapter extends RecyclerView.Adapter<CoffeeShopsAdapter.YourRec
             L.m(message);
         }
         yourRecyclerViewHolder.setRating(rating);
-    }
-
-    public int getPosition(String title) {
-        int position = -1;
-        for (int i = 0; i < list.size(); i++) {
-            Results current = list.get(i);
-            String currentTitle = current.getName();
-            if (currentTitle.equalsIgnoreCase(title)) {
-                position = i;
-            }
-        }
-        return position;
     }
 
     @Override

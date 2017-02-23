@@ -3,20 +3,15 @@ package com.backbencherslab.gymbuddy.maps;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.database.sqlite.SQLiteDatabase;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -37,12 +32,10 @@ import com.backbencherslab.gymbuddy.DatabaseModel;
 import com.backbencherslab.gymbuddy.SecondActivity;
 import com.backbencherslab.gymbuddy.app.App;
 import com.backbencherslab.gymbuddy.constants.Constants;
-import com.backbencherslab.gymbuddy.dialogs.PeopleNearbySettingsDialog1;
 import com.backbencherslab.gymbuddy.maps.log.L;
 import com.backbencherslab.gymbuddy.maps.model.CoffeeShops;
 import com.backbencherslab.gymbuddy.maps.model.Results;
 import com.backbencherslab.gymbuddy.maps.rest.GooglePlacesService;
-import com.backbencherslab.gymbuddy.model.Profile;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -61,11 +54,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import retrofit.Callback;
@@ -546,7 +537,6 @@ public class MainActivity extends Fragment implements OnMapReadyCallback,
     public void saveSettings() {
 
         loading = true;
-
 
         CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_ACCOUNT_SAVE_SETTINGS, null,
                 new com.android.volley.Response.Listener<JSONObject>() {

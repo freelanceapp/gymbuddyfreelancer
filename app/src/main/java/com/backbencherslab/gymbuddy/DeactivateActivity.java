@@ -9,7 +9,6 @@ import android.view.MenuItem;
 
 import com.backbencherslab.gymbuddy.common.ActivityBase;
 
-
 public class DeactivateActivity extends ActivityBase {
 
     Toolbar mToolbar;

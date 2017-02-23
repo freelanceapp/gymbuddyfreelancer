@@ -43,20 +43,6 @@ public class FragmentDrawer extends Fragment {
         this.drawerListener = listener;
     }
 
-//    public static List<NavDrawerItem> getData() {
-//        List<NavDrawerItem> data = new ArrayList<>();
-//
-//
-//        // preparing navigation drawer items
-//        for (int i = 0; i < titles.length; i++) {
-//
-//            NavDrawerItem navItem = new NavDrawerItem();
-//            navItem.setTitle(titles[i]);
-//            data.add(navItem);
-//        }
-//        return data;
-//    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -12,7 +12,6 @@ import com.backbencherslab.gymbuddy.dialogs.GenderSelectDialog;
 import com.backbencherslab.gymbuddy.dialogs.MsgImageChooseDialog;
 
 public class SignupActivity extends ActivityBase implements GenderSelectDialog.AlertPositiveListener, MsgImageChooseDialog.AlertPositiveListener {
-
     Toolbar mToolbar;
 
     Fragment fragment;
@@ -29,11 +28,8 @@ public class SignupActivity extends ActivityBase implements GenderSelectDialog.A
         getSupportActionBar().setHomeButtonEnabled(true);
 
         if (savedInstanceState != null) {
-
             fragment = getSupportFragmentManager().getFragment(savedInstanceState, "currentFragment");
-
         } else {
-
             fragment = new SignupFragment();
         }
 
@@ -59,7 +55,6 @@ public class SignupActivity extends ActivityBase implements GenderSelectDialog.A
 
     @Override
     public void onBackPressed(){
-
         finish();
     }
 
@@ -85,21 +80,18 @@ public class SignupActivity extends ActivityBase implements GenderSelectDialog.A
 
     @Override
     public void onGenderSelect(int position) {
-
         SignupFragment p = (SignupFragment) fragment;
         p.getGender(position);
     }
 
     @Override
     public void onImageFromGallery() {
-
         SignupFragment p = (SignupFragment) fragment;
         p.imageFromGallery();
     }
 
     @Override
     public void onImageFromCamera() {
-
         SignupFragment p = (SignupFragment) fragment;
         p.imageFromCamera();
     }

@@ -80,11 +80,6 @@ public class Photo extends Application implements Constants, Parcelable {
         this.fromUserId = fromUserId;
     }
 
-    public int getAccessMode() {
-
-        return accessMode;
-    }
-
     public void setAccessMode(int accessMode) {
 
         this.accessMode = accessMode;
@@ -116,11 +111,6 @@ public class Photo extends Application implements Constants, Parcelable {
 
     public void setLikesCount(int likesCount) {
         this.likesCount = likesCount;
-    }
-
-    public int getCreateAt() {
-
-        return createAt;
     }
 
     public void setCreateAt(int createAt) {
@@ -190,10 +180,6 @@ public class Photo extends Application implements Constants, Parcelable {
         this.previewImgUrl = previewImgUrl;
     }
 
-    public String getOriginImgUrl() {
-        return originImgUrl;
-    }
-
     public void setOriginImgUrl(String originImgUrl) {
         this.originImgUrl = originImgUrl;
     }
@@ -206,29 +192,9 @@ public class Photo extends Application implements Constants, Parcelable {
         this.date = date;
     }
 
-    public String getArea() {
-
-        if (this.area == null) {
-
-            this.area = "";
-        }
-
-        return this.area;
-    }
-
     public void setArea(String area) {
 
         this.area = area;
-    }
-
-    public String getCountry() {
-
-        if (this.country == null) {
-
-            this.country = "";
-        }
-
-        return this.country;
     }
 
     public void setCountry(String country) {
@@ -236,34 +202,14 @@ public class Photo extends Application implements Constants, Parcelable {
         this.country = country;
     }
 
-    public String getCity() {
-
-        if (this.city == null) {
-
-            this.city = "";
-        }
-
-        return this.city;
-    }
-
     public void setCity(String city) {
 
         this.city = city;
     }
 
-    public Double getLat() {
-
-        return this.lat;
-    }
-
     public void setLat(Double lat) {
 
         this.lat = lat;
-    }
-
-    public Double getLng() {
-
-        return this.lng;
     }
 
     public void setLng(Double lng) {

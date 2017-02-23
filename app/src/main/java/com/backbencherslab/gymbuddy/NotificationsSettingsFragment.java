@@ -152,7 +152,6 @@ public class NotificationsSettingsFragment extends PreferenceFragment implements
         outState.putBoolean("loading", loading);
     }
 
-
     public void checkAllowFollowers(int value) {
 
         if (value == 1) {
@@ -180,10 +179,6 @@ public class NotificationsSettingsFragment extends PreferenceFragment implements
             mAllowMessages = 0;
         }
     }
-
-
-
-
 
     public void setAllowFollowers() {
 
@@ -302,8 +297,6 @@ public class NotificationsSettingsFragment extends PreferenceFragment implements
 
         App.getInstance().addToRequestQueue(jsonReq);
     }
-
-
 
     protected void initpDialog() {
 

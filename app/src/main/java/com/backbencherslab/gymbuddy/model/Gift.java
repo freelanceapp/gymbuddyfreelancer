@@ -84,19 +84,9 @@ public class Gift extends Application implements Constants, Parcelable {
         this.giftTo = giftTo;
     }
 
-    public int getGiftAnonymous() {
-
-        return giftAnonymous;
-    }
-
     public void setGiftAnonymous(int giftAnonymous) {
 
         this.giftAnonymous = giftAnonymous;
-    }
-
-    public int getGiftId() {
-
-        return giftId;
     }
 
     public void setGiftId(int giftId) {
@@ -114,19 +104,9 @@ public class Gift extends Application implements Constants, Parcelable {
         this.giftFromUserVerify = giftFromUserVerify;
     }
 
-    public int getGiftFromUserVip() {
-
-        return giftFromUserVip;
-    }
-
     public void setGiftFromUserVip(int giftFromUserVip) {
 
         this.giftFromUserVip = giftFromUserVip;
-    }
-
-    public int getCreateAt() {
-
-        return createAt;
     }
 
     public void setCreateAt(int createAt) {
@@ -148,7 +128,6 @@ public class Gift extends Application implements Constants, Parcelable {
     public void setMessage(String message) {
         this.message = message;
     }
-
 
     public String getGiftFromUserUsername() {
         return giftFromUserUsername;
@@ -199,7 +178,6 @@ public class Gift extends Application implements Constants, Parcelable {
     public void setDate(String date) {
         this.date = date;
     }
-
 
     @Override
     public int describeContents() {

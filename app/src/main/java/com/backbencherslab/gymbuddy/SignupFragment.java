@@ -97,12 +97,11 @@ public class SignupFragment extends Fragment implements Constants {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         setRetainInstance(true);
 
-        if (AccessToken.getCurrentAccessToken()!= null) LoginManager.getInstance().logOut();
+        if (AccessToken.getCurrentAccessToken() != null) LoginManager.getInstance().logOut();
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -116,7 +115,6 @@ public class SignupFragment extends Fragment implements Constants {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_signup, container, false);
 
         if (loading) {
@@ -212,8 +210,6 @@ public class SignupFragment extends Fragment implements Constants {
 
                 if (App.getInstance().isConnected() && checkUsername()) {
 
-//                        showpDialog();
-
                     CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_CHECKUSERNAME, null,
                             new Response.Listener<JSONObject>() {
                                 @Override
@@ -235,8 +231,6 @@ public class SignupFragment extends Fragment implements Constants {
                             }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-
-//                                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
 
                         }
                     }) {
@@ -268,9 +262,11 @@ public class SignupFragment extends Fragment implements Constants {
                 checkFullname();
             }
 
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         });
 
         signupPassword.addTextChangedListener(new TextWatcher() {
@@ -280,9 +276,11 @@ public class SignupFragment extends Fragment implements Constants {
                 checkPassword();
             }
 
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         });
 
         signupEmail.addTextChangedListener(new TextWatcher() {
@@ -292,9 +290,11 @@ public class SignupFragment extends Fragment implements Constants {
                 checkEmail();
             }
 
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
         });
 
         signupJoinHowBtn = (Button) rootView.findViewById(R.id.signupJoinHowBtn);
@@ -311,9 +311,6 @@ public class SignupFragment extends Fragment implements Constants {
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-
-                        // App code
-
                         if (App.getInstance().isConnected()) {
 
                             loading = true;
@@ -381,15 +378,11 @@ public class SignupFragment extends Fragment implements Constants {
                     @Override
                     public void onCancel() {
 
-                        // App code
-                        // Cancel
                     }
 
                     @Override
                     public void onError(FacebookException exception) {
 
-                        // App code
-                        // Error
                     }
                 });
 
@@ -424,18 +417,11 @@ public class SignupFragment extends Fragment implements Constants {
             mAddPhoto.setImageURI(Uri.fromFile(new File(selectedPhotoImg)));
         }
 
-        if (!restore) {
-
-//            getNotifications();
-        }
-
-
         // Inflate the layout for this fragment
         return rootView;
     }
 
     public void onDestroyView() {
-
         super.onDestroyView();
 
         hidepDialog();
@@ -483,9 +469,6 @@ public class SignupFragment extends Fragment implements Constants {
 
                 mAddPhoto.setImageURI(null);
                 mAddPhoto.setImageURI(Uri.fromFile(new File(selectedPhotoImg)));
-
-//                mContainerImg.setVisibility(View.VISIBLE);
-
             } catch (Exception e) {
 
                 if (selectedPhotoImg != null && selectedPhotoImg.length() > 0) {
@@ -504,9 +487,6 @@ public class SignupFragment extends Fragment implements Constants {
 
                 mAddPhoto.setImageURI(null);
                 mAddPhoto.setImageURI(Uri.fromFile(new File(selectedPhotoImg)));
-
-//                mContainerImg.setVisibility(View.VISIBLE);
-
             } catch (Exception ex) {
 
                 mAddPhoto.setImageURI(Uri.fromFile(new File(selectedPhotoImg)));
@@ -518,7 +498,6 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public static String getImageUrlWithAuthority(Context context, Uri uri, String fileName) {
-
         InputStream is = null;
 
         if (uri.getAuthority() != null) {
@@ -554,7 +533,6 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public static String writeToTempImageAndGetPathUri(Context inContext, Bitmap inImage, String fileName) {
-
         String file_path = Environment.getExternalStorageDirectory() + File.separator + APP_TEMP_FOLDER;
         File dir = new File(file_path);
         if (!dir.exists()) dir.mkdirs();
@@ -583,7 +561,6 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public void choiceImage() {
-
         android.app.FragmentManager fm = getActivity().getFragmentManager();
 
         MsgImageChooseDialog alert = new MsgImageChooseDialog();
@@ -592,15 +569,12 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public void imageFromGallery() {
-
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(Intent.createChooser(intent, getText(R.string.label_select_img)), SELECT_PHOTO_IMG);
     }
 
     public void imageFromCamera() {
-
         try {
-
             File root = new File(Environment.getExternalStorageDirectory(), APP_TEMP_FOLDER);
 
             if (!root.exists()) {
@@ -614,7 +588,6 @@ public class SignupFragment extends Fragment implements Constants {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
             startActivityForResult(cameraIntent, CREATE_PHOTO_IMG);
-
         } catch (Exception e) {
 
             Toast.makeText(getActivity(), "Error occured. Please try again later.", Toast.LENGTH_SHORT).show();
@@ -622,12 +595,11 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public void selectGender(int position) {
-
         android.app.FragmentManager fm = getActivity().getFragmentManager();
 
         GenderSelectDialog alert = new GenderSelectDialog();
 
-        Bundle b  = new Bundle();
+        Bundle b = new Bundle();
         b.putInt("position", position);
 
         alert.setArguments(b);
@@ -635,23 +607,17 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public void getGender(int mSex) {
-
         sex = mSex;
 
         if (mSex == 0) {
-
             mSelectGender.setText(getString(R.string.label_sex_male));
-
         } else {
-
             mSelectGender.setText(getString(R.string.label_sex_female));
         }
     }
 
-    private DatePickerDialog.OnDateSetListener mDateSetListener =new DatePickerDialog.OnDateSetListener() {
-
+    private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int mYear, int monthOfYear, int dayOfMonth) {
-
             year = mYear;
             month = monthOfYear;
             day = dayOfMonth;
@@ -661,11 +627,9 @@ public class SignupFragment extends Fragment implements Constants {
             mSelectBirth.setText(getString(R.string.action_select_birth) + ": " + new StringBuilder().append(day).append("/").append(mMonth1).append("/").append(year));
 
         }
-
     };
 
     public void signinByFacebookId() {
-
         CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_ACCOUNT_LOGINBYFACEBOOK, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -744,7 +708,6 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public Boolean checkUsername() {
-
         username = signupUsername.getText().toString();
 
         Helper helper = new Helper();
@@ -772,11 +735,10 @@ public class SignupFragment extends Fragment implements Constants {
 
         signupUsername.setError(null);
 
-        return  true;
+        return true;
     }
 
     public Boolean checkFullname() {
-
         fullname = signupFullname.getText().toString();
 
         if (fullname.length() == 0) {
@@ -795,11 +757,10 @@ public class SignupFragment extends Fragment implements Constants {
 
         signupFullname.setError(null);
 
-        return  true;
+        return true;
     }
 
     public Boolean checkPassword() {
-
         password = signupPassword.getText().toString();
 
         Helper helper = new Helper();
@@ -831,7 +792,6 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public Boolean checkEmail() {
-
         email = signupEmail.getText().toString();
 
         Helper helper = new Helper();
@@ -856,7 +816,6 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public Boolean verifyRegForm() {
-
         signupUsername.setError(null);
         signupFullname.setError(null);
         signupPassword.setError(null);
@@ -938,7 +897,6 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public void check_signup() {
-
         username = signupUsername.getText().toString();
         fullname = signupFullname.getText().toString();
         password = signupPassword.getText().toString();
@@ -969,7 +927,6 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public void signup() {
-
         if (App.getInstance().isConnected()) {
 
             loading = true;
@@ -997,13 +954,13 @@ public class SignupFragment extends Fragment implements Constants {
 
                                 switch (App.getInstance().getErrorCode()) {
 
-                                    case 300 : {
+                                    case 300: {
 
                                         signupUsername.setError(getString(R.string.error_login_taken));
                                         break;
                                     }
 
-                                    case 301 : {
+                                    case 301: {
 
                                         signupEmail.setError(getString(R.string.error_email_taken));
                                         break;
@@ -1063,7 +1020,6 @@ public class SignupFragment extends Fragment implements Constants {
     }
 
     public Boolean uploadFile(String serverURL, File file) {
-
         final OkHttpClient client = new OkHttpClient();
 
         try {

@@ -78,16 +78,12 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
 
     private ProgressDialog pDialog;
 
-    private static final String TAG = ProfileFragment.class.getSimpleName();
-
     private static final int SELECT_PHOTO = 1;
     private static final int SELECT_COVER = 2;
     private static final int PROFILE_EDIT = 3;
     private static final int CREATE_PHOTO = 5;
     private static final int CREATE_COVER = 6;
     private static final int PROFILE_CHAT = 7;
-
-    String [] names = {};
 
     Toolbar mToolbar;
 
@@ -1161,7 +1157,6 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
             @Override
             public void onErrorResponse(VolleyError error) {
 
-//                Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
                 showErrorScreen();
             }
         }) {
@@ -1358,8 +1353,6 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         menu.clear();
 
         inflater.inflate(R.menu.menu_profile, menu);
-
-//        MainMenu = menu;
     }
 
     @Override
@@ -1393,8 +1386,6 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
 
             } else {
 
-                // your profile
-
                 menu.removeItem(R.id.action_profile_report);
                 menu.removeItem(R.id.action_profile_block);
             }
@@ -1407,12 +1398,10 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
                 menu.removeItem(R.id.action_profile_open_url);
             }
 
-            //show all menu items
             hideMenuItems(menu, true);
 
         } else {
 
-            //hide all menu items
             hideMenuItems(menu, false);
         }
     }

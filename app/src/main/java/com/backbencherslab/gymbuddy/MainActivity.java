@@ -36,7 +36,6 @@ public class MainActivity extends ActivityBase implements FragmentDrawer.Fragmen
 
     private FragmentDrawer drawerFragment;
 
-    // used to store app title
     private CharSequence mTitle;
 
     LinearLayout mContainerAdmob;

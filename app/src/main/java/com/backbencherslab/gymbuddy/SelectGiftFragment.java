@@ -35,7 +35,6 @@ import com.backbencherslab.gymbuddy.model.BaseGift;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 
 public class SelectGiftFragment extends Fragment implements Constants, SwipeRefreshLayout.OnRefreshListener {
-
     private static final String STATE_LIST = "State Adapter Data";
 
     private static final int PROFILE_NEW_GIFT = 1;
@@ -62,7 +61,6 @@ public class SelectGiftFragment extends Fragment implements Constants, SwipeRefr
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState != null) {

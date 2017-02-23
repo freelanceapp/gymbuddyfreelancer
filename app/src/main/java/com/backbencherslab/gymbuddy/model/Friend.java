@@ -69,11 +69,6 @@ public class Friend extends Application implements Constants, Parcelable {
         this.friendTo = friendTo;
     }
 
-    public long getFriendtTo() {
-
-        return this.friendTo;
-    }
-
     public void setFriendUserId(long friendUserId) {
 
         this.friendUserId = friendUserId;
@@ -89,19 +84,9 @@ public class Friend extends Application implements Constants, Parcelable {
         this.vip = friendUserVip;
     }
 
-    public int getFriendUserVip() {
-
-        return this.vip;
-    }
-
     public void setFriendUserVerify(int friendUserVerify) {
 
         this.verify = friendUserVerify;
-    }
-
-    public int getFriendUserVerify() {
-
-        return this.verify;
     }
 
     public Boolean isVerify() {

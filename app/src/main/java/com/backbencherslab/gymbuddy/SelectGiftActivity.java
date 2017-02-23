@@ -1,6 +1,5 @@
 package com.backbencherslab.gymbuddy;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,7 +9,6 @@ import android.view.MenuItem;
 import com.backbencherslab.gymbuddy.common.ActivityBase;
 
 public class SelectGiftActivity extends ActivityBase {
-
     Toolbar mToolbar;
 
     Fragment fragment;
@@ -18,7 +16,6 @@ public class SelectGiftActivity extends ActivityBase {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_select_gift);
@@ -81,7 +78,6 @@ public class SelectGiftActivity extends ActivityBase {
 
     @Override
     public void onBackPressed() {
-        // your code.
 
         finish();
     }

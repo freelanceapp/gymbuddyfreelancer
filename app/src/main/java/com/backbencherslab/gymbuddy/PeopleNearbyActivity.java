@@ -1,6 +1,5 @@
 package com.backbencherslab.gymbuddy;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -90,7 +89,6 @@ public class PeopleNearbyActivity extends ActivityBase implements PeopleNearbySe
 
     @Override
     public void onBackPressed() {
-        // your code.
 
         finish();
     }

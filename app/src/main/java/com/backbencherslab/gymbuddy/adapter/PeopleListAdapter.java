@@ -58,8 +58,7 @@ public class PeopleListAdapter extends BaseAdapter {
 		public TextView mOnline;
         public TextView mLocation;
 		public CircularImageView profilePhoto;
-		public Boolean isMyRow = false;
-	        
+
 	}
 
 	@Override

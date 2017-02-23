@@ -44,7 +44,6 @@ public class SupportFragment extends Fragment implements Constants {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         setRetainInstance(true);
@@ -56,7 +55,6 @@ public class SupportFragment extends Fragment implements Constants {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_support, container, false);
 
         if (loading) {
@@ -73,38 +71,32 @@ public class SupportFragment extends Fragment implements Constants {
     }
 
     public void onDestroyView() {
-
         super.onDestroyView();
 
         hidepDialog();
     }
 
     protected void initpDialog() {
-
         pDialog = new ProgressDialog(getActivity());
         pDialog.setMessage(getString(R.string.msg_loading));
         pDialog.setCancelable(false);
     }
 
     protected void showpDialog() {
-
         if (!pDialog.isShowing()) pDialog.show();
     }
 
     protected void hidepDialog() {
-
         if (pDialog.isShowing()) pDialog.dismiss();
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -117,7 +109,6 @@ public class SupportFragment extends Fragment implements Constants {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
 
             case R.id.action_send: {
@@ -148,7 +139,6 @@ public class SupportFragment extends Fragment implements Constants {
     }
 
     public void sendTicket() {
-
         loading = true;
 
         showpDialog();

@@ -29,7 +29,6 @@ import com.backbencherslab.gymbuddy.constants.Constants;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 
 public class SettingsFragment extends PreferenceFragment implements Constants {
-
     private Preference logoutPreference, itemContactUs, aboutPreference, changePassword, itemBalance, itemServices, itemTerms, itemThanks, itemBlackList, itemNotifications, itemDeactivateAccount;
     private CheckBoxPreference allowMessages;
     private PreferenceScreen screen;
@@ -65,10 +64,6 @@ public class SettingsFragment extends PreferenceFragment implements Constants {
 
         pref.setSummary(App.getInstance().getUsername());
 
-//        pref = findPreference("settings_copyright_info");
-//
-//        pref.setSummary(APP_COPYRIGHT + " © " + APP_YEAR);
-
         logoutPreference = findPreference("settings_logout");
         aboutPreference = findPreference("settings_version");
         changePassword = findPreference("settings_change_password");
@@ -82,13 +77,11 @@ public class SettingsFragment extends PreferenceFragment implements Constants {
         itemContactUs = findPreference("settings_contact_us");
 
         if (!FACEBOOK_AUTHORIZATION) {
-
             PreferenceCategory headerGeneral = (PreferenceCategory) findPreference("header_general");
             headerGeneral.removePreference(itemServices);
         }
 
         itemBalance.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-
             public boolean onPreferenceClick(Preference arg0) {
 
                 Intent i = new Intent(getActivity(), BalanceActivity.class);
@@ -176,7 +169,6 @@ public class SettingsFragment extends PreferenceFragment implements Constants {
                 aboutDialogAppVersion.setText("Version " + getString(R.string.app_version));
                 aboutDialogAppCopyright.setText("Copyright © " + getString(R.string.app_year) + " " + getString(R.string.app_copyright));
 
-//                    alertDialog.setMessage("Version " + APP_VERSION + "/r/n" + APP_COPYRIGHT);
                 alertDialog.setCancelable(true);
                 alertDialog.setNeutralButton(getText(R.string.action_ok), new DialogInterface.OnClickListener() {
 

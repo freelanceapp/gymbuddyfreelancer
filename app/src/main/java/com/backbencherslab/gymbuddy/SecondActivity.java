@@ -1,6 +1,5 @@
 package com.backbencherslab.gymbuddy;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,14 +15,9 @@ import java.util.List;
 public class SecondActivity extends AppCompatActivity {
     DatabaseHelper helpher;
     List<DatabaseModel> dbList;
-RecyclerView mRecyclerView;
+    RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
-
-    private static final String DATABASE_NAME="gymname";
-    private static final int DATABASE_VERSION = 1;
-    private static final String STUDENT_TABLE = "stureg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +27,11 @@ RecyclerView mRecyclerView;
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         helpher = new DatabaseHelper(this);
-        dbList= new ArrayList<DatabaseModel>();
+        dbList = new ArrayList<>();
         dbList = helpher.getDataFromDB();
 
-
-        mRecyclerView = (RecyclerView)findViewById(R.id.recycleview);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycleview);
 
         mRecyclerView.setHasFixedSize(true);
 
@@ -48,11 +40,9 @@ RecyclerView mRecyclerView;
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new RecyclerAdapter(this,dbList);
+        mAdapter = new RecyclerAdapter(this, dbList);
         mRecyclerView.setAdapter(mAdapter);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,8 +50,6 @@ RecyclerView mRecyclerView;
         getMenuInflater().inflate(R.menu.menu_second, menu);
         return true;
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

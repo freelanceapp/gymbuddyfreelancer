@@ -2,8 +2,6 @@ package com.backbencherslab.gymbuddy.service;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -22,7 +20,6 @@ public class RegistrationIntentService extends IntentService implements Constant
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         try {
             synchronized (TAG) {

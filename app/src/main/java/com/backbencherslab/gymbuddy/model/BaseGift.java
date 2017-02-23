@@ -64,19 +64,9 @@ public class BaseGift extends Application implements Constants, Parcelable {
         this.cost = cost;
     }
 
-    public int getCategory() {
-
-        return this.category;
-    }
-
     public void setCategory(int category) {
 
         this.category = category;
-    }
-
-    public int getCreateAt() {
-
-        return createAt;
     }
 
     public void setCreateAt(int createAt) {
@@ -106,7 +96,6 @@ public class BaseGift extends Application implements Constants, Parcelable {
     public void setDate(String date) {
         this.date = date;
     }
-
 
     @Override
     public int describeContents() {

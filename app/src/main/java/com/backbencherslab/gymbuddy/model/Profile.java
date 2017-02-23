@@ -5,20 +5,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import com.backbencherslab.gymbuddy.app.App;
 import com.backbencherslab.gymbuddy.constants.Constants;
-import com.backbencherslab.gymbuddy.util.CustomRequest;
-
 
 public class Profile extends Application implements Constants, Parcelable {
 
@@ -281,11 +270,6 @@ public class Profile extends Application implements Constants, Parcelable {
         this.verify = profileVerify;
     }
 
-    public int getVerify() {
-
-        return this.verify;
-    }
-
     public Boolean isVerify() {
 
         if (this.verify > 0) {
@@ -376,11 +360,6 @@ public class Profile extends Application implements Constants, Parcelable {
         this.bigPhotoUrl = bigPhotoUrl;
     }
 
-    public String getBigPhotoUrl() {
-
-        return this.bigPhotoUrl;
-    }
-
     public void setNormalPhotoUrl(String normalPhotoUrl) {
 
         this.normalPhotoUrl = normalPhotoUrl;
@@ -406,11 +385,6 @@ public class Profile extends Application implements Constants, Parcelable {
         this.followersCount = followersCount;
     }
 
-    public int getFollowersCount() {
-
-        return this.followersCount;
-    }
-
     public void setFriendsCount(int friendsCount) {
 
         this.friendsCount = friendsCount;
@@ -419,16 +393,6 @@ public class Profile extends Application implements Constants, Parcelable {
     public int getFriendsCount() {
 
         return this.friendsCount;
-    }
-
-    public void setItemsCount(int itemsCount) {
-
-        this.itemsCount = itemsCount;
-    }
-
-    public int getItemsCount() {
-
-        return this.itemsCount;
     }
 
     public void setLikesCount(int likesCount) {
@@ -461,24 +425,9 @@ public class Profile extends Application implements Constants, Parcelable {
         return this.photosCount;
     }
 
-    public void setFollowingsCount(int followingsCount) {
-
-        this.followingsCount = followingsCount;
-    }
-
-    public int getFollowingsCount() {
-
-        return this.followingsCount;
-    }
-
     public void setAllowPhotosComments(int allowPhotosComments) {
 
         this.allowPhotosComments = allowPhotosComments;
-    }
-
-    public int getAllowPhotosComments() {
-
-        return this.allowPhotosComments;
     }
 
     public void setAllowMessages(int allowMessages) {
@@ -526,11 +475,6 @@ public class Profile extends Application implements Constants, Parcelable {
         this.lastAuthorizeDate = lastAuthorizeDate;
     }
 
-    public String getLastActiveDate() {
-
-        return this.lastAuthorizeDate;
-    }
-
     public void setCreateDate(String createDate) {
 
         this.createDate = createDate;
@@ -571,11 +515,6 @@ public class Profile extends Application implements Constants, Parcelable {
     public void setFollower(Boolean follower) {
 
         this.follower = follower;
-    }
-
-    public Boolean isFollower() {
-
-        return this.follower;
     }
 
     public void setFriend(Boolean friend) {
@@ -626,85 +565,6 @@ public class Profile extends Application implements Constants, Parcelable {
     public Boolean isInBlackList() {
 
         return this.inBlackList;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void addFollower() {
-
-        CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_PROFILE_FOLLOW, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        try {
-
-                            if (response.getBoolean("error") == false) {
-
-
-                            }
-
-                        } catch (JSONException e) {
-
-                            e.printStackTrace();
-
-                        } finally {
-
-//                            Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-//                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("accountId", Long.toString(App.getInstance().getId()));
-                params.put("accessToken", App.getInstance().getAccessToken());
-                params.put("profileId", Long.toString(getId()));
-
-                return params;
-            }
-        };
-
-        App.getInstance().addToRequestQueue(jsonReq);
     }
 
     @Override

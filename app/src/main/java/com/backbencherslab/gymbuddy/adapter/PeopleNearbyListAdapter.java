@@ -58,8 +58,7 @@ public class PeopleNearbyListAdapter extends BaseAdapter {
 		public TextView mOnline;
         public TextView mDistance;
 		public CircularImageView profilePhoto;
-		public Boolean isMyRow = false;
-	        
+
 	}
 
 	@Override

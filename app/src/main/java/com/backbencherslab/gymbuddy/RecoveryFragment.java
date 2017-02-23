@@ -91,7 +91,6 @@ public class RecoveryFragment extends Fragment implements Constants {
             }
         });
 
-
         // Inflate the layout for this fragment
         return rootView;
     }

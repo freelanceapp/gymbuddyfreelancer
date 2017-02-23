@@ -14,11 +14,7 @@ import android.widget.Toast;
 import com.backbencherslab.gymbuddy.app.App;
 import com.backbencherslab.gymbuddy.common.ActivityBase;
 
-
 public class WebViewActivity extends ActivityBase {
-
-    private static final String TAG = WebViewActivity.class.getSimpleName();
-
     Toolbar toolbar;
 
     RelativeLayout mWebViewLoadingScreen, mWebViewErrorScreen, mWebViewContentScreen;
@@ -32,7 +28,6 @@ public class WebViewActivity extends ActivityBase {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
 
-        //        Initialize Toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         if (toolbar != null) {
@@ -97,11 +92,7 @@ public class WebViewActivity extends ActivityBase {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
-        switch(item.getItemId()) {
+     switch(item.getItemId()) {
 
             case android.R.id.home: {
 
@@ -117,7 +108,6 @@ public class WebViewActivity extends ActivityBase {
     }
 
     public void showLoadingScreen() {
-
         mWebViewErrorScreen.setVisibility(View.GONE);
         mWebViewContentScreen.setVisibility(View.GONE);
 

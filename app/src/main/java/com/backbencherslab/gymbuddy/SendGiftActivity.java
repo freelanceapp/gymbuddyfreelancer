@@ -10,9 +10,7 @@ import android.view.MenuItem;
 
 import com.backbencherslab.gymbuddy.common.ActivityBase;
 
-
 public class SendGiftActivity extends ActivityBase {
-
     Toolbar mToolbar;
 
     Fragment fragment;
@@ -79,7 +77,6 @@ public class SendGiftActivity extends ActivityBase {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_new_item, menu);
         return true;
     }

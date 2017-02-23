@@ -1,6 +1,5 @@
 package com.backbencherslab.gymbuddy;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -113,7 +112,6 @@ public class GaleryActivity extends ActivityBase implements PhotoDeleteDialog.Al
 
     @Override
     public void onBackPressed() {
-        // your code.
 
         finish();
     }

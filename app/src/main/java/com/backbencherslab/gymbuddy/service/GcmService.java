@@ -72,8 +72,6 @@ public class GcmService extends GcmListenerService implements Constants {
         String actionId = data.getString("id", "0");
         String accountId = data.getString("accountId", "0");
 
-        int icon = R.drawable.ic_action_push_notification;
-        long when = System.currentTimeMillis();
         String title = context.getString(R.string.app_name);
 
         App.getInstance().reload();

@@ -2,17 +2,13 @@ package com.backbencherslab.gymbuddy.util;
 
 import android.app.Service;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.provider.Settings;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-
 
 public class GPSTracker extends Service implements LocationListener {
 
@@ -112,20 +108,6 @@ public class GPSTracker extends Service implements LocationListener {
         return location;
     }
 
-
-    /**
-     * Stop using GPS listener
-     * Calling this function will stop using GPS in your app.
-     * */
-    public void stopUsingGPS(){
-
-        if(locationManager != null) {
-
-            locationManager.removeUpdates(GPSTracker.this);
-        }
-    }
-
-
     /**
      * Function to get latitude
      * */
@@ -162,41 +144,6 @@ public class GPSTracker extends Service implements LocationListener {
     public boolean canGetLocation() {
         return this.canGetLocation;
     }
-
-
-    /**
-     * Function to show settings alert dialog.
-     * On pressing the Settings button it will launch Settings Options.
-     * */
-    public void showSettingsAlert(){
-
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
-
-        // Setting Dialog Title
-        alertDialog.setTitle("GPS is settings");
-
-        // Setting Dialog Message
-        alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
-
-        // On pressing the Settings button.
-        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog,int which) {
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                mContext.startActivity(intent);
-            }
-        });
-
-        // On pressing the cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        // Showing Alert Message
-        alertDialog.show();
-    }
-
 
     @Override
     public void onLocationChanged(Location location) {

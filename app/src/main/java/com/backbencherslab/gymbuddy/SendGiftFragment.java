@@ -42,7 +42,6 @@ import com.backbencherslab.gymbuddy.constants.Constants;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 
 public class SendGiftFragment extends Fragment implements Constants {
-
     public static final int RESULT_OK = -1;
 
     private ProgressDialog pDialog;
@@ -68,7 +67,6 @@ public class SendGiftFragment extends Fragment implements Constants {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
         setRetainInstance(true);
@@ -89,7 +87,6 @@ public class SendGiftFragment extends Fragment implements Constants {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_send_gift, container, false);
 
         popup = new EmojiconsPopup(rootView, getActivity());
@@ -353,7 +350,6 @@ public class SendGiftFragment extends Fragment implements Constants {
     }
 
     public void sendGift() {
-
         CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_GIFTS_SEND, null,
                 new Response.Listener<JSONObject>() {
                     @Override

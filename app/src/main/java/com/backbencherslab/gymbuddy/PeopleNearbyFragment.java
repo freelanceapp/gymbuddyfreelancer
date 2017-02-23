@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,8 +34,6 @@ import com.backbencherslab.gymbuddy.adapter.PeopleNearbyListAdapter;
 import com.backbencherslab.gymbuddy.app.App;
 import com.backbencherslab.gymbuddy.constants.Constants;
 import com.backbencherslab.gymbuddy.dialogs.PeopleNearbySettingsDialog;
-import com.backbencherslab.gymbuddy.maps.*;
-import com.backbencherslab.gymbuddy.maps.MainActivity;
 import com.backbencherslab.gymbuddy.model.Profile;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 
@@ -70,10 +67,7 @@ public class PeopleNearbyFragment extends Fragment implements Constants, SwipeRe
     public PeopleNearbyFragment() {
         // Required empty public constructor
     }
-    public static PeopleNearbyFragment newInstance() {
-        PeopleNearbyFragment fragment = new PeopleNearbyFragment();
-        return fragment;
-    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 

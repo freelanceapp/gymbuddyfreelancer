@@ -79,20 +79,9 @@ public class BlacklistItem extends Application implements Constants, Parcelable 
         this.blockedUserVerify = blockedUserVerify;
     }
 
-    public int getBlockedUserState() {
-
-        return this.blockedUserState;
-    }
-
-
     public void setReason(String reason) {
 
         this.reason = reason;
-    }
-
-    public String getReason() {
-
-        return this.reason;
     }
 
     public void setTimeAgo(String timeAgo) {
@@ -108,11 +97,6 @@ public class BlacklistItem extends Application implements Constants, Parcelable 
     public void setBlockedUserUsername(String blockedUserUsername) {
 
         this.blockedUserUsername = blockedUserUsername;
-    }
-
-    public String getBlockedUserUsername() {
-
-        return this.blockedUserUsername;
     }
 
     public void setBlockedUserFullname(String blockedUserFullname) {
@@ -138,11 +122,6 @@ public class BlacklistItem extends Application implements Constants, Parcelable 
     public void setCreateAt(int createAt) {
 
         this.createAt = createAt;
-    }
-
-    public int getCreateAt() {
-
-        return this.createAt;
     }
 
     @Override

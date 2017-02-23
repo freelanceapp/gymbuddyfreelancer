@@ -57,8 +57,7 @@ public class GuestListAdapter extends BaseAdapter {
         public TextView profileUsername;
 		public TextView profileFullname;
 		public CircularImageView profilePhoto;
-		public Boolean isMyRow = false;
-	        
+
 	}
 
 	@Override

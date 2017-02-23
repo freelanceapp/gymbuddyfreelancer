@@ -232,7 +232,6 @@ public class LikesFragment extends Fragment implements Constants, SwipeRefreshLa
                         } finally {
 
                             loadingComplete();
-//                            Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {

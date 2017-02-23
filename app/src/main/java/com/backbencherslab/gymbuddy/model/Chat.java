@@ -82,19 +82,9 @@ public class Chat extends Application implements Constants, Parcelable {
         this.withUserVerify = withUserVerify;
     }
 
-    public int getWithUserState() {
-
-        return this.withUserState;
-    }
-
     public void setWithUserUsername(String withUserUsername) {
 
         this.withUserUsername = withUserUsername;
-    }
-
-    public String getWithUserUsername() {
-
-        return this.withUserUsername;
     }
 
     public void setWithUserFullname(String withUserFullname) {
@@ -170,11 +160,6 @@ public class Chat extends Application implements Constants, Parcelable {
     public void setCreateAt(int createAt) {
 
         this.createAt = createAt;
-    }
-
-    public int getCreateAt() {
-
-        return this.createAt;
     }
 
     @Override

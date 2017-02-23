@@ -13,10 +13,6 @@ public class ChatItem extends Application implements Constants {
     private int id, fromUserState, createAt;
     private String fromUserUsername, fromUserFullname, fromUserPhotoUrl, message, imgUrl, timeAgo, date;
 
-    public ChatItem() {
-
-    }
-
     public ChatItem(JSONObject jsonData) {
 
         try {
@@ -68,29 +64,14 @@ public class ChatItem extends Application implements Constants {
         this.fromUserState = fromUserState;
     }
 
-    public int getFromUserState() {
-
-        return this.fromUserState;
-    }
-
     public void setFromUserUsername(String fromUserUsername) {
 
         this.fromUserUsername = fromUserUsername;
     }
 
-    public String getFromUserUsername() {
-
-        return this.fromUserUsername;
-    }
-
     public void setFromUserFullname(String fromUserFullname) {
 
         this.fromUserFullname = fromUserFullname;
-    }
-
-    public String getFromUserFullname() {
-
-        return this.fromUserFullname;
     }
 
     public void setFromUserPhotoUrl(String fromUserPhotoUrl) {
@@ -146,10 +127,5 @@ public class ChatItem extends Application implements Constants {
     public void setCreateAt(int createAt) {
 
         this.createAt = createAt;
-    }
-
-    public int getCreateAt() {
-
-        return this.createAt;
     }
 }

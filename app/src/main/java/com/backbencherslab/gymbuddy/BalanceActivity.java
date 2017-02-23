@@ -28,7 +28,6 @@ import com.backbencherslab.gymbuddy.util.IabResult;
 import com.backbencherslab.gymbuddy.util.Inventory;
 import com.backbencherslab.gymbuddy.util.Purchase;
 
-
 public class BalanceActivity extends ActivityBase {
 
     Toolbar mToolbar;
@@ -57,8 +56,6 @@ public class BalanceActivity extends ActivityBase {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_balance);
-
-
 
         if (savedInstanceState != null) {
 
@@ -327,8 +324,6 @@ public class BalanceActivity extends ActivityBase {
     // Fortumo related glue-code
     private static final int REQUEST_CODE = 1234; // Can be anything
 
-
-
     public void update() {
 
         mLabelCredits.setText(getString(R.string.label_credits) + " (" + Integer.toString(App.getInstance().getBalance()) + ")");
@@ -363,11 +358,11 @@ public class BalanceActivity extends ActivityBase {
 
                 if (!result.isSuccess()) {
 
-                    Log.d(TAG, "In-app Billing setup failed: " + result);
+                    //Log.d(TAG, "Billingsetupfailed:" + result);
 
                 } else {
 
-                    Log.d(TAG, "In-app Billing is set up OK");
+                 //   Log.d(TAG, "BillingissetupOK");
 
                     mHelper.enableDebugLogging(true, TAG);
                 }
