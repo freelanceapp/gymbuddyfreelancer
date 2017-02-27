@@ -63,7 +63,7 @@ public class LoginFragment extends Fragment implements Constants {
 
         setRetainInstance(true);
 
-        if (AccessToken.getCurrentAccessToken()!= null) LoginManager.getInstance().logOut();
+        if (AccessToken.getCurrentAccessToken() != null) LoginManager.getInstance().logOut();
 
         callbackManager = CallbackManager.Factory.create();
 
@@ -435,7 +435,7 @@ public class LoginFragment extends Fragment implements Constants {
             return false;
         }
 
-        return  true;
+        return true;
     }
 
     public Boolean checkPassword() {
@@ -467,7 +467,7 @@ public class LoginFragment extends Fragment implements Constants {
             return false;
         }
 
-        return  true;
+        return true;
     }
 
     @Override

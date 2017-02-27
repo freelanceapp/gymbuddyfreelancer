@@ -38,12 +38,12 @@ import com.backbencherslab.gymbuddy.util.LruBitmapCache;
 
 public class App extends Application implements Constants {
 
-	public static final String TAG = App.class.getSimpleName();
+    public static final String TAG = App.class.getSimpleName();
 
-	private RequestQueue mRequestQueue;
-	private ImageLoader mImageLoader;
+    private RequestQueue mRequestQueue;
+    private ImageLoader mImageLoader;
 
-	private static App mInstance;
+    private static App mInstance;
 
     private SharedPreferences sharedPref;
 
@@ -54,10 +54,10 @@ public class App extends Application implements Constants {
     private long id;
     private int state, admob, verify, balance, vip, ghost, allowComments, allowMessages, allowLikesGCM, allowCommentsGCM, allowFollowersGCM, allowMessagesGCM, allowGiftsGCM, allowCommentReplyGCM, errorCode, currentChatId = 0, notificationsCount = 0, messagesCount = 0, guestsCount = 0, newFriendsCount = 0;
 
-	@Override
-	public void onCreate() {
+    @Override
+    public void onCreate() {
 
-		super.onCreate();
+        super.onCreate();
         mInstance = this;
 
         sharedPref = this.getSharedPreferences(getString(R.string.settings_file), Context.MODE_PRIVATE);
@@ -65,7 +65,7 @@ public class App extends Application implements Constants {
         this.readData();
 
         getLocation();
-	}
+    }
 
     public void getLocation() {
 
@@ -148,19 +148,19 @@ public class App extends Application implements Constants {
             }
         }
     }
-    
+
     public boolean isConnected() {
-    	
-    	ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-    	
-    	NetworkInfo netInfo = cm.getActiveNetworkInfo();
-    	
-    	if (netInfo != null && netInfo.isConnectedOrConnecting()) {
-    		
-    		return true;
-    	}
-    	
-    	return false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+
+            return true;
+        }
+
+        return false;
     }
 
     public void logout() {
@@ -175,7 +175,6 @@ public class App extends Application implements Constants {
                             try {
 
                                 if (!response.getBoolean("error")) {
-
 
 
                                 }
@@ -305,8 +304,8 @@ public class App extends Application implements Constants {
     }
 
     public Boolean authorize(JSONObject authObj) {
-
-        try {
+        return true;
+     /*   try {
 
             if (authObj.has("error_code")) {
 
@@ -385,7 +384,7 @@ public class App extends Application implements Constants {
 
             e.printStackTrace();
             return false;
-        }
+        }*/
     }
 
     public long getId() {
@@ -800,34 +799,34 @@ public class App extends Application implements Constants {
     }
 
     public static synchronized App getInstance() {
-		return mInstance;
-	}
+        return mInstance;
+    }
 
-	public RequestQueue getRequestQueue() {
+    public RequestQueue getRequestQueue() {
 
-		if (mRequestQueue == null) {
-			mRequestQueue = Volley.newRequestQueue(getApplicationContext());
-		}
+        if (mRequestQueue == null) {
+            mRequestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
 
-		return mRequestQueue;
-	}
+        return mRequestQueue;
+    }
 
-	public ImageLoader getImageLoader() {
-		getRequestQueue();
-		if (mImageLoader == null) {
-			mImageLoader = new ImageLoader(this.mRequestQueue,
-					new LruBitmapCache());
-		}
-		return this.mImageLoader;
-	}
+    public ImageLoader getImageLoader() {
+        getRequestQueue();
+        if (mImageLoader == null) {
+            mImageLoader = new ImageLoader(this.mRequestQueue,
+                    new LruBitmapCache());
+        }
+        return this.mImageLoader;
+    }
 
-	public <T> void addToRequestQueue(Request<T> req, String tag) {
-		// set the default tag if tag is empty
-		req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
-		getRequestQueue().add(req);
-	}
+    public <T> void addToRequestQueue(Request<T> req, String tag) {
+        // set the default tag if tag is empty
+        req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
+        getRequestQueue().add(req);
+    }
 
-	public <T> void addToRequestQueue(Request<T> req) {
+    public <T> void addToRequestQueue(Request<T> req) {
         req.setTag(TAG);
         getRequestQueue().add(req);
     }
