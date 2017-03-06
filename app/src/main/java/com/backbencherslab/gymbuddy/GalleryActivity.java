@@ -16,6 +16,7 @@ public class GalleryActivity extends ActivityBase implements PhotoDeleteDialog.A
 
     Toolbar mToolbar;
 
+    
     Fragment fragment;
     Boolean restore = false;
 
