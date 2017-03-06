@@ -58,7 +58,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.backbencherslab.gymbuddy.adapter.GaleryListAdapter;
+import com.backbencherslab.gymbuddy.adapter.GalleryListAdapter;
 import com.backbencherslab.gymbuddy.app.App;
 import com.backbencherslab.gymbuddy.constants.Constants;
 import com.backbencherslab.gymbuddy.dialogs.CoverChooseDialog;
@@ -111,7 +111,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
 
     private ArrayList<Photo> itemsList;
 
-    private GaleryListAdapter adapter;
+    private GalleryListAdapter adapter;
 
     private String selectedPhoto, selectedCover;
     private Uri outputFileUri;
@@ -162,7 +162,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         profile.setId(profile_id);
 
         itemsList = new ArrayList<Photo>();
-        adapter = new GaleryListAdapter(getActivity(), itemsList, this);
+        adapter = new GalleryListAdapter(getActivity(), itemsList, this);
     }
 
     @Override
@@ -173,7 +173,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         if (savedInstanceState != null) {
 
             itemsList = savedInstanceState.getParcelableArrayList(STATE_LIST);
-            adapter = new GaleryListAdapter(getActivity(), itemsList, this);
+            adapter = new GalleryListAdapter(getActivity(), itemsList, this);
 
             itemId = savedInstanceState.getInt("itemId");
 
@@ -186,7 +186,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         } else {
 
             itemsList = new ArrayList<Photo>();
-            adapter = new GaleryListAdapter(getActivity(), itemsList, this);
+            adapter = new GalleryListAdapter(getActivity(), itemsList, this);
 
             itemId = 0;
 
@@ -302,7 +302,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
             @Override
             public void onClick(View v) {
 
-                showProfileGalery(profile.getId());
+                showProfileGallery(profile.getId());
             }
         });
 
@@ -310,7 +310,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
             @Override
             public void onClick(View v) {
 
-                showProfileGalery(profile.getId());
+                showProfileGallery(profile.getId());
             }
         });
 
@@ -640,7 +640,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         }
     }
 
-    public void showProfileGalery(long profileId) {
+    public void showProfileGallery(long profileId) {
 
         Intent intent = new Intent(getActivity(), GalleryActivity.class);
         intent.putExtra("profileId", profileId);
@@ -950,7 +950,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
 
         } else {
 
-            mLocationView.setText("-");
+            mLocationView.setText("GoodLife Fitness");
         }
         city.setText(App.getInstance().getCity()+",");
         country.setText(App.getInstance().getCountry());

@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.backbencherslab.gymbuddy.adapter.GaleryListAdapter;
+import com.backbencherslab.gymbuddy.adapter.GalleryListAdapter;
 import com.backbencherslab.gymbuddy.app.App;
 import com.backbencherslab.gymbuddy.constants.Constants;
 import com.backbencherslab.gymbuddy.dialogs.MyPhotoActionDialog;
@@ -59,7 +59,7 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
     FloatingActionButton mFabButton;
 
     private ArrayList<Photo> itemsList;
-    private GaleryListAdapter itemsAdapter;
+    private GalleryListAdapter itemsAdapter;
 
     private long profileId = 0;
 
@@ -81,7 +81,7 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
         if (savedInstanceState != null) {
 
             itemsList = savedInstanceState.getParcelableArrayList(STATE_LIST);
-            itemsAdapter = new GaleryListAdapter(getActivity(), itemsList, this);
+            itemsAdapter = new GalleryListAdapter(getActivity(), itemsList, this);
 
             restore = savedInstanceState.getBoolean("restore");
             itemId = savedInstanceState.getInt("itemId");
@@ -89,7 +89,7 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
         } else {
 
             itemsList = new ArrayList<Photo>();
-            itemsAdapter = new GaleryListAdapter(getActivity(), itemsList, this);
+            itemsAdapter = new GalleryListAdapter(getActivity(), itemsList, this);
 
             restore = false;
             itemId = 0;

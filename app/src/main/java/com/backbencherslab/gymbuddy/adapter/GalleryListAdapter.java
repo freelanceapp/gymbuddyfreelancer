@@ -36,7 +36,7 @@ import com.backbencherslab.gymbuddy.util.CustomRequest;
 import com.backbencherslab.gymbuddy.util.PhotoInterface;
 import com.backbencherslab.gymbuddy.view.ResizableImageView;
 
-public class GaleryListAdapter extends BaseAdapter implements Constants {
+public class GalleryListAdapter extends BaseAdapter implements Constants {
 
 	private Activity activity;
 	private LayoutInflater inflater;
@@ -46,7 +46,7 @@ public class GaleryListAdapter extends BaseAdapter implements Constants {
 
     ImageLoader imageLoader = App.getInstance().getImageLoader();
 
-	public GaleryListAdapter(Activity activity, List<Photo> itemsList, PhotoInterface responder) {
+	public GalleryListAdapter(Activity activity, List<Photo> itemsList, PhotoInterface responder) {
 
 		this.activity = activity;
 		this.itemsList = itemsList;
