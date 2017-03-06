@@ -642,7 +642,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
 
     public void showProfileGalery(long profileId) {
 
-        Intent intent = new Intent(getActivity(), GaleryActivity.class);
+        Intent intent = new Intent(getActivity(), GalleryActivity.class);
         intent.putExtra("profileId", profileId);
         startActivity(intent);
     }

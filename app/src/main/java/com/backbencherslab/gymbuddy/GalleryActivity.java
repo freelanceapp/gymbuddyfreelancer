@@ -12,7 +12,7 @@ import com.backbencherslab.gymbuddy.dialogs.PhotoActionDialog;
 import com.backbencherslab.gymbuddy.dialogs.PhotoDeleteDialog;
 import com.backbencherslab.gymbuddy.dialogs.PhotoReportDialog;
 
-public class GaleryActivity extends ActivityBase implements PhotoDeleteDialog.AlertPositiveListener, PhotoReportDialog.AlertPositiveListener, MyPhotoActionDialog.AlertPositiveListener, PhotoActionDialog.AlertPositiveListener {
+public class GalleryActivity extends ActivityBase implements PhotoDeleteDialog.AlertPositiveListener, PhotoReportDialog.AlertPositiveListener, MyPhotoActionDialog.AlertPositiveListener, PhotoActionDialog.AlertPositiveListener {
 
     Toolbar mToolbar;
 
@@ -40,7 +40,7 @@ public class GaleryActivity extends ActivityBase implements PhotoDeleteDialog.Al
 
         } else {
 
-            fragment = new GaleryFragment();
+            fragment = new GalleryFragment();
 
             restore = false;
         }
@@ -63,28 +63,28 @@ public class GaleryActivity extends ActivityBase implements PhotoDeleteDialog.Al
     @Override
     public void onPhotoDelete(int position) {
 
-        GaleryFragment p = (GaleryFragment) fragment;
+        GalleryFragment p = (GalleryFragment) fragment;
         p.onPhotoDelete(position);
     }
 
     @Override
     public void onPhotoReport(int position, int reasonId) {
 
-        GaleryFragment p = (GaleryFragment) fragment;
+        GalleryFragment p = (GalleryFragment) fragment;
         p.onPhotoReport(position, reasonId);
     }
 
     @Override
     public void onPhotoRemoveDialog(int position) {
 
-        GaleryFragment p = (GaleryFragment) fragment;
+        GalleryFragment p = (GalleryFragment) fragment;
         p.onPhotoRemove(position);
     }
 
     @Override
     public void onPhotoReportDialog(int position) {
 
-        GaleryFragment p = (GaleryFragment) fragment;
+        GalleryFragment p = (GalleryFragment) fragment;
         p.report(position);
     }
 

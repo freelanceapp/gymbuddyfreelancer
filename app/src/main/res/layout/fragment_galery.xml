@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/main_layout"
-    tools:context="com.backbencherslab.gymbuddy.GaleryFragment">
+    tools:context="com.backbencherslab.gymbuddy.GalleryFragment">
 
     <LinearLayout
         android:orientation="vertical"

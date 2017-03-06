@@ -192,7 +192,7 @@
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"     android:theme="@style/MyMaterialTheme" />
         <activity
-            android:name=".GaleryActivity"
+            android:name=".GalleryActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait"     android:label="@string/title_activity_galery"
             android:theme="@style/MyMaterialTheme" />

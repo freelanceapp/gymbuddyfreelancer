@@ -304,8 +304,8 @@ public class App extends Application implements Constants {
     }
 
     public Boolean authorize(JSONObject authObj) {
-        return true;
-     /*   try {
+       // return true;
+        try {
 
             if (authObj.has("error_code")) {
 
@@ -384,7 +384,7 @@ public class App extends Application implements Constants {
 
             e.printStackTrace();
             return false;
-        }*/
+        }
     }
 
     public long getId() {

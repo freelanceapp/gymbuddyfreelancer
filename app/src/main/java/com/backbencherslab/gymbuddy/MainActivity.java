@@ -195,14 +195,14 @@ public class MainActivity extends ActivityBase implements FragmentDrawer.Fragmen
     @Override
     public void onPhotoDelete(int position) {
 
-        GaleryFragment p = (GaleryFragment) fragment;
+        GalleryFragment p = (GalleryFragment) fragment;
         p.onPhotoDelete(position);
     }
 
     @Override
     public void onPhotoRemoveDialog(int position) {
 
-        GaleryFragment p = (GaleryFragment) fragment;
+        GalleryFragment p = (GalleryFragment) fragment;
         p.onPhotoRemove(position);
     }
 
@@ -281,7 +281,7 @@ public class MainActivity extends ActivityBase implements FragmentDrawer.Fragmen
 
                 page = 2;
 
-                fragment = new GaleryFragment();
+                fragment = new GalleryFragment();
                 getSupportActionBar().setTitle(R.string.page_2);
 
                 action = true;

@@ -44,7 +44,7 @@ import com.backbencherslab.gymbuddy.util.Api;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 import com.backbencherslab.gymbuddy.util.PhotoInterface;
 
-public class GaleryFragment extends Fragment implements Constants, SwipeRefreshLayout.OnRefreshListener, PhotoInterface {
+public class GalleryFragment extends Fragment implements Constants, SwipeRefreshLayout.OnRefreshListener, PhotoInterface {
 
     private static final String STATE_LIST = "State Adapter Data";
 
@@ -69,7 +69,7 @@ public class GaleryFragment extends Fragment implements Constants, SwipeRefreshL
     private Boolean viewMore = false;
     private Boolean restore = false;
 
-    public GaleryFragment() {
+    public GalleryFragment() {
         // Required empty public constructor
     }
 
@@ -325,7 +325,7 @@ public class GaleryFragment extends Fragment implements Constants, SwipeRefreshL
 
         if (itemsAdapter.getCount() == 0) {
 
-            if (GaleryFragment.this.isVisible()) {
+            if (GalleryFragment.this.isVisible()) {
 
                 showMessage(getText(R.string.label_empty_list).toString());
             }
