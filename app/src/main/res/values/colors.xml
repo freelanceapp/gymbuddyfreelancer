@@ -43,7 +43,7 @@
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>
     <color name="colorAccent">#448AFF</color>
-    <color name="colorFloatActionButton">#448AFF</color>
+    <color name="colorFloatActionButton">#444aff</color>
     <color name="colorRipple">#448AFF</color>
     <color name="tabLayoutBackground">#EEEEEE</color>
     <color name="listViewDivider">#F0F3F5</color>
