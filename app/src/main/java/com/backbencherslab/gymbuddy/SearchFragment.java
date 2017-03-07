@@ -5,6 +5,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -50,8 +51,11 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     SearchView searchView = null;
 
     ListView mListView;
-    TextView mMessage, mHeaderText, mHeaderSettings;
+    TextView mMessage;
+    //mHeaderText;
     ImageView mSplash;
+
+    FloatingActionButton filterFAB;
 
     LinearLayout mHeaderContainer;
 
@@ -123,8 +127,9 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         }
 
         mHeaderContainer = (LinearLayout) rootView.findViewById(R.id.container_header);
-        mHeaderText = (TextView) rootView.findViewById(R.id.headerText);
-        mHeaderSettings = (TextView) rootView.findViewById(R.id.headerSettings);
+        //mHeaderText = (TextView) rootView.findViewById(R.id.headerText);
+
+        filterFAB = (FloatingActionButton) rootView.findViewById(R.id.filterFAB);
 
         mItemsContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.container_items);
         mItemsContainer.setOnRefreshListener(this);
@@ -198,9 +203,9 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
             if (mListView.getAdapter().getCount() == 0) {
 
                 showMessage(getString(R.string.label_search_start_screen_msg));
-                mHeaderText.setVisibility(View.GONE);
 
             } else {
+/*
 
                 if (preload) {
 
@@ -211,6 +216,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                     mHeaderText.setVisibility(View.VISIBLE);
                     mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
                 }
+*/
 
                 hideMessage();
             }
@@ -220,18 +226,18 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
             if (mListView.getAdapter().getCount() == 0) {
 
                 showMessage(getString(R.string.label_search_results_error));
-                mHeaderText.setVisibility(View.GONE);
+                //mHeaderText.setVisibility(View.GONE);
 
             } else {
 
-                mHeaderText.setVisibility(View.VISIBLE);
-                mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
+                //mHeaderText.setVisibility(View.VISIBLE);
+                //mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
 
                 hideMessage();
             }
         }
 
-        mHeaderSettings.setOnClickListener(new View.OnClickListener() {
+        filterFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -592,7 +598,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         if (mListView.getAdapter().getCount() == 0) {
 
             showMessage(getString(R.string.label_search_results_error));
-            mHeaderText.setVisibility(View.GONE);
+            //
+            // mHeaderText.setVisibility(View.GONE);
 
         } else {
 
@@ -600,13 +607,13 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
             if (preload) {
 
-                mHeaderText.setVisibility(View.GONE);
+                //mHeaderText.setVisibility(View.GONE);
 
             } else {
 
-                mHeaderText.setVisibility(View.VISIBLE);
+                //mHeaderText.setVisibility(View.VISIBLE);
 
-                mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
+                // mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
             }
         }
     }

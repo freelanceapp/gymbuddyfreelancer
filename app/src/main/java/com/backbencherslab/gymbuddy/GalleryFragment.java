@@ -105,7 +105,7 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_galery, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
 
         mItemsContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.container_items);
         mItemsContainer.setOnRefreshListener(this);
