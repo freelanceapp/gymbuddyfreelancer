@@ -64,39 +64,49 @@
             android:layout_weight="1"
             android:background="@color/white">
 
-            <ListView
-                android:id="@+id/listView"
+            <android.support.design.widget.CoordinatorLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/listViewDivider"
-                android:divider="@color/listViewDivider2"
-                android:dividerHeight="1dp"
-                android:scrollbars="none" />
-  </android.support.v4.widget.SwipeRefreshLayout>
+                android:layout_height="match_parent">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/gpsFAB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:src="@android:drawable/ic_menu_mylocation"
-            app:layout_anchorGravity="bottom|right|end"
-            app:srcCompat="@android:drawable/ic_menu_mylocation"
-            android:tint="@color/colorFloatActionButton" />
+                <ListView
+                    android:id="@+id/listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/listViewDivider"
+                    android:divider="@color/listViewDivider2"
+                    android:dividerHeight="1dp"
+                    android:scrollbars="none" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/searchFiltersFAB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            app:layout_anchor="@id/listView"
-            android:src="@android:drawable/ic_menu_sort_by_size"
-            app:layout_anchorGravity="bottom|right|end"
-            android:tint="@color/colorFloatActionButton"
-            app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/gpsFAB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_margin="16dp"
+                    android:backgroundTint="@color/colorFloatActionButton"
+                    android:elevation="4dp"
+                    android:src="@android:drawable/ic_menu_mylocation"
+                    android:tint="@color/colorFloatActionButton"
+                    app:layout_anchor="@id/listView"
+                    app:layout_anchorGravity="bottom|right|end"
+                    app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/filterFAB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_margin="16dp"
+                    android:backgroundTint="@color/colorFloatActionButton"
+                    android:elevation="9dp"
+                    android:src="@android:drawable/ic_menu_sort_by_size"
+                    android:tint="@color/colorFloatActionButton"
+                    app:layout_anchor="@id/gpsFAB"
+                    app:layout_anchorGravity="bottom|right|end"
+                    app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+            </android.support.design.widget.CoordinatorLayout>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 
