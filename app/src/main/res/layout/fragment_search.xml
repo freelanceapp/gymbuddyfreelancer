@@ -1,100 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/main_layout"
     tools:context="com.backbencherslab.gymbuddy.SearchFragment">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/container_body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/container_body" >
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/container_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/container_header">
+            android:orientation="vertical">
 
             <RelativeLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                >
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New Text"
                     android:id="@+id/headerText"
-                    android:padding="10dp"
-                    android:layout_weight="1"
-                    android:layout_toLeftOf="@+id/headerSettings"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
-
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_filter"
-                    android:id="@+id/headerSettings"
-                    android:textColor="@color/light_blue"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toLeftOf="@+id/headerSettings"
+                    android:layout_weight="1"
                     android:padding="10dp"
+                    android:text="New Text" />
+
+                <TextView
+                    android:id="@+id/headerSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_centerHorizontal="true"
+                    android:padding="10dp"
+                    android:text="@string/action_filter"
+                    android:textColor="@color/light_blue" />
             </RelativeLayout>
 
             <LinearLayout
-                android:orientation="vertical"
+                android:id="@+id/linearLayout8"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/postSeparatorLine"
-                android:id="@+id/linearLayout8" />
+                android:orientation="vertical" />
 
         </LinearLayout>
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/container_items"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_width="match_parent"
             android:background="@color/white">
 
             <ListView
+                android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="none"
-                android:id="@+id/listView"
+                android:background="@color/listViewDivider"
                 android:divider="@color/listViewDivider2"
                 android:dividerHeight="1dp"
-                android:background="@color/listViewDivider" />
+                android:scrollbars="none" />
 
         </android.support.v4.widget.SwipeRefreshLayout>
 
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:id="@+id/gpsFAB"
+            android:src="@drawable/ic_add_location"
+            app:layout_anchor="@id/listView"
+            app:layout_anchorGravity="bottom|right|end"
+
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:id="@+id/searchFiltersFAB"
+            android:src="@drawable/ic_action_stream"
+            app:layout_anchor="@id/listView"
+            app:layout_anchorGravity="bottom|right|end"
+
+            />
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/splash"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:id="@+id/splash"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:background="@drawable/ic_action_search" />
 
     <TextView
+        android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/message"
         android:layout_below="@+id/splash"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp" />
+        android:layout_marginTop="16dp"
+        android:text="New Text" />
 
 </RelativeLayout>
