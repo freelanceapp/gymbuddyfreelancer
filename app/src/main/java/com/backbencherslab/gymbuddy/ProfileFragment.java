@@ -161,7 +161,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         profile = new Profile();
         profile.setId(profile_id);
 
-        itemsList = new ArrayList<Photo>();
+        itemsList = new ArrayList<>();
         adapter = new GalleryListAdapter(getActivity(), itemsList, this);
     }
 

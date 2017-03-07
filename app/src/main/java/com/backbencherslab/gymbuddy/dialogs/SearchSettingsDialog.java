@@ -116,6 +116,14 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         spinnerAdapter.add(getString(R.string.age_item_from_5));
         spinnerAdapter.add(getString(R.string.age_item_from_6));
         spinnerAdapter.add(getString(R.string.age_item_from_7));
+        spinnerAdapter.add(getString(R.string.age_item_from_8));
+        spinnerAdapter.add(getString(R.string.age_item_from_10));
+        spinnerAdapter.add(getString(R.string.age_item_from_11));
+        spinnerAdapter.add(getString(R.string.age_item_from_12));
+        spinnerAdapter.add(getString(R.string.age_item_from_13));
+
+
+
         spinnerAdapter.notifyDataSetChanged();
 
         ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
@@ -127,6 +135,13 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         spinnerAdapter2.add(getString(R.string.age_item_to_5));
         spinnerAdapter2.add(getString(R.string.age_item_to_6));
         spinnerAdapter2.add(getString(R.string.age_item_to_7));
+        spinnerAdapter2.add(getString(R.string.age_item_to_8));
+        spinnerAdapter2.add(getString(R.string.age_item_to_9));
+        spinnerAdapter2.add(getString(R.string.age_item_to_10));
+        spinnerAdapter2.add(getString(R.string.age_item_to_11));
+        spinnerAdapter2.add(getString(R.string.age_item_to_12));
+        spinnerAdapter2.add(getString(R.string.age_item_to_13));
+        spinnerAdapter2.add(getString(R.string.age_item_to_14));
         spinnerAdapter2.notifyDataSetChanged();
 
         setGender(searchGender);

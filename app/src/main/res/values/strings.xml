@@ -186,13 +186,28 @@
     <string name="age_item_from_5">35</string>
     <string name="age_item_from_6">40</string>
     <string name="age_item_from_7">45</string>
+    <string name="age_item_from_8">50</string>
+    <string name="age_item_from_9">55</string>
+    <string name="age_item_from_10">60</string>
+    <string name="age_item_from_11">65</string>
+    <string name="age_item_from_12">70</string>
+    <string name="age_item_from_13">75</string>
 
-    <string name="age_item_to_2">27</string>
-    <string name="age_item_to_3">38</string>
-    <string name="age_item_to_4">43</string>
-    <string name="age_item_to_5">50</string>
-    <string name="age_item_to_6">70</string>
-    <string name="age_item_to_7">not matter</string>
+
+
+    <string name="age_item_to_2">20</string>
+    <string name="age_item_to_3">25</string>
+    <string name="age_item_to_4">30</string>
+    <string name="age_item_to_5">35</string>
+    <string name="age_item_to_6">40</string>
+    <string name="age_item_to_7">45</string>
+    <string name="age_item_to_8">50</string>
+    <string name="age_item_to_9">55</string>
+    <string name="age_item_to_10">60</string>
+    <string name="age_item_to_11">65</string>
+    <string name="age_item_to_12">70</string>
+    <string name="age_item_to_13">75</string>
+    <string name="age_item_to_14">All Ages</string>
 
     <string name="label_location">Location</string>
     <string name="label_block">Block</string>
@@ -437,7 +452,7 @@
     <string name="title_activity_services">Services</string>
     <string name="title_activity_new_item">New Item</string>
     <string name="title_activity_new_photo">New Photo</string>
-    <string name="title_activity_galery">Profile Photos</string>
+    <string name="title_activity_gallery">Profile Photos</string>
     <string name="title_activity_view_item">Item</string>
     <string name="title_activity_profile">Profile</string>
 
@@ -528,4 +543,7 @@
     <string name="action_filter">Filter</string>
     <string name="addgym">Add Gym</string>
 
+
+    <!-- ADDED BY PCC -->
+    <string name="not_yet_specified">Not Yet Specified</string>
 </resources>

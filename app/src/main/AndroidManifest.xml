@@ -194,7 +194,7 @@
         <activity
             android:name=".GalleryActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"     android:label="@string/title_activity_galery"
+            android:screenOrientation="portrait"     android:label="@string/title_activity_gallery"
             android:theme="@style/MyMaterialTheme" />
 
         <activity

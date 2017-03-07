@@ -230,7 +230,7 @@ public class Helper extends Application {
 
             case 0: {
 
-                return "-";
+                return "Not Yet Specified";
             }
 
             case 1: {
@@ -274,11 +274,9 @@ public class Helper extends Application {
             }
 
             default: {
-
                 break;
             }
         }
-
         return "-";
     }
 
