@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <TextView
+             <!--   <TextView
                     android:id="@+id/headerText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -35,17 +35,7 @@
                     android:layout_toLeftOf="@+id/headerSettings"
                     android:layout_weight="1"
                     android:padding="10dp"
-                    android:text="New Text" />
-
-                <TextView
-                    android:id="@+id/headerSettings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:padding="10dp"
-                    android:text="@string/action_filter"
-                    android:textColor="@color/light_blue" />
+                    android:text="New Text" />-->
             </RelativeLayout>
 
             <LinearLayout
