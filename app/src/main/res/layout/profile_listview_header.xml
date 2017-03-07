@@ -493,7 +493,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="-"
+                                    android:text="@string/not_yet_specified"
                                     android:id="@+id/relationshipStatusView"
                                     android:shadowColor="@color/black"
                                     android:shadowDx="1"
@@ -533,7 +533,7 @@
                                     android:shadowColor="@color/black"
                                     android:shadowDx="1"
                                     android:shadowDy="1"
-                                    android:text="-"
+                                    android:text="@string/not_yet_specified"
                                     android:shadowRadius="2"
                                     android:layout_marginTop="5dp"
                                     android:paddingLeft="5dp" />
@@ -593,7 +593,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="-"
+                                    android:text="@string/not_yet_specified"
                                     android:id="@+id/worldView"
                                     android:shadowColor="@color/black"
                                     android:shadowDx="1"
@@ -624,7 +624,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="-"
+                                    android:text="@string/not_yet_specified"
                                     android:id="@+id/importantInOthersView"
                                     android:shadowColor="@color/black"
                                     android:shadowDx="1"

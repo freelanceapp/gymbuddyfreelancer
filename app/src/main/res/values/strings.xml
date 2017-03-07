@@ -364,7 +364,7 @@
 
     <string name="relationship_status_0">Not Specified</string>
     <string name="relationship_status_1">Morning</string>
-    <string name="relationship_status_2">AfterNoon</string>
+    <string name="relationship_status_2">Afternoon</string>
     <string name="relationship_status_3">Evening</string>
     <string name="relationship_status_4">Night</string>
 
@@ -516,7 +516,7 @@
 
     <string name="settings_account_allow_messages_gcm">allow_messages_gcm</string>
     <string name="placeholder_gymlocation">Gym Name and location</string>
-    <string name="placeholder_workout">Days you workout</string>
+    <string name="placeholder_workout">Days You workout</string>
     <string name="label_gymlocation">Gym Location</string>
     <string name="label_gymtime">Gym Time\'s</string>
     <string name="google_maps_key">AIzaSyC3_1S_mHVDu406loEGYlu25cW1CCfFl30</string>

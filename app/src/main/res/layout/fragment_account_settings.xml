@@ -46,7 +46,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/placeholder_workout"
+                android:hint="@string/not_yet_specified"
                 android:inputType="textMultiLine"
                 android:id="@+id/bio"
                 android:layout_marginTop="10dp" />

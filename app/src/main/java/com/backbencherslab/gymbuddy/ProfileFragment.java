@@ -89,10 +89,10 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
 
     Button profileActionBtn;
 
-    TextView profileFullname, profileUsername, city,country, profileGiftsCount, profileFriendsCount, profilePhotosCount, profileLikesCount, mProfileWallMsg, mProfileErrorScreenMsg, mProfileDisabledScreenMsg;
+    TextView profileFullname, profileUsername, city, country, profileGiftsCount, profileFriendsCount, profilePhotosCount, profileLikesCount, mProfileWallMsg, mProfileErrorScreenMsg, mProfileDisabledScreenMsg;
     TextView mPhotosCount, mLikesCount, mGiftsCount, mFriendsCount, mProfileLocation, mProfileActive, mProfileFacebookPage, mProfileInstagramPage, mProfileBio, mProfileJoin, mProfileBirth;
 
-    TextView mLocationView,mBioView, mGenderView, mRelationshipStatusView, mPoliticalViewsView, mWorldView, mPersonalPriorityView, mImportantInOthersView, mViewsOnSmokingView, mViewsOnAlcoholView, mLookingForView, mGenderLikeView, mFacebookPageView, mInstagramPageView, mBirthdayView;
+    TextView mLocationView, mBioView, mGenderView, mRelationshipStatusView, mPoliticalViewsView, mWorldView, mPersonalPriorityView, mImportantInOthersView, mViewsOnSmokingView, mViewsOnAlcoholView, mLookingForView, mGenderLikeView, mFacebookPageView, mInstagramPageView, mBirthdayView;
 
     SwipeRefreshLayout mProfileContentScreen;
     RelativeLayout mProfileLoadingScreen, mProfileErrorScreen, mProfileDisabledScreen;
@@ -920,6 +920,11 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         }
 
         profileUsername.setText("@" + profile.getUsername());
+        if (profile.getBio().trim().equalsIgnoreCase("")) {
+            mProfileBio.setText(R.string.not_yet_specified);
+        } else {
+            mProfileBio.setText(profile.getBio().trim());
+        }
         mProfileBio.setText(profile.getBio());
         // hide follow button is your profile
         if (profile.getId() == App.getInstance().getId()) {
@@ -952,7 +957,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
 
             mLocationView.setText("GoodLife Fitness");
         }
-        city.setText(App.getInstance().getCity()+",");
+        city.setText(App.getInstance().getCity() + ",");
         country.setText(App.getInstance().getCountry());
 
 
@@ -991,22 +996,37 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
             mInstagramPageView.setText("");
         }
 
-        if (profile.getBio() != null && profile.getBio().length() != 0) {
+/*        if (profile.getBio() != null && profile.getBio().length() != 0) {
 
             mProfileBio.setVisibility(View.VISIBLE);
 
         } else {
-
             mProfileBio.setVisibility(View.VISIBLE);
-        }
+        }*/
 
         Helper helper = new Helper(getActivity());
 
-        mRelationshipStatusView.setText(helper.getRelationshipStatus(profile.getRelationshipStatus()));
+        if (profile.getRelationshipStatus() == 0) {
+            mRelationshipStatusView.setText(R.string.not_yet_specified);
+        } else {
+            mRelationshipStatusView.setText(helper.getRelationshipStatus(profile.getRelationshipStatus()));
+        }
         mPoliticalViewsView.setText(helper.getPoliticalViews(profile.getPoliticalViews()));
-        mWorldView.setText(helper.getWorldView(profile.getWorldView()));
+
+        if (profile.getWorldView() == 0) {
+            mWorldView.setText(R.string.not_yet_specified);
+        } else {
+            mWorldView.setText(helper.getWorldView(profile.getWorldView()));
+        }
+
         mPersonalPriorityView.setText(helper.getPersonalPriority(profile.getPersonalPriority()));
-        mImportantInOthersView.setText(helper.getImportantInOthers(profile.getImportantInOthers()));
+
+        if (profile.getImportantInOthers() != 0) {
+            mImportantInOthersView.setText(helper.getImportantInOthers(profile.getImportantInOthers()));
+        } else {
+            mImportantInOthersView.setText(R.string.not_yet_specified);
+        }
+
         mViewsOnSmokingView.setText(helper.getSmokingViews(profile.getViewsOnSmoking()));
         mViewsOnAlcoholView.setText(helper.getAlcoholViews(profile.getViewsOnAlcohol()));
         mLookingForView.setText(helper.getLooking(profile.getYouLooking()));
@@ -1393,7 +1413,6 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
             // If site not available - hide items
 
             if (!WEB_SITE_AVAILABLE) {
-
                 menu.removeItem(R.id.action_profile_copy_url);
                 menu.removeItem(R.id.action_profile_open_url);
             }
@@ -1485,7 +1504,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
 
     private void hideMenuItems(Menu menu, boolean visible) {
 
-        for (int i = 0; i < menu.size(); i++){
+        for (int i = 0; i < menu.size(); i++) {
 
             menu.getItem(i).setVisible(visible);
         }
@@ -1527,7 +1546,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         ProfileReportDialog alert = new ProfileReportDialog();
 
         /** Creating a bundle object to store the selected item's index */
-        Bundle b  = new Bundle();
+        Bundle b = new Bundle();
 
         /** Storing the selected item's index in the bundle object */
         b.putInt("position", 0);
@@ -1540,7 +1559,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         alert.show(fm, "alert_dialog_profile_report");
     }
 
-    public  void onProfileReport(final int position) {
+    public void onProfileReport(final int position) {
 
         Api api = new Api(getActivity());
 
@@ -1558,7 +1577,7 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
             ProfileBlockDialog alert = new ProfileBlockDialog();
 
             /** Creating a bundle object to store the selected item's index */
-            Bundle b  = new Bundle();
+            Bundle b = new Bundle();
 
             /** Storing the selected item's index in the bundle object */
             b.putString("blockUsername", profile.getUsername());
