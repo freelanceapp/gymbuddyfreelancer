@@ -571,4 +571,6 @@
         <item>Decrease Time in Triathlon</item>
         <item>Improve Flexibility and Balance</item>
     </string-array>
+
+    <string name="label_filter_by_looking_for">Looking For: </string>
 </resources>

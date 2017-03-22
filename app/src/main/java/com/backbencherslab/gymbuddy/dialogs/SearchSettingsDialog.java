@@ -21,22 +21,28 @@ import com.backbencherslab.gymbuddy.constants.Constants;
 public class SearchSettingsDialog extends DialogFragment implements Constants {
 
     CheckBox genderMaleCheckBox, genderFemaleCheckBox, onlineCheckBox;
-    Spinner ageTo, ageFrom;
+    Spinner ageTo, ageFrom, workoutTypeSpinner, fitnessGoalsSpinner, lookingForSpinner;
 
     private int searchGender, searchOnline, searchAgeFrom, searchAgeTo;
+    private String searchWorkoutType, searchFitnessGoals;
 
-    /** Declaring the interface, to invoke a callback function in the implementing activity class */
+    /**
+     * Declaring the interface, to invoke a callback function in the implementing activity class
+     */
     AlertPositiveListener alertPositiveListener;
 
-    /** An interface to be implemented in the hosting activity for "OK" button click listener */
+    /**
+     * An interface to be implemented in the hosting activity for "OK" button click listener
+     */
     public interface AlertPositiveListener {
 
-        public void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo);
+        void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, String workoutType, String fitnessGoals);
     }
 
-    /** This is a callback method executed when this fragment is attached to an activity.
-     *  This function ensures that, the hosting activity implements the interface AlertPositiveListener
-     * */
+    /**
+     * This is a callback method executed when this fragment is attached to an activity.
+     * This function ensures that, the hosting activity implements the interface AlertPositiveListener
+     */
     public void onAttach(android.app.Activity activity) {
 
         super.onAttach(activity);
@@ -45,28 +51,30 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
             alertPositiveListener = (AlertPositiveListener) activity;
 
-        } catch(ClassCastException e){
+        } catch (ClassCastException e) {
 
             // The hosting activity does not implemented the interface AlertPositiveListener
             throw new ClassCastException(activity.toString() + " must implement AlertPositiveListener");
         }
     }
 
-    /** This is the OK button listener for the alert dialog,
-     *  which in turn invokes the method onPositiveClick(position)
-     *  of the hosting activity which is supposed to implement it
+    /**
+     * This is the OK button listener for the alert dialog,
+     * which in turn invokes the method onPositiveClick(position)
+     * of the hosting activity which is supposed to implement it
      */
     OnClickListener positiveListener = new OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
 
-            alertPositiveListener.onCloseSettingsDialog(searchGender, searchOnline, searchAgeFrom, searchAgeTo);
+            alertPositiveListener.onCloseSettingsDialog(searchGender, searchOnline, searchAgeFrom, searchAgeTo, searchWorkoutType, searchFitnessGoals);
         }
     };
 
-    /** This is the OK button listener for the alert dialog,
-     *  which in turn invokes the method onPositiveClick(position)
-     *  of the hosting activity which is supposed to implement it
+    /**
+     * This is the OK button listener for the alert dialog,
+     * which in turn invokes the method onPositiveClick(position)
+     * of the hosting activity which is supposed to implement it
      */
     OnClickListener negativeListener = new OnClickListener() {
         @Override
@@ -75,8 +83,9 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         }
     };
 
-    /** This is a callback method which will be executed
-     *  on creating this fragment
+    /**
+     * This is a callback method which will be executed
+     * on creating this fragment
      */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -88,6 +97,8 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         searchOnline = bundle.getInt("searchOnline");
         searchAgeFrom = bundle.getInt("searchAgeFrom");
         searchAgeTo = bundle.getInt("searchAgeTo");
+        searchWorkoutType = bundle.getString("searchWorkoutType");
+        searchFitnessGoals = bundle.getString("searchFitnessGoals");
 
         /** Creating a builder for the alert dialog window */
         AlertDialog.Builder b = new AlertDialog.Builder(getActivity());
@@ -120,8 +131,8 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         spinnerAdapter.add(getString(R.string.age_item_from_11));
         spinnerAdapter.add(getString(R.string.age_item_from_12));
         spinnerAdapter.add(getString(R.string.age_item_from_13));
-
         spinnerAdapter.notifyDataSetChanged();
+        ageFrom.setSelection(0);
 
         ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -140,6 +151,7 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         spinnerAdapter2.add(getString(R.string.age_item_to_13));
         spinnerAdapter2.add(getString(R.string.age_item_to_14));
         spinnerAdapter2.notifyDataSetChanged();
+        ageTo.setSelection(12);
 
         setGender(searchGender);
         setOnline(searchOnline);
@@ -180,10 +192,9 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
                     @Override
                     public void onClick(View view) {
-                        // TODO Do something
 
                         d.dismiss();
-                        alertPositiveListener.onCloseSettingsDialog(getGender(), getOnline(), getAgeFrom(), getAgeTo());
+                        alertPositiveListener.onCloseSettingsDialog(getGender(), getOnline(), getAgeFrom(), getAgeTo(), getSearchWorkoutType(), getSearchFitnessGoals());
                     }
                 });
 
@@ -201,11 +212,56 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         d.setCanceledOnTouchOutside(false);
         d.setCancelable(false);
 
-        /** Add Handler for Workout Type Filter */
-        //TODO this
+        /** Workout Type Filter */
+        workoutTypeSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_type);
 
-        /** Add Handler for Fitness Goals Filter */
-        //TODO this
+        ArrayAdapter<String> workoutTypeSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
+        workoutTypeSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        workoutTypeSpinner.setAdapter(workoutTypeSpinnerAdapter);
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_0));
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_1));
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_2));
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_3));
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_4));
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_5));
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_6));
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_7));
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_8));
+        workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_9));
+        workoutTypeSpinnerAdapter.notifyDataSetChanged();
+
+        /** Fitness Goals Filter */
+        fitnessGoalsSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_fitness_goals);
+
+        ArrayAdapter<String> fitnessGoalsSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
+        fitnessGoalsSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        fitnessGoalsSpinner.setAdapter(fitnessGoalsSpinnerAdapter);
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_0));
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_1));
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_2));
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_3));
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_4));
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_5));
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_6));
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_7));
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_8));
+        fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_9));
+        fitnessGoalsSpinnerAdapter.notifyDataSetChanged();
+
+        /** Looking For Filter */
+        lookingForSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_looking_for);
+
+        ArrayAdapter<String> lookingForSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
+        lookingForSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        lookingForSpinner.setAdapter(lookingForSpinnerAdapter);
+        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_0));
+        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_1));
+        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_2));
+        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_3));
+        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_4));
+        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_5));
+        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_6));
+        lookingForSpinnerAdapter.notifyDataSetChanged();
 
         /** Return the alert dialog window */
         return d;
@@ -522,5 +578,21 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         }
 
         return age;
+    }
+
+    public String getSearchWorkoutType() {
+        return searchWorkoutType;
+    }
+
+    public void setSearchWorkoutType(String searchWorkoutType) {
+        this.searchWorkoutType = searchWorkoutType;
+    }
+
+    public String getSearchFitnessGoals() {
+        return searchFitnessGoals;
+    }
+
+    public void setSearchFitnessGoals(String searchFitnessGoals) {
+        this.searchFitnessGoals = searchFitnessGoals;
     }
 }

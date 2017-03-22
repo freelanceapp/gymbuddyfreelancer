@@ -52,7 +52,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
     ListView mListView;
     TextView mMessage;
-    //mHeaderText;
     ImageView mSplash;
 
     FloatingActionButton filterFAB;
@@ -70,6 +69,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     private int userId = 0;
 
     private int search_gender = -1, search_online = -1, search_age_from = 18, search_age_to = 110, preload_gender = -1;
+    private String search_workout_type = "Not Specified";
+    private String search_fitness_goals = "Not Specified";
 
     private int itemId = 0;
     private int arrayLength = 0;
@@ -127,7 +128,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         }
 
         mHeaderContainer = (LinearLayout) rootView.findViewById(R.id.container_header);
-        //mHeaderText = (TextView) rootView.findViewById(R.id.headerText);
 
         filterFAB = (FloatingActionButton) rootView.findViewById(R.id.filterFAB);
 
@@ -224,15 +224,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         } else {
 
             if (mListView.getAdapter().getCount() == 0) {
-
                 showMessage(getString(R.string.label_search_results_error));
-                //mHeaderText.setVisibility(View.GONE);
-
             } else {
-
-                //mHeaderText.setVisibility(View.VISIBLE);
-                //mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
-
                 hideMessage();
             }
         }
@@ -255,7 +248,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 b.putInt("searchOnline", search_online);
                 b.putInt("searchAgeFrom", search_age_from);
                 b.putInt("searchAgeTo", search_age_to);
-
+                b.putString("searchWorkoutType", search_workout_type);
+                b.putString("searchFitnessGoals", search_fitness_goals);
 
                 /** Setting the bundle object to the dialog fragment object */
                 alert.setArguments(b);
@@ -270,26 +264,20 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         });
 
         if (!restore) {
-
             if (preload) {
-
                 preload();
             }
         }
 
-        // Inflate the layout for this fragment
         return rootView;
     }
 
-    public void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo) {
-
+    public void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, String searchWorkoutType, String searchFitnessGoals) {
         if (searchAgeFrom < 0) {
-
             searchAgeFrom = 18;
         }
 
         if (searchAgeTo < searchAgeFrom) {
-
             searchAgeTo = 110;
         }
 
@@ -297,19 +285,16 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         search_online = searchOnline;
         search_age_from = searchAgeFrom;
         search_age_to = searchAgeTo;
+        search_workout_type = searchWorkoutType;
+        search_fitness_goals = searchFitnessGoals;
 
         String q = getCurrentQuery();
 
         if (preload) {
-
             itemId = 0;
-
             preload();
-
         } else {
-
             if (q.length() > 0) {
-
                 searchStart();
             }
         }
@@ -320,12 +305,9 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         currentQuery = queryText;
         currentQuery = currentQuery.trim();
         if (App.getInstance().isConnected() && currentQuery.length() != 0) {
-
             userId = 0;
             search();
-
         } else {
-
             mItemsContainer.setRefreshing(false);
         }
     }
@@ -343,9 +325,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         if (App.getInstance().isConnected()) {
             userId = 0;
             search();
-
         } else {
-
             Toast.makeText(getActivity(), getText(R.string.msg_network_error), Toast.LENGTH_SHORT).show();
         }
     }
@@ -581,11 +561,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
     public void loadingComplete() {
         if (arrayLength == LIST_ITEMS) {
-
             viewMore = true;
-
         } else {
-
             viewMore = false;
         }
 
@@ -596,24 +573,14 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         mItemsContainer.setRefreshing(false);
 
         if (mListView.getAdapter().getCount() == 0) {
-
             showMessage(getString(R.string.label_search_results_error));
-            //
-            // mHeaderText.setVisibility(View.GONE);
-
         } else {
-
             hideMessage();
-
             if (preload) {
-
                 //mHeaderText.setVisibility(View.GONE);
-
             } else {
-
                 //mHeaderText.setVisibility(View.VISIBLE);
-
-                // mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
+                //mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
             }
         }
     }
