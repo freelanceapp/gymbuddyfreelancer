@@ -25,7 +25,7 @@ public class GalleryActivity extends ActivityBase implements PhotoDeleteDialog.A
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_galery);
+        setContentView(R.layout.activity_gallery);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 

@@ -48,8 +48,6 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
 
     private static final String STATE_LIST = "State Adapter Data";
 
-    private static final int PROFILE_NEW_POST = 4;
-
     ListView mListView;
     TextView mMessage;
     ImageView mSplash;
@@ -233,8 +231,6 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
         }
     }
 
-
-
     public void getItems() {
 
         mItemsContainer.setRefreshing(true);
@@ -345,7 +341,7 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
 
         PhotoReportDialog alert = new PhotoReportDialog();
 
-        Bundle b  = new Bundle();
+        Bundle b = new Bundle();
         b.putInt("position", position);
         b.putInt("reason", 0);
 
@@ -403,7 +399,7 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
 
         PhotoDeleteDialog alert = new PhotoDeleteDialog();
 
-        Bundle b  = new Bundle();
+        Bundle b = new Bundle();
 
         b.putInt("position", position);
 
@@ -422,7 +418,7 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
 
             MyPhotoActionDialog alert = new MyPhotoActionDialog();
 
-            Bundle b  = new Bundle();
+            Bundle b = new Bundle();
 
             b.putInt("position", position);
 
@@ -436,7 +432,7 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
 
             PhotoActionDialog alert = new PhotoActionDialog();
 
-            Bundle b  = new Bundle();
+            Bundle b = new Bundle();
 
             b.putInt("position", position);
 
@@ -469,8 +465,6 @@ public class GalleryFragment extends Fragment implements Constants, SwipeRefresh
     public void onDetach() {
         super.onDetach();
     }
-
-
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {

@@ -72,7 +72,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         @Override
         public void onClick(DialogInterface dialog, int which) {
 
-//            alertPositiveListener.onCloseStreamTutorial(position, itemPosition);
         }
     };
 
@@ -107,7 +106,7 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         ageFrom = (Spinner) view.findViewById(R.id.ageFrom);
         ageTo = (Spinner) view.findViewById(R.id.ageTo);
 
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ageFrom.setAdapter(spinnerAdapter);
         spinnerAdapter.add(getString(R.string.age_item_from_2));
@@ -147,19 +146,16 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         setAgeFrom(searchAgeFrom);
         setAgeTo(searchAgeTo);
 
-
         /** Setting a positive button and its listener */
 
         b.setPositiveButton(getText(R.string.action_ok), positiveListener);
 
         b.setNegativeButton(getText(R.string.action_cancel), negativeListener);
 
-
         b.setOnKeyListener(new Dialog.OnKeyListener() {
 
             @Override
             public boolean onKey(DialogInterface arg0, int keyCode, KeyEvent event) {
-                // TODO Auto-generated method stub
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
 
                     return true;
@@ -196,8 +192,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
                     @Override
                     public void onClick(View view) {
-                        // TODO Do something
-
                         d.dismiss();
                     }
                 });
@@ -352,7 +346,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public int getAgeFrom() {
-
         int age = 13;
 
         switch (ageFrom.getSelectedItemPosition()) {
