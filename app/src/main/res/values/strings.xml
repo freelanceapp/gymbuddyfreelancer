@@ -253,6 +253,8 @@
     <string name="label_from">from</string>
     <string name="label_between">between</string>
 
+    <string name="label_filter_by_fitness_goals">Filter By Fitness Goals:</string>
+
     <string name="signup_label_1">By clicking Sign up, you agree to our</string>
     <string name="signup_label_terms_and_policies">Terms and Policies</string>
 
