@@ -122,8 +122,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         spinnerAdapter.add(getString(R.string.age_item_from_12));
         spinnerAdapter.add(getString(R.string.age_item_from_13));
 
-
-
         spinnerAdapter.notifyDataSetChanged();
 
         ArrayAdapter<String> spinnerAdapter2 = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
@@ -208,6 +206,12 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
         d.setCanceledOnTouchOutside(false);
         d.setCancelable(false);
+
+        /** Add Handler for Workout Type Filter */
+        //TODO this
+
+        /** Add Handler for Fitness Goals Filter */
+        //TODO this
 
         /** Return the alert dialog window */
         return d;

@@ -194,7 +194,6 @@
     <string name="age_item_from_13">75</string>
 
 
-
     <string name="age_item_to_2">20</string>
     <string name="age_item_to_3">25</string>
     <string name="age_item_to_4">30</string>
@@ -253,7 +252,7 @@
     <string name="label_from">from</string>
     <string name="label_between">between</string>
 
-    <string name="label_filter_by_fitness_goals">Filter By Fitness Goals:</string>
+    <string name="label_filter_by_workout_type">Workout Type:</string>
 
     <string name="signup_label_1">By clicking Sign up, you agree to our</string>
     <string name="signup_label_terms_and_policies">Terms and Policies</string>
@@ -389,8 +388,6 @@
     <string name="world_view_7">Decrease Lap Time in Swimming</string>
     <string name="world_view_8">Decrease Time in Triathlon</string>
     <string name="world_view_9">Improve Flexibility and Balance</string>
-
-
 
     <string name="personal_priority_0">Not specified</string>
     <string name="personal_priority_1">Weight Loss</string>
@@ -545,7 +542,33 @@
     <string name="action_filter">Filter</string>
     <string name="addgym">Add Gym</string>
 
-
     <!-- ADDED BY PCC -->
     <string name="not_yet_specified">Not Yet Specified</string>
+
+    <string-array name="workout_type_array">
+        <item>N/A</item>
+        <item>Weight Loss</item>
+        <item>Weight Gain</item>
+        <item>Stamina and Endurance</item>
+        <item>Aerobic Training</item>
+        <item>Body Definition</item>
+        <item>Muscle Gain</item>
+        <item>Dynamic Strength Training</item>
+        <item>Improve Flexibility</item>
+        <item>Circuit Training</item>
+    </string-array>
+
+    <string name="label_filter_by_fitness_goals">Fitness Goals:</string>
+    <string-array name="fitness_goals_array">
+        <item>No Filter</item>
+        <item>Lower Body fat Percentage</item>
+        <item>Increase Muscle Mass</item>
+        <item>Tone Muscle Mass and Body fat</item>
+        <item>Master Squat, Deadlift and Bench</item>
+        <item>Be Consistent for 3 Months</item>
+        <item>Decrease Lap Time in Running</item>
+        <item>Decrease Lap Time in Swimming</item>
+        <item>Decrease Time in Triathlon</item>
+        <item>Improve Flexibility and Balance</item>
+    </string-array>
 </resources>
