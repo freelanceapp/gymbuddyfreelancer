@@ -142,11 +142,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         mListView.setAdapter(itemsAdapter);
 
         if (itemsAdapter.getCount() == 0) {
-
             showMessage(getText(R.string.label_empty_list).toString());
-
         } else {
-
             hideMessage();
         }
 
@@ -172,25 +169,18 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
                 int lastInScreen = firstVisibleItem + visibleItemCount;
 
                 if ((lastInScreen == totalItemCount) && !(loadingMore) && (viewMore) && !(mItemsContainer.isRefreshing())) {
 
                     if (preload) {
-
                         loadingMore = true;
-
                         preload();
-
                     } else {
-
                         currentQuery = getCurrentQuery();
 
                         if (currentQuery.equals(oldQuery)) {
-
                             loadingMore = true;
-
                             search();
                         }
                     }
@@ -217,7 +207,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                     mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
                 }
 */
-
                 hideMessage();
             }
 
@@ -403,11 +392,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
                         try {
-
                             if (!loadingMore) {
-
                                 itemsList.clear();
                             }
 
