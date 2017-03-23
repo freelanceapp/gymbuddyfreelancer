@@ -101,12 +101,9 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         View rootView = inflater.inflate(R.layout.fragment_search, container, false);
 
         if (savedInstanceState != null) {
-
             itemsList = savedInstanceState.getParcelableArrayList(STATE_LIST);
             itemsAdapter = new PeopleListAdapter(getActivity(), itemsList);
-
             currentQuery = queryText = savedInstanceState.getString("queryText");
-
             restore = savedInstanceState.getBoolean("restore");
             preload = savedInstanceState.getBoolean("preload");
             itemId = savedInstanceState.getInt("itemId");
@@ -114,9 +111,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
             itemCount = savedInstanceState.getInt("itemCount");
             search_gender = savedInstanceState.getInt("search_gender");
             preload_gender = savedInstanceState.getInt("preload_gender");
-
         } else {
-
             itemsList = new ArrayList<Profile>();
             itemsAdapter = new PeopleListAdapter(getActivity(), itemsList);
 
@@ -196,18 +191,11 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         if (queryText.length() == 0) {
 
             if (mListView.getAdapter().getCount() == 0) {
-
                 showMessage(getString(R.string.label_search_start_screen_msg));
-
             } else {
-/*
-
-                if (preload) {
-
+            /*   if (preload) {
                     mHeaderText.setVisibility(View.GONE);
-
                 } else {
-
                     mHeaderText.setVisibility(View.VISIBLE);
                     mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
                 }

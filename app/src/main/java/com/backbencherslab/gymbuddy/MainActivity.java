@@ -31,7 +31,6 @@ import com.facebook.share.model.AppInviteContent;
 import com.facebook.share.widget.AppInviteDialog;
 
 public class MainActivity extends ActivityBase implements FragmentDrawer.FragmentDrawerListener, PhotoChooseDialog.AlertPositiveListener, CoverChooseDialog.AlertPositiveListener, ProfileReportDialog.AlertPositiveListener, ProfileBlockDialog.AlertPositiveListener, PhotoDeleteDialog.AlertPositiveListener, MyPhotoActionDialog.AlertPositiveListener, FriendRequestActionDialog.AlertPositiveListener, SearchSettingsDialog.AlertPositiveListener, SearchTextDialog.SearchTextPositiveListener, PeopleNearbySettingsDialog.AlertPositiveListener {
-
     Toolbar mToolbar;
     FragmentManager fragmentManager;
 
@@ -52,7 +51,6 @@ public class MainActivity extends ActivityBase implements FragmentDrawer.Fragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
 
         if (savedInstanceState != null) {
 

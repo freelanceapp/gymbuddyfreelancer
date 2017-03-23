@@ -185,10 +185,8 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
                 final Button b = d.getButton(AlertDialog.BUTTON_POSITIVE);
                 b.setOnClickListener(new View.OnClickListener() {
-
                     @Override
                     public void onClick(View view) {
-
                         d.dismiss();
                         alertPositiveListener.onCloseSettingsDialog(getGender(), getOnline(), getAgeFrom(), getAgeTo(), getSearchWorkoutType(), getSearchFitnessGoals());
                     }
@@ -474,55 +472,39 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public void setAgeTo(int age) {
-
         switch (age) {
-
             case 20: {
-
                 ageTo.setSelection(0);
-
                 break;
             }
 
             case 27: {
-
                 ageTo.setSelection(1);
-
                 break;
             }
 
             case 38: {
-
                 ageTo.setSelection(2);
-
                 break;
             }
 
             case 43: {
-
                 ageTo.setSelection(3);
-
                 break;
             }
 
             case 50: {
-
                 ageTo.setSelection(4);
-
                 break;
             }
 
             case 70: {
-
                 ageTo.setSelection(5);
-
                 break;
             }
 
             default: {
-
                 ageTo.setSelection(6);
-
                 break;
             }
         }
@@ -608,6 +590,8 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public void setSearchWorkoutTime(String searchWorkoutTime){
+        //TODO THIS METHOD NEEDS TO BE USED TO SET THE SELECTION UPON CREATION OF EACH SETTINGS DIALOG
+
         this.searchWorkoutTime = searchWorkoutTime;
     }
 }
