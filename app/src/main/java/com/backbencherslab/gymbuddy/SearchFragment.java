@@ -42,6 +42,7 @@ import com.backbencherslab.gymbuddy.adapter.PeopleListAdapter;
 import com.backbencherslab.gymbuddy.app.App;
 import com.backbencherslab.gymbuddy.constants.Constants;
 import com.backbencherslab.gymbuddy.dialogs.SearchSettingsDialog;
+import com.backbencherslab.gymbuddy.dialogs.SearchTextDialog;
 import com.backbencherslab.gymbuddy.model.Profile;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 
@@ -55,6 +56,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     ImageView mSplash;
 
     FloatingActionButton filterFAB;
+    FloatingActionButton searchTextFAB;
 
     LinearLayout mHeaderContainer;
 
@@ -71,6 +73,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     private int search_gender = -1, search_online = -1, search_age_from = 18, search_age_to = 110, preload_gender = -1;
     private String search_workout_type = "Not Specified";
     private String search_fitness_goals = "Not Specified";
+    private String search_text = "";
 
     private int itemId = 0;
     private int arrayLength = 0;
@@ -130,6 +133,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         mHeaderContainer = (LinearLayout) rootView.findViewById(R.id.container_header);
 
         filterFAB = (FloatingActionButton) rootView.findViewById(R.id.filterFAB);
+        searchTextFAB = (FloatingActionButton) rootView.findViewById(R.id.searchTextFAB);
 
         mItemsContainer = (SwipeRefreshLayout) rootView.findViewById(R.id.container_items);
         mItemsContainer.setOnRefreshListener(this);
@@ -246,6 +250,34 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 /** Creating the dialog fragment object, which will in turn open the alert dialog window */
 
                 alert.show(fm, "alert_dialog_search_settings");
+
+                final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+            }
+        });
+
+        searchTextFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                /** Getting the fragment manager */
+                android.app.FragmentManager fm = getActivity().getFragmentManager();
+
+                /** Instantiating the DialogFragment class */
+                SearchTextDialog alert = new SearchTextDialog();
+
+                /** Creating a bundle object to store the selected item's index */
+                Bundle b = new Bundle();
+
+                /** Storing the selected item's index in the bundle object */
+                b.putString("searchText", search_text);
+
+                /** Setting the bundle object to the dialog fragment object */
+                alert.setArguments(b);
+
+                /** Creating the dialog fragment object, which will in turn open the alert dialog window */
+
+                alert.show(fm, "alert_dialog_search_text");
 
                 final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);

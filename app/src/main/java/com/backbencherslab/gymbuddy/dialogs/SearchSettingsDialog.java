@@ -34,7 +34,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
      * An interface to be implemented in the hosting activity for "OK" button click listener
      */
     public interface AlertPositiveListener {
-
         void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, String workoutType, String fitnessGoals);
     }
 
@@ -65,7 +64,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     OnClickListener positiveListener = new OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-
             alertPositiveListener.onCloseSettingsDialog(searchGender, searchOnline, searchAgeFrom, searchAgeTo, searchWorkoutType, searchFitnessGoals);
         }
     };

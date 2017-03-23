@@ -575,4 +575,6 @@
     <string name="label_filter_by_looking_for">Looking For: </string>
     <string name="label_filter_by_workout_time">Workout Time:</string>
     <string name="label_filter_by_distance">Distance:</string>
+
+    <string name="hint_search_text">Search Text</string>
 </resources>
