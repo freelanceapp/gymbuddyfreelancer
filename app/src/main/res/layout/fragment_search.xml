@@ -26,16 +26,6 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-             <!--   <TextView
-                    android:id="@+id/headerText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_toLeftOf="@+id/headerSettings"
-                    android:layout_weight="1"
-                    android:padding="10dp"
-                    android:text="New Text" />-->
             </RelativeLayout>
 
             <LinearLayout
@@ -74,7 +64,7 @@
                     android:layout_marginBottom="100dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginEnd="16dp"
-                    android:src="@android:drawable/ic_menu_mylocation"
+                    android:src="@android:drawable/ic_menu_search"
                     android:tint="@color/white"
                     app:layout_anchor="@+id/listView"
                     app:layout_anchorGravity="bottom|right"

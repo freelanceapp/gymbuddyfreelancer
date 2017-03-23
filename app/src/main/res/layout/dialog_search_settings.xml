@@ -42,14 +42,6 @@
                     android:text="@string/label_female" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/label_activity" />
-
             <CheckBox
                 android:id="@+id/onlineCheckBox"
                 android:layout_width="match_parent"
@@ -185,7 +177,7 @@
                     android:id="@+id/dropdown_filter_by_distance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"/>
+                    android:spinnerMode="dropdown" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
