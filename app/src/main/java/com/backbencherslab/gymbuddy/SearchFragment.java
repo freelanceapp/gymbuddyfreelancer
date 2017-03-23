@@ -550,7 +550,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         if (preload) {
             mItemsContainer.setRefreshing(true);
 
-            CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_SEARCH_PRELOAD, null,
+            CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_SEARCH_PRELOAD2, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
