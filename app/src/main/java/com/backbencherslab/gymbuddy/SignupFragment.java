@@ -117,7 +117,6 @@ public class SignupFragment extends Fragment implements Constants {
         View rootView = inflater.inflate(R.layout.fragment_signup, container, false);
 
         if (loading) {
-
             showpDialog();
         }
 
@@ -147,7 +146,6 @@ public class SignupFragment extends Fragment implements Constants {
 
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(getActivity(), WebViewActivity.class);
                 i.putExtra("url", METHOD_APP_TERMS);
                 i.putExtra("title", getText(R.string.signup_label_terms_and_policies));
@@ -158,7 +156,6 @@ public class SignupFragment extends Fragment implements Constants {
         mAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 choiceImage();
             }
         });
@@ -171,7 +168,6 @@ public class SignupFragment extends Fragment implements Constants {
 
             @Override
             public void onClick(View v) {
-
                 facebookId = "";
                 facebookName = "";
                 facebookEmail = "";
@@ -183,28 +179,21 @@ public class SignupFragment extends Fragment implements Constants {
         });
 
         if (facebookId != null && !facebookId.equals("")) {
-
             loginButton.setVisibility(View.GONE);
-
             mActionContainer.setVisibility(View.VISIBLE);
-
         } else {
-
             mActionContainer.setVisibility(View.GONE);
         }
 
         if (facebookId == null) {
-
             facebookId = "";
         }
 
         if (facebookEmail != null && !facebookEmail.equals("")) {
-
             signupEmail.setText(facebookEmail);
         }
 
         signupUsername.addTextChangedListener(new TextWatcher() {
-
             public void afterTextChanged(Editable s) {
 
                 if (App.getInstance().isConnected() && checkUsername()) {

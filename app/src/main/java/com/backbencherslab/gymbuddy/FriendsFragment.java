@@ -35,7 +35,6 @@ import com.backbencherslab.gymbuddy.model.Friend;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
 
 public class FriendsFragment extends Fragment implements Constants, SwipeRefreshLayout.OnRefreshListener {
-
     private static final String STATE_LIST = "State Adapter Data";
 
     ListView mListView;
@@ -194,36 +193,27 @@ public class FriendsFragment extends Fragment implements Constants, SwipeRefresh
     }
 
     public void getItems() {
-
         mItemsContainer.setRefreshing(true);
 
         CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_FRIENDS_GET, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
                         if (!loadingMore) {
-
                             itemsList.clear();
                         }
 
                         try {
-
                             arrayLength = 0;
 
                             if (!response.getBoolean("error")) {
-
                                 if (itemId == 0) {
-
                                     App.getInstance().setNewFriendsCount(0);
                                 }
-
                                 itemId = response.getInt("itemId");
 
                                 if (response.has("items")) {
-
                                     JSONArray usersArray = response.getJSONArray("items");
-
                                     arrayLength = usersArray.length();
 
                                     if (arrayLength > 0) {
@@ -238,22 +228,17 @@ public class FriendsFragment extends Fragment implements Constants, SwipeRefresh
                                         }
                                     }
                                 }
-
                             }
 
                         } catch (JSONException e) {
-
                             e.printStackTrace();
-
                         } finally {
-
                             loadingComplete();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 loadingComplete();
             }
         }) {
@@ -266,7 +251,6 @@ public class FriendsFragment extends Fragment implements Constants, SwipeRefresh
                 params.put("profileId", Long.toString(profileId));
                 params.put("itemId", Long.toString(itemId));
                 params.put("language", "en");
-
                 return params;
             }
         };

@@ -20,7 +20,7 @@ import com.backbencherslab.gymbuddy.constants.Constants;
 
 public class SearchSettingsDialog extends DialogFragment implements Constants {
     CheckBox genderMaleCheckBox, genderFemaleCheckBox, onlineCheckBox;
-    Spinner ageTo, ageFrom, workoutTypeSpinner, fitnessGoalsSpinner, lookingForSpinner, workoutTimeSpinner;
+    Spinner ageTo, ageFrom, workoutTypeSpinner, fitnessGoalsSpinner, lookingForSpinner, workoutTimeSpinner, distanceSpinner;
 
     private int searchGender, searchOnline, searchAgeFrom, searchAgeTo;
     private String searchWorkoutType, searchFitnessGoals, searchLookingFor, searchWorkoutTime;
@@ -273,6 +273,19 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_3));
         workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_4));
         workoutTimeSpinnerAdapter.notifyDataSetChanged();
+
+        /** Distance Filter */
+        distanceSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_distance);
+
+        ArrayAdapter<String> distanceSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
+        distanceSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        distanceSpinner.setAdapter(distanceSpinnerAdapter);
+        distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_0));
+        distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_1));
+        distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_2));
+        distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_3));
+        distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_4));
+        distanceSpinnerAdapter.notifyDataSetChanged();
 
         /** Return the alert dialog window */
         return d;

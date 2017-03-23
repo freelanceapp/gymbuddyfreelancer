@@ -169,6 +169,24 @@
                     android:layout_height="wrap_content"
                     android:spinnerMode="dropdown" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="6dp">
+
+                <TextView
+                    android:id="@+id/filterByDistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_filter_by_distance" />
+
+                <Spinner
+                    android:id="@+id/dropdown_filter_by_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
