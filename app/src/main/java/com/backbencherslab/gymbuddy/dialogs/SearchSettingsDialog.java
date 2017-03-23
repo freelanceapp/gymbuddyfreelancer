@@ -20,10 +20,10 @@ import com.backbencherslab.gymbuddy.constants.Constants;
 
 public class SearchSettingsDialog extends DialogFragment implements Constants {
     CheckBox genderMaleCheckBox, genderFemaleCheckBox, onlineCheckBox;
-    Spinner ageTo, ageFrom, workoutTypeSpinner, fitnessGoalsSpinner, lookingForSpinner, workoutTimeSpinner, distanceSpinner;
+    Spinner ageTo, ageFrom, workoutTypeSpinner, fitnessGoalsSpinner, workoutTimeSpinner, distanceSpinner;
 
     private int searchGender, searchOnline, searchAgeFrom, searchAgeTo;
-    private String searchWorkoutType, searchFitnessGoals, searchLookingFor, searchWorkoutTime;
+    private String searchWorkoutType, searchFitnessGoals, searchWorkoutTime;
 
     /**
      * Declaring the interface, to invoke a callback function in the implementing activity class
@@ -243,21 +243,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_8));
         fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_9));
         fitnessGoalsSpinnerAdapter.notifyDataSetChanged();
-
-        /** Looking For Filter */
-        lookingForSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_looking_for);
-
-        ArrayAdapter<String> lookingForSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
-        lookingForSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        lookingForSpinner.setAdapter(lookingForSpinnerAdapter);
-        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_0));
-        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_1));
-        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_2));
-        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_3));
-        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_4));
-        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_5));
-        lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_6));
-        lookingForSpinnerAdapter.notifyDataSetChanged();
 
         /** Workout Time Filter */
         workoutTimeSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_time);
@@ -624,13 +609,5 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
     public void setSearchWorkoutTime(String searchWorkoutTime){
         this.searchWorkoutTime = searchWorkoutTime;
-    }
-
-    public String getSearchLookingFor(){
-        return searchLookingFor;
-    }
-
-    public void setSearchLookingFor(String searchLookingFor){
-        this.searchLookingFor = searchLookingFor;
     }
 }

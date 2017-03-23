@@ -228,21 +228,14 @@ public class PeopleNearbyFragment extends Fragment implements Constants, SwipeRe
 
     @Override
     public void onRefresh() {
-
         if (App.getInstance().isConnected()) {
-
             if (App.getInstance().getLat() != 0.000000 && App.getInstance().getLng() != 0.000000) {
-
                 itemId = 0;
                 getItems();
-
             } else {
-
                 mItemsContainer.setRefreshing(false);
             }
-
         } else {
-
             mItemsContainer.setRefreshing(false);
         }
     }
