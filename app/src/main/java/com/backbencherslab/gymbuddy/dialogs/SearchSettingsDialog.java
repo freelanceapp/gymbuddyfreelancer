@@ -19,12 +19,11 @@ import com.backbencherslab.gymbuddy.constants.Constants;
 
 
 public class SearchSettingsDialog extends DialogFragment implements Constants {
-
     CheckBox genderMaleCheckBox, genderFemaleCheckBox, onlineCheckBox;
-    Spinner ageTo, ageFrom, workoutTypeSpinner, fitnessGoalsSpinner, lookingForSpinner;
+    Spinner ageTo, ageFrom, workoutTypeSpinner, fitnessGoalsSpinner, lookingForSpinner, workoutTimeSpinner;
 
     private int searchGender, searchOnline, searchAgeFrom, searchAgeTo;
-    private String searchWorkoutType, searchFitnessGoals;
+    private String searchWorkoutType, searchFitnessGoals, searchLookingFor, searchWorkoutTime;
 
     /**
      * Declaring the interface, to invoke a callback function in the implementing activity class
@@ -89,7 +88,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
      */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
         /** Getting the arguments passed to this fragment */
         Bundle bundle = getArguments();
 
@@ -262,6 +260,19 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_5));
         lookingForSpinnerAdapter.add(getResources().getString(R.string.important_in_others_6));
         lookingForSpinnerAdapter.notifyDataSetChanged();
+
+        /** Workout Time Filter */
+        workoutTimeSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_time);
+
+        ArrayAdapter<String> workoutTimeSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
+        workoutTimeSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        workoutTimeSpinner.setAdapter(workoutTimeSpinnerAdapter);
+        workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_0));
+        workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_1));
+        workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_2));
+        workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_3));
+        workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_4));
+        workoutTimeSpinnerAdapter.notifyDataSetChanged();
 
         /** Return the alert dialog window */
         return d;
@@ -594,5 +605,21 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
     public void setSearchFitnessGoals(String searchFitnessGoals) {
         this.searchFitnessGoals = searchFitnessGoals;
+    }
+
+    public String getSearchWorkoutTime() {
+        return searchWorkoutTime;
+    }
+
+    public void setSearchWorkoutTime(String searchWorkoutTime){
+        this.searchWorkoutTime = searchWorkoutTime;
+    }
+
+    public String getSearchLookingFor(){
+        return searchLookingFor;
+    }
+
+    public void setSearchLookingFor(String searchLookingFor){
+        this.searchLookingFor = searchLookingFor;
     }
 }

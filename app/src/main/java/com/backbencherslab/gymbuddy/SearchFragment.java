@@ -322,7 +322,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
         outState.putString("queryText", queryText);
         outState.putBoolean("restore", true);
         outState.putBoolean("preload", preload);
@@ -345,12 +344,10 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
 
         if (searchItem != null) {
-
             searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         }
 
         if (searchView != null) {
-
             searchView.setQuery(queryText, false);
 
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
@@ -473,14 +470,10 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-
                             try {
-
                                 if (!loadingMore) {
-
                                     itemsList.clear();
                                 }
-
                                 arrayLength = 0;
 
                                 if (!response.getBoolean("error")) {
@@ -506,15 +499,10 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                                         }
                                     }
                                 }
-
                             } catch (JSONException e) {
-
                                 e.printStackTrace();
-
                             } finally {
-
                                 loadingComplete();
-
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -540,7 +528,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                     return params;
                 }
             };
-
             App.getInstance().addToRequestQueue(jsonReq);
         }
     }
@@ -572,16 +559,13 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     }
 
     public void showMessage(String message) {
-
         mMessage.setText(message);
         mMessage.setVisibility(View.VISIBLE);
-
         mSplash.setVisibility(View.VISIBLE);
     }
 
     public void hideMessage() {
         mMessage.setVisibility(View.GONE);
-
         mSplash.setVisibility(View.GONE);
     }
 

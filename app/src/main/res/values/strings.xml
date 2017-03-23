@@ -573,4 +573,5 @@
     </string-array>
 
     <string name="label_filter_by_looking_for">Looking For: </string>
+    <string name="label_filter_by_workout_time">Workout Time:</string>
 </resources>
