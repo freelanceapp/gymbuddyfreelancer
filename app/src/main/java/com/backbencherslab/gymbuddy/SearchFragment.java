@@ -45,6 +45,7 @@ import com.backbencherslab.gymbuddy.dialogs.SearchSettingsDialog;
 import com.backbencherslab.gymbuddy.dialogs.SearchTextDialog;
 import com.backbencherslab.gymbuddy.model.Profile;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
+import com.backbencherslab.gymbuddy.util.Helper;
 
 public class SearchFragment extends Fragment implements Constants, SwipeRefreshLayout.OnRefreshListener {
     private static final String STATE_LIST = "State Adapter Data";
@@ -71,8 +72,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     private int userId = 0;
 
     private int search_gender = -1, search_online = -1, search_age_from = 18, search_age_to = 110, preload_gender = -1;
-    private String search_workout_type = "Not Specified";
-    private String search_fitness_goals = "Not Specified";
+    private int search_workout_type = -1;
+    private int search_fitness_goals = -1;
     private String search_text = "";
 
     private int itemId = 0;
@@ -226,7 +227,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         filterFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 /** Getting the fragment manager */
                 android.app.FragmentManager fm = getActivity().getFragmentManager();
 
@@ -241,14 +241,13 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 b.putInt("searchOnline", search_online);
                 b.putInt("searchAgeFrom", search_age_from);
                 b.putInt("searchAgeTo", search_age_to);
-                b.putString("searchWorkoutType", search_workout_type);
-                b.putString("searchFitnessGoals", search_fitness_goals);
+                b.putString("searchWorkoutType", Integer.toString(search_workout_type));
+                b.putString("searchFitnessGoals", Integer.toString(search_fitness_goals));
 
                 /** Setting the bundle object to the dialog fragment object */
                 alert.setArguments(b);
 
                 /** Creating the dialog fragment object, which will in turn open the alert dialog window */
-
                 alert.show(fm, "alert_dialog_search_settings");
 
                 final InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -295,7 +294,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
     public void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, String searchWorkoutType, String searchFitnessGoals) {
         if (searchAgeFrom < 0) {
-            searchAgeFrom = 18;
+            searchAgeFrom = 13;
         }
 
         if (searchAgeTo < searchAgeFrom) {
@@ -306,8 +305,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         search_online = searchOnline;
         search_age_from = searchAgeFrom;
         search_age_to = searchAgeTo;
-        search_workout_type = searchWorkoutType;
-        search_fitness_goals = searchFitnessGoals;
+        search_workout_type = Helper.getWorkoutTypeInt(searchWorkoutType);
+        search_fitness_goals = Helper.getFitnessGoalsInt(searchFitnessGoals);
 
         String q = getCurrentQuery();
 
@@ -321,8 +320,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         }
     }
 
-    public void onCloseSearchTextDialog(String search_text) {
-        this.search_text = search_text;
+    public void onCloseSearchTextDialog(String searchText) {
+        this.search_text = searchText;
         Toast.makeText(getActivity(), "the search text: " + search_text, Toast.LENGTH_LONG);
     }
 
@@ -490,7 +489,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 params.put("online", Integer.toString(search_online));
                 params.put("ageFrom", Integer.toString(search_age_from));
                 params.put("ageTo", Integer.toString(search_age_to));
-
                 return params;
             }
         };
@@ -500,7 +498,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
     public void search2() {
         mItemsContainer.setRefreshing(true);
-
         CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_SEARCH2, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -552,8 +549,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 params.put("online", Integer.toString(search_online));
                 params.put("ageFrom", Integer.toString(search_age_from));
                 params.put("ageTo", Integer.toString(search_age_to));
-                params.put("workoutType", search_workout_type);
-                params.put("fitnessGoals", search_fitness_goals);
+                params.put("workoutType", Integer.toString(search_workout_type));
+                params.put("fitnessGoals", Integer.toString(search_fitness_goals));
                 return params;
             }
         };
@@ -613,7 +610,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                     params.put("online", Integer.toString(search_online));
                     params.put("ageFrom", Integer.toString(search_age_from));
                     params.put("ageTo", Integer.toString(search_age_to));
-
+                    params.put("workoutType", Integer.toString(search_workout_type));
+                    params.put("fitnessGoals", Integer.toString(search_fitness_goals));
                     return params;
                 }
             };

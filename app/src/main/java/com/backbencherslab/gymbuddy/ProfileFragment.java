@@ -902,19 +902,12 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
     }
 
     public void updateProfile() {
-
         if (profile.getLastActive() == 0) {
-
             mProfileActive.setText(getString(R.string.label_offline));
-
         } else {
-
             if (profile.isOnline()) {
-
                 mProfileActive.setText(getString(R.string.label_online));
-
             } else {
-
                 mProfileActive.setText(profile.getLastActiveTimeAgo());
             }
         }
@@ -928,81 +921,52 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         mProfileBio.setText(profile.getBio());
         // hide follow button is your profile
         if (profile.getId() == App.getInstance().getId()) {
-
             mFabButton.setVisibility(View.GONE);
-
             mProfileGiftBtn.setVisibility(View.GONE);
             mProfileMessageBtn.setVisibility(View.GONE);
-
         } else {
-
             mProfileGiftBtn.setVisibility(View.VISIBLE);
             mProfileMessageBtn.setVisibility(View.VISIBLE);
-
             mFabButton.setVisibility(View.GONE);
-
             if (!profile.isMyLike()) {
-
                 mFabButton.setImageResource(R.drawable.ic_action_like);
-
                 mFabButton.setVisibility(View.GONE);
             }
         }
 
         if (profile.getLocation() != null && profile.getLocation().length() != 0) {
-
             mLocationView.setText(profile.getLocation());
-
         } else {
-
             mLocationView.setText("GoodLife Fitness");
         }
         city.setText(App.getInstance().getCity() + ",");
         country.setText(App.getInstance().getCountry());
 
-
         if (profile.getSex() == 0) {
-
             mGenderView.setText(R.string.label_male);
-
         } else {
-
             mGenderView.setText(R.string.label_female);
         }
 
         if (profile.getFacebookPage() != null && profile.getFacebookPage().length() != 0) {
-
             mFacebookPageView.setVisibility(View.VISIBLE);
             mProfileFacebookPage.setVisibility(View.VISIBLE);
             mFacebookPageView.setText(profile.getFacebookPage());
-
         } else {
-
             mFacebookPageView.setVisibility(View.GONE);
             mProfileFacebookPage.setVisibility(View.GONE);
             mFacebookPageView.setText("");
         }
 
         if (profile.getInstagramPage() != null && profile.getInstagramPage().length() != 0) {
-
             mInstagramPageView.setVisibility(View.VISIBLE);
             mProfileInstagramPage.setVisibility(View.VISIBLE);
             mInstagramPageView.setText(profile.getInstagramPage());
-
         } else {
-
             mInstagramPageView.setVisibility(View.GONE);
             mProfileInstagramPage.setVisibility(View.GONE);
             mInstagramPageView.setText("");
         }
-
-/*        if (profile.getBio() != null && profile.getBio().length() != 0) {
-
-            mProfileBio.setVisibility(View.VISIBLE);
-
-        } else {
-            mProfileBio.setVisibility(View.VISIBLE);
-        }*/
 
         Helper helper = new Helper(getActivity());
 
@@ -1035,13 +999,10 @@ public class ProfileFragment extends Fragment implements Constants, SwipeRefresh
         mProfileJoin.setText(getString(R.string.label_profile_join) + ": " + profile.getCreateDate());
 
         if (profile.getAllowShowMyBirthday() == 1) {
-
             mProfileBirth.setVisibility(View.VISIBLE);
             mBirthdayView.setVisibility(View.VISIBLE);
             mBirthdayView.setText(profile.getBirthDate());
-
         } else {
-
             mBirthdayView.setVisibility(View.GONE);
             mProfileBirth.setVisibility(View.GONE);
         }

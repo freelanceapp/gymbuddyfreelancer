@@ -24,16 +24,16 @@ public class Helper extends Application {
 
     public boolean isValidEmail(String email) {
 
-    	if (TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email)) {
 
-    		return false;
+            return false;
 
-    	} else {
+        } else {
 
-    		return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    	}
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        }
     }
-    
+
     public boolean isValidLogin(String login) {
 
         String regExpn = "^([a-zA-Z]{4,24})?([a-zA-Z][a-zA-Z0-9_]{4,24})$";
@@ -50,7 +50,7 @@ public class Helper extends Application {
             return false;
         }
     }
-    
+
     public boolean isValidPassword(String password) {
 
         String regExpn = "^[a-z0-9_]{6,24}$";
@@ -473,5 +473,55 @@ public class Helper extends Application {
         }
 
         return "-";
+    }
+
+    public static int getWorkoutTypeInt(String workoutType) {
+        int workoutTypeInt = -1;
+        if (workoutType.equalsIgnoreCase("Not Specified")) {
+            workoutTypeInt = 0;
+        } else if (workoutType.equalsIgnoreCase("Weight Loss")) {
+            workoutTypeInt = 1;
+        } else if (workoutType.equalsIgnoreCase("Weight Gain")) {
+            workoutTypeInt = 2;
+        } else if (workoutType.equalsIgnoreCase("Stamina and Endurance")) {
+            workoutTypeInt = 3;
+        } else if (workoutType.equalsIgnoreCase("Aerobic Training")) {
+            workoutTypeInt = 4;
+        } else if (workoutType.equalsIgnoreCase("Body Definition")) {
+            workoutTypeInt = 5;
+        } else if (workoutType.equalsIgnoreCase("Muscle Gain")) {
+            workoutTypeInt = 6;
+        } else if (workoutType.equalsIgnoreCase("Dynamic Strength Training")) {
+            workoutTypeInt = 7;
+        } else if (workoutType.equalsIgnoreCase("Improve Flexibility")) {
+            workoutTypeInt = 8;
+        }
+        return workoutTypeInt;
+    }
+
+    public static int getFitnessGoalsInt(String fitnessGoals) {
+        int fitnessGoalsInt = -1;
+        if (fitnessGoals.equalsIgnoreCase("Not Specified")) {
+            fitnessGoalsInt = 0;
+        } else if (fitnessGoals.trim().equalsIgnoreCase("Lower Body fat Percentage")) {
+            fitnessGoalsInt = 1;
+        } else if (fitnessGoals.trim().equalsIgnoreCase("Increase Muscle Mass")) {
+            fitnessGoalsInt = 2;
+        } else if (fitnessGoals.trim().equalsIgnoreCase("Tone Muscle Mass and Body Fat")) {
+            fitnessGoalsInt = 3;
+        } else if (fitnessGoals.trim().equalsIgnoreCase("Master Squat, Deadlift, and Bench")) {
+            fitnessGoalsInt = 4;
+        } else if (fitnessGoals.trim().equalsIgnoreCase("Be Consistent for 3 Months")) {
+            fitnessGoalsInt = 5;
+        } else if (fitnessGoals.trim().equalsIgnoreCase("Decrease Lap Time in Running")) {
+            fitnessGoalsInt = 6;
+        } else if (fitnessGoals.trim().equalsIgnoreCase("Decrease Lap Time in Swimming")) {
+            fitnessGoalsInt = 7;
+        } else if (fitnessGoals.trim().equalsIgnoreCase("Decrease Time in Triathlon")) {
+            fitnessGoalsInt = 8;
+        } else if (fitnessGoals.trim().equalsIgnoreCase("Improve Flexibility and Balance")) {
+            fitnessGoalsInt = 9;
+        }
+        return fitnessGoalsInt;
     }
 }
