@@ -25,11 +25,12 @@ import com.backbencherslab.gymbuddy.dialogs.PhotoDeleteDialog;
 import com.backbencherslab.gymbuddy.dialogs.ProfileBlockDialog;
 import com.backbencherslab.gymbuddy.dialogs.ProfileReportDialog;
 import com.backbencherslab.gymbuddy.dialogs.SearchSettingsDialog;
+import com.backbencherslab.gymbuddy.dialogs.SearchTextDialog;
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.AppInviteContent;
 import com.facebook.share.widget.AppInviteDialog;
 
-public class MainActivity extends ActivityBase implements FragmentDrawer.FragmentDrawerListener, PhotoChooseDialog.AlertPositiveListener, CoverChooseDialog.AlertPositiveListener, ProfileReportDialog.AlertPositiveListener, ProfileBlockDialog.AlertPositiveListener, PhotoDeleteDialog.AlertPositiveListener, MyPhotoActionDialog.AlertPositiveListener, FriendRequestActionDialog.AlertPositiveListener, SearchSettingsDialog.AlertPositiveListener, PeopleNearbySettingsDialog.AlertPositiveListener {
+public class MainActivity extends ActivityBase implements FragmentDrawer.FragmentDrawerListener, PhotoChooseDialog.AlertPositiveListener, CoverChooseDialog.AlertPositiveListener, ProfileReportDialog.AlertPositiveListener, ProfileBlockDialog.AlertPositiveListener, PhotoDeleteDialog.AlertPositiveListener, MyPhotoActionDialog.AlertPositiveListener, FriendRequestActionDialog.AlertPositiveListener, SearchSettingsDialog.AlertPositiveListener, SearchTextDialog.SearchTextPositiveListener, PeopleNearbySettingsDialog.AlertPositiveListener {
 
     Toolbar mToolbar;
     FragmentManager fragmentManager;
@@ -130,7 +131,8 @@ public class MainActivity extends ActivityBase implements FragmentDrawer.Fragmen
                         displayView(9);
 
                         break;
-                }}
+                }
+            }
 
             @Override
             public void onTabUnselected(int position) {
@@ -175,6 +177,12 @@ public class MainActivity extends ActivityBase implements FragmentDrawer.Fragmen
     public void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, String workoutType, String fitnessGoals) {
         SearchFragment p = (SearchFragment) fragment;
         p.onCloseSettingsDialog(searchGender, searchOnline, searchAgeFrom, searchAgeTo, workoutType, fitnessGoals);
+    }
+
+    @Override
+    public void onCloseSearchTextDialog(String searchText) {
+        SearchFragment p = (SearchFragment) fragment;
+        p.onCloseSearchTextDialog(searchText);
     }
 
     @Override
@@ -380,7 +388,8 @@ public class MainActivity extends ActivityBase implements FragmentDrawer.Fragmen
                 invite();
                 action = true;
 
-                break;}
+                break;
+            }
             default: {
 
                 Intent i = new Intent(MainActivity.this, SettingsActivity.class);

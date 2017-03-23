@@ -26,12 +26,12 @@ public class SearchTextDialog extends DialogFragment {
     /**
      * Declaring the interface, to invoke a callback function in the implementing activity class
      */
-    SearchTextDialog.SearchTextListener searchTextListener;
+    SearchTextDialog.SearchTextPositiveListener searchTextPositiveListener;
 
     /**
      * An interface to be implemented in the hosting activity for "OK" button click listener
      */
-    public interface SearchTextListener {
+    public interface SearchTextPositiveListener {
         void onCloseSearchTextDialog(String searchText);
     }
 
@@ -42,7 +42,7 @@ public class SearchTextDialog extends DialogFragment {
     public void onAttach(android.app.Activity activity) {
         super.onAttach(activity);
         try {
-            searchTextListener = (SearchTextDialog.SearchTextListener) activity;
+            searchTextPositiveListener = (SearchTextDialog.SearchTextPositiveListener) activity;
         } catch (ClassCastException e) {
             // The hosting activity does not implemented the interface AlertPositiveListener
             throw new ClassCastException(activity.toString() + " must implement AlertPositiveListener");
@@ -57,7 +57,9 @@ public class SearchTextDialog extends DialogFragment {
     DialogInterface.OnClickListener positiveListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            searchTextListener.onCloseSearchTextDialog(searchText);
+            //TODO grab text from the search box.
+            setSearchText("blah");
+            searchTextPositiveListener.onCloseSearchTextDialog(searchText);
         }
     };
 
@@ -125,7 +127,7 @@ public class SearchTextDialog extends DialogFragment {
                     @Override
                     public void onClick(View view) {
                         d.dismiss();
-                        searchTextListener.onCloseSearchTextDialog(getSearchText());
+                        searchTextPositiveListener.onCloseSearchTextDialog(getSearchText());
                     }
                 });
 

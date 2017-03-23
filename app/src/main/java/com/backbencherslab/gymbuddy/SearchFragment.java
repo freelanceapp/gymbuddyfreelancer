@@ -185,7 +185,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
                         if (currentQuery.equals(oldQuery)) {
                             loadingMore = true;
-                            search();
+                            search2();
                         }
                     }
                 }
@@ -321,13 +321,18 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         }
     }
 
+    public void onCloseSearchTextDialog(String search_text) {
+        this.search_text = search_text;
+        Toast.makeText(getActivity(), "the search text: " + search_text, Toast.LENGTH_LONG);
+    }
+
     @Override
     public void onRefresh() {
         currentQuery = queryText;
         currentQuery = currentQuery.trim();
         if (App.getInstance().isConnected() && currentQuery.length() != 0) {
             userId = 0;
-            search();
+            search2();
         } else {
             mItemsContainer.setRefreshing(false);
         }
@@ -342,10 +347,9 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     public void searchStart() {
         preload = false;
         currentQuery = getCurrentQuery();
-
         if (App.getInstance().isConnected()) {
             userId = 0;
-            search();
+            search2();
         } else {
             Toast.makeText(getActivity(), getText(R.string.msg_network_error), Toast.LENGTH_SHORT).show();
         }
@@ -505,40 +509,28 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                             if (!loadingMore) {
                                 itemsList.clear();
                             }
-
                             arrayLength = 0;
-
                             if (!response.getBoolean("error")) {
                                 itemCount = response.getInt("itemCount");
                                 oldQuery = response.getString("query");
                                 userId = response.getInt("userId");
-
                                 if (response.has("users")) {
                                     JSONArray usersArray = response.getJSONArray("users");
                                     arrayLength = usersArray.length();
                                     if (arrayLength > 0) {
                                         for (int i = 0; i < usersArray.length(); i++) {
-
                                             JSONObject profileObj = (JSONObject) usersArray.get(i);
-
                                             Profile profile = new Profile(profileObj);
-
                                             itemsList.add(profile);
                                         }
                                     }
                                 }
                             }
-
                         } catch (JSONException e) {
-
                             e.printStackTrace();
-
                         } finally {
-
                             loadingComplete();
-
                             Log.e("response", response.toString());
-
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -549,7 +541,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 Toast.makeText(getActivity(), getString(R.string.error_data_loading), Toast.LENGTH_LONG).show();
             }
         }) {
-
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
@@ -561,7 +552,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 params.put("online", Integer.toString(search_online));
                 params.put("ageFrom", Integer.toString(search_age_from));
                 params.put("ageTo", Integer.toString(search_age_to));
-
+                params.put("workoutType", search_workout_type);
+                params.put("fitnessGoals", search_fitness_goals);
                 return params;
             }
         };
@@ -582,25 +574,15 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                                     itemsList.clear();
                                 }
                                 arrayLength = 0;
-
                                 if (!response.getBoolean("error")) {
-
                                     itemId = response.getInt("itemId");
-
                                     if (response.has("items")) {
-
                                         JSONArray usersArray = response.getJSONArray("items");
-
                                         arrayLength = usersArray.length();
-
                                         if (arrayLength > 0) {
-
                                             for (int i = 0; i < usersArray.length(); i++) {
-
                                                 JSONObject profileObj = (JSONObject) usersArray.get(i);
-
                                                 Profile profile = new Profile(profileObj);
-
                                                 itemsList.add(profile);
                                             }
                                         }
