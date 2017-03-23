@@ -10,7 +10,6 @@ import com.backbencherslab.gymbuddy.common.ActivityBase;
 import com.backbencherslab.gymbuddy.dialogs.PeopleNearbySettingsDialog;
 
 public class PeopleNearbyActivity extends ActivityBase implements PeopleNearbySettingsDialog.AlertPositiveListener {
-
     Toolbar mToolbar;
 
     Fragment fragment;
@@ -51,7 +50,6 @@ public class PeopleNearbyActivity extends ActivityBase implements PeopleNearbySe
 
     @Override
     public void onChangeDistance(int position) {
-
         PeopleNearbyFragment p = (PeopleNearbyFragment) fragment;
         p.onChangeDistance(position);
     }

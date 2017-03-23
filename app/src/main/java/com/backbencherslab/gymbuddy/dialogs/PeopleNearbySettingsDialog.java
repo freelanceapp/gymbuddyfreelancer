@@ -11,21 +11,24 @@ import com.backbencherslab.gymbuddy.R;
 import com.backbencherslab.gymbuddy.constants.Constants;
 
 public class PeopleNearbySettingsDialog extends DialogFragment implements Constants {
-
-    /** Declaring the interface, to invoke a callback function in the implementing activity class */
+    /**
+     * Declaring the interface, to invoke a callback function in the implementing activity class
+     */
     AlertPositiveListener alertPositiveListener;
 
     private int distance;
 
-    /** An interface to be implemented in the hosting activity for "OK" button click listener */
+    /**
+     * An interface to be implemented in the hosting activity for "OK" button click listener
+     */
     public interface AlertPositiveListener {
-
-        public void onChangeDistance(int position);
+        void onChangeDistance(int position);
     }
 
-    /** This is a callback method executed when this fragment is attached to an activity.
-     *  This function ensures that, the hosting activity implements the interface AlertPositiveListener
-     * */
+    /**
+     * This is a callback method executed when this fragment is attached to an activity.
+     * This function ensures that, the hosting activity implements the interface AlertPositiveListener
+     */
     public void onAttach(android.app.Activity activity) {
 
         super.onAttach(activity);
@@ -34,22 +37,22 @@ public class PeopleNearbySettingsDialog extends DialogFragment implements Consta
 
             alertPositiveListener = (AlertPositiveListener) activity;
 
-        } catch(ClassCastException e){
+        } catch (ClassCastException e) {
 
             // The hosting activity does not implemented the interface AlertPositiveListener
             throw new ClassCastException(activity.toString() + " must implement AlertPositiveListener");
         }
     }
 
-    /** This is the OK button listener for the alert dialog,
-     *  which in turn invokes the method onPositiveClick(position)
-     *  of the hosting activity which is supposed to implement it
+    /**
+     * This is the OK button listener for the alert dialog,
+     * which in turn invokes the method onPositiveClick(position)
+     * of the hosting activity which is supposed to implement it
      */
     OnClickListener positiveListener = new OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-
-            AlertDialog alert = (AlertDialog)dialog;
+            AlertDialog alert = (AlertDialog) dialog;
 
             int position = alert.getListView().getCheckedItemPosition();
 
@@ -57,13 +60,14 @@ public class PeopleNearbySettingsDialog extends DialogFragment implements Consta
         }
     };
 
-    /** This is a callback method which will be executed
-     *  on creating this fragment
+    /**
+     * This is a callback method which will be executed
+     * on creating this fragment
      */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        String[] nearby_categories = new String[] {
+        String[] nearby_categories = new String[]{
 
                 getText(R.string.dialog_nearby_0).toString(),
                 getText(R.string.dialog_nearby_1).toString(),
@@ -149,6 +153,6 @@ public class PeopleNearbySettingsDialog extends DialogFragment implements Consta
             }
         }
 
-        return  result;
+        return result;
     }
 }

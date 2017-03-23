@@ -260,72 +260,47 @@ public class PeopleNearbyFragment extends Fragment implements Constants, SwipeRe
     }
 
     public void onChangeDistance(int position) {
-
         switch (position) {
 
             case 0: {
-
                 distance = 5;
-
                 itemId = 0;
-
                 getItems();
-
                 break;
             }
 
             case 1: {
-
                 distance = 10;
-
                 itemId = 0;
-
                 getItems();
-
                 break;
             }
 
             case 2: {
-
                 distance = 20;
-
                 itemId = 0;
-
                 getItems();
-
                 break;
             }
 
             case 3: {
-
                 distance = 40;
-
                 itemId = 0;
-
                 getItems();
-
                 break;
             }
 
             case 4: {
-
                 distance = 100;
-
                 itemId = 0;
-
                 getItems();
-
                 break;
             }
 
             default: {
-
                 distance = 5;
-
                 itemId = 0;
-
                 getItems();
-
                 break;
             }
         }
