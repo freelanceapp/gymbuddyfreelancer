@@ -133,7 +133,7 @@ public class App extends Application implements Constants {
 
                         @Override
                         protected Map<String, String> getParams() {
-                            Map<String, String> params = new HashMap<String, String>();
+                            Map<String, String> params = new HashMap<>();
                             params.put("accountId", Long.toString(App.getInstance().getId()));
                             params.put("accessToken", App.getInstance().getAccessToken());
                             params.put("lat", Double.toString(latitude));
@@ -196,7 +196,7 @@ public class App extends Application implements Constants {
 
                 @Override
                 protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
+                    Map<String, String> params = new HashMap<>();
                     params.put("clientId", CLIENT_ID);
                     params.put("accountId", Long.toString(App.getInstance().getId()));
                     params.put("accessToken", App.getInstance().getAccessToken());
@@ -246,7 +246,7 @@ public class App extends Application implements Constants {
 
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("clientId", CLIENT_ID);
                 params.put("accountId", Long.toString(App.getInstance().getId()));
                 params.put("accessToken", App.getInstance().getAccessToken());
@@ -283,7 +283,7 @@ public class App extends Application implements Constants {
 
                 @Override
                 protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
+                    Map<String, String> params = new HashMap<>();
                     params.put("clientId", CLIENT_ID);
                     params.put("accountId", Long.toString(App.getInstance().getId()));
                     params.put("accessToken", App.getInstance().getAccessToken());
@@ -428,7 +428,7 @@ public class App extends Application implements Constants {
 
                 @Override
                 protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
+                    Map<String, String> params = new HashMap<>();
                     params.put("accountId", Long.toString(App.getInstance().getId()));
                     params.put("accessToken", App.getInstance().getAccessToken());
 
