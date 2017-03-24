@@ -20,11 +20,11 @@ import com.backbencherslab.gymbuddy.constants.Constants;
 
 public class SearchSettingsDialog extends DialogFragment implements Constants {
     CheckBox genderMaleCheckBox, genderFemaleCheckBox, onlineCheckBox;
-    Spinner ageTo, ageFrom, workoutTypeSpinner, fitnessGoalsSpinner, workoutTimeSpinner, distanceSpinner;
+    Spinner ageTo, ageFrom, workoutType, fitnessGoals, workoutTime, workoutDistance;
 
     private int searchGender, searchOnline, searchAgeFrom, searchAgeTo;
     //NEW FILTER FIELDS
-    private int searchWorkoutType, searchFitnessGoals, searchWorkoutTime, searchDistance;
+    private int searchWorkoutType, searchFitnessGoals, searchWorkoutTime, searchWorkoutDistance;
 
     /**
      * Declaring the interface, to invoke a callback function in the implementing activity class
@@ -35,7 +35,7 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
      * An interface to be implemented in the hosting activity for "OK" button click listener
      */
     public interface AlertPositiveListener {
-        void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, int workoutType, int fitnessGoals, int workoutTime, int distance);
+        void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, int searchWorkoutType, int searchFitnessGoals, int searchWorkoutTime, int searchWorkoutDistance);
     }
 
     /**
@@ -60,7 +60,7 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     OnClickListener positiveListener = new OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            alertPositiveListener.onCloseSettingsDialog(searchGender, searchOnline, searchAgeFrom, searchAgeTo, searchWorkoutType, searchFitnessGoals, searchWorkoutTime, searchDistance);
+            alertPositiveListener.onCloseSettingsDialog(searchGender, searchOnline, searchAgeFrom, searchAgeTo, searchWorkoutType, searchFitnessGoals, searchWorkoutTime, searchWorkoutDistance);
         }
     };
 
@@ -84,13 +84,14 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         /** Getting the arguments passed to this fragment */
         Bundle bundle = getArguments();
-
         searchGender = bundle.getInt("searchGender");
         searchOnline = bundle.getInt("searchOnline");
         searchAgeFrom = bundle.getInt("searchAgeFrom");
         searchAgeTo = bundle.getInt("searchAgeTo");
         searchWorkoutType = bundle.getInt("searchWorkoutType");
         searchFitnessGoals = bundle.getInt("searchFitnessGoals");
+        searchWorkoutTime = bundle.getInt("searchWorkoutTime");
+        searchWorkoutDistance = bundle.getInt("searchWorkoutDistance");
 
         /** Creating a builder for the alert dialog window */
         AlertDialog.Builder b = new AlertDialog.Builder(getActivity());
@@ -110,10 +111,10 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         ageTo = (Spinner) view.findViewById(R.id.ageTo);
 
         // NEW FILTERS
-        workoutTypeSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_type);
-        fitnessGoalsSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_fitness_goals);
-        workoutTimeSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_time);
-        distanceSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_distance);
+        workoutType = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_type);
+        fitnessGoals = (Spinner) view.findViewById(R.id.dropdown_filter_by_fitness_goals);
+        workoutTime = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_time);
+        workoutDistance = (Spinner) view.findViewById(R.id.dropdown_filter_by_distance);
 
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -152,11 +153,11 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         ageTo.setSelection(12);
 
         /** Workout Type Filter */
-        workoutTypeSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_type);
+        workoutType = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_type);
 
         ArrayAdapter<String> workoutTypeSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         workoutTypeSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        workoutTypeSpinner.setAdapter(workoutTypeSpinnerAdapter);
+        workoutType.setAdapter(workoutTypeSpinnerAdapter);
         workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_0));
         workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_1));
         workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_2));
@@ -168,13 +169,14 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_8));
         workoutTypeSpinnerAdapter.add(getResources().getString(R.string.world_view_9));
         workoutTypeSpinnerAdapter.notifyDataSetChanged();
+        workoutType.setSelection(0);
 
         /** Fitness Goals Filter */
-        fitnessGoalsSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_fitness_goals);
+        fitnessGoals = (Spinner) view.findViewById(R.id.dropdown_filter_by_fitness_goals);
 
         ArrayAdapter<String> fitnessGoalsSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         fitnessGoalsSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        fitnessGoalsSpinner.setAdapter(fitnessGoalsSpinnerAdapter);
+        fitnessGoals.setAdapter(fitnessGoalsSpinnerAdapter);
         fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_0));
         fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_1));
         fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_2));
@@ -186,40 +188,44 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_8));
         fitnessGoalsSpinnerAdapter.add(getResources().getString(R.string.personal_priority_9));
         fitnessGoalsSpinnerAdapter.notifyDataSetChanged();
+        fitnessGoals.setSelection(0);
 
         /** Workout Time Filter */
-        workoutTimeSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_time);
+        workoutTime = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_time);
 
         ArrayAdapter<String> workoutTimeSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         workoutTimeSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        workoutTimeSpinner.setAdapter(workoutTimeSpinnerAdapter);
+        workoutTime.setAdapter(workoutTimeSpinnerAdapter);
         workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_0));
         workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_1));
         workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_2));
         workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_3));
         workoutTimeSpinnerAdapter.add(getResources().getString(R.string.relationship_status_4));
         workoutTimeSpinnerAdapter.notifyDataSetChanged();
-
+        workoutTime.setSelection(0);
 
         /** Distance Filter */
-        distanceSpinner = (Spinner) view.findViewById(R.id.dropdown_filter_by_distance);
+        workoutDistance = (Spinner) view.findViewById(R.id.dropdown_filter_by_distance);
 
         ArrayAdapter<String> distanceSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         distanceSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        distanceSpinner.setAdapter(distanceSpinnerAdapter);
+        workoutDistance.setAdapter(distanceSpinnerAdapter);
         distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_0));
         distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_1));
         distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_2));
         distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_3));
         distanceSpinnerAdapter.add(getResources().getString(R.string.dialog_nearby_4));
         distanceSpinnerAdapter.notifyDataSetChanged();
+        workoutDistance.setSelection(0);
 
         setGender(searchGender);
         setOnline(searchOnline);
         setAgeFrom(searchAgeFrom);
         setAgeTo(searchAgeTo);
-        setSearchWorkoutType(searchWorkoutType);
-        setSearchFitnessGoals(searchFitnessGoals);
+        setWorkoutType(searchWorkoutType);
+        setFitnessGoals(searchFitnessGoals);
+        setWorkoutTime(searchWorkoutTime);
+        setWorkoutDistance(searchWorkoutDistance);
 
         /** Setting a positive button and its listener */
 
@@ -242,10 +248,8 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         final AlertDialog d = b.create();
 
         d.setOnShowListener(new DialogInterface.OnShowListener() {
-
             @Override
             public void onShow(DialogInterface dialog) {
-
                 final DialogInterface dlg = dialog;
 
                 final Button b = d.getButton(AlertDialog.BUTTON_POSITIVE);
@@ -253,13 +257,12 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
                     @Override
                     public void onClick(View view) {
                         d.dismiss();
-                        alertPositiveListener.onCloseSettingsDialog(getGender(), getOnline(), getAgeFrom(), getAgeTo(), getSearchWorkoutType(), getSearchFitnessGoals(), getSearchWorkoutTime(), getSearchDistance());
+                        alertPositiveListener.onCloseSettingsDialog(getGender(), getOnline(), getAgeFrom(), getAgeTo(), getWorkoutType(), getFitnessGoals(), getWorkoutTime(), getWorkoutDistance());
                     }
                 });
 
                 Button p = d.getButton(AlertDialog.BUTTON_NEGATIVE);
                 p.setOnClickListener(new View.OnClickListener() {
-
                     @Override
                     public void onClick(View view) {
                         d.dismiss();
@@ -270,7 +273,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
         d.setCanceledOnTouchOutside(false);
         d.setCancelable(false);
-
 
         /** Return the alert dialog window */
         return d;
@@ -337,13 +339,9 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public void setOnline(int online) {
-
         if (online == -1) {
-
             onlineCheckBox.setChecked(false);
-
         } else {
-
             onlineCheckBox.setChecked(true);
         }
     }
@@ -515,95 +513,220 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public int getAgeTo() {
-
-        int age = 110;
-
+        int age;
         switch (ageTo.getSelectedItemPosition()) {
-
             case 0: {
-
                 age = 20;
-
                 break;
             }
-
             case 1: {
-
                 age = 27;
-
                 break;
             }
-
             case 2: {
-
                 age = 38;
-
                 break;
             }
-
             case 3: {
-
                 age = 43;
-
                 break;
             }
-
             case 4: {
-
                 age = 50;
-
                 break;
             }
-
             case 5: {
-
                 age = 70;
-
                 break;
             }
-
             default: {
-
                 age = 110;
-
                 break;
             }
         }
-
         return age;
     }
 
-    public int getSearchWorkoutType() {
-        return searchWorkoutType;
+    public int getWorkoutType() {
+        int workoutTypeInt = -1;
+        switch (workoutType.getSelectedItemPosition()) {
+            case 0: {
+                workoutTypeInt = 0;
+                break;
+            }
+            case 1: {
+                workoutTypeInt = 1;
+                break;
+            }
+            case 2: {
+                workoutTypeInt = 2;
+                break;
+            }
+            case 3: {
+                workoutTypeInt = 3;
+                break;
+            }
+            case 4: {
+                workoutTypeInt = 4;
+                break;
+            }
+            case 5: {
+                workoutTypeInt = 5;
+                break;
+            }
+            case 6: {
+                workoutTypeInt = 6;
+                break;
+            }
+            case 7: {
+                workoutTypeInt = 7;
+                break;
+            }
+            case 8: {
+                workoutTypeInt = 8;
+                break;
+            }
+            case 9: {
+                workoutTypeInt = 9;
+                break;
+            }
+            default: {
+                workoutTypeInt = 0;
+                break;
+            }
+        }
+        return workoutTypeInt;
     }
 
-    public void setSearchWorkoutType(int searchWorkoutType) {
+    public void setWorkoutType(int searchWorkoutType) {
         this.searchWorkoutType = searchWorkoutType;
     }
 
-    public int getSearchFitnessGoals() {
-        return searchFitnessGoals;
+    public int getFitnessGoals() {
+        int fitnessGoalsInt;
+        switch (fitnessGoals.getSelectedItemPosition()) {
+            case 0: {
+                fitnessGoalsInt = 0;
+                break;
+            }
+            case 1: {
+                fitnessGoalsInt = 1;
+                break;
+            }
+            case 2: {
+                fitnessGoalsInt = 2;
+                break;
+            }
+            case 3: {
+                fitnessGoalsInt = 3;
+                break;
+            }
+            case 4: {
+                fitnessGoalsInt = 4;
+                break;
+            }
+            case 5: {
+                fitnessGoalsInt = 5;
+                break;
+            }
+            case 6: {
+                fitnessGoalsInt = 6;
+                break;
+            }
+            case 7: {
+                fitnessGoalsInt = 7;
+                break;
+            }
+            case 8: {
+                fitnessGoalsInt = 8;
+                break;
+            }
+            case 9: {
+                fitnessGoalsInt = 9;
+                break;
+            }
+            case 10: {
+                fitnessGoalsInt = 10;
+                break;
+            }
+            default: {
+                fitnessGoalsInt = 0;
+                break;
+            }
+        }
+        return fitnessGoalsInt;
     }
 
-    public void setSearchFitnessGoals(int searchFitnessGoals) {
+    public void setFitnessGoals(int searchFitnessGoals) {
         this.searchFitnessGoals = searchFitnessGoals;
     }
 
-    public int getSearchWorkoutTime() {
-        return searchWorkoutTime;
+    public int getWorkoutTime() {
+        int workoutTimeInt;
+        switch (workoutTime.getSelectedItemPosition()) {
+            case 0: {
+                workoutTimeInt = 0;
+                break;
+            }
+            case 1: {
+                workoutTimeInt = 1;
+                break;
+            }
+            case 2: {
+                workoutTimeInt = 2;
+                break;
+            }
+            case 3: {
+                workoutTimeInt = 3;
+                break;
+            }
+            case 4: {
+                workoutTimeInt = 4;
+                break;
+            }
+            default: {
+                workoutTimeInt = 0;
+            }
+        }
+        return workoutTimeInt;
     }
 
-    public void setSearchWorkoutTime(int searchWorkoutTime) {
+    public void setWorkoutTime(int searchWorkoutTime) {
         //TODO THIS METHOD NEEDS TO BE USED TO SET THE SELECTION UPON CREATION OF EACH SETTINGS DIALOG
         this.searchWorkoutTime = searchWorkoutTime;
     }
 
-    public int getSearchDistance(){
-        return searchDistance;
+    public int getWorkoutDistance() {
+        int workoutDistanceInt;
+        switch (workoutDistance.getSelectedItemPosition()) {
+            case 0: {
+                workoutDistanceInt = 0;
+                break;
+            }
+            case 1: {
+                workoutDistanceInt = 1;
+                break;
+            }
+            case 2: {
+                workoutDistanceInt = 2;
+                break;
+            }
+            case 3: {
+                workoutDistanceInt = 3;
+                break;
+            }
+            case 4: {
+                workoutDistanceInt = 4;
+                break;
+            }
+            default: {
+                workoutDistanceInt = 0;
+            }
+        }
+        return workoutDistanceInt;
     }
 
-    public void setSearchDistance(int searchDistance){
-        this.searchDistance = searchDistance;
+    public void setWorkoutDistance(int searchWorkoutDistance) {
+        this.searchWorkoutDistance = searchWorkoutDistance;
     }
-
 }

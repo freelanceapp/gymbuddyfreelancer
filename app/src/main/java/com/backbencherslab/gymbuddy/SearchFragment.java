@@ -356,18 +356,12 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
         inflater.inflate(R.menu.menu_search, menu);
-
         MenuItem searchItem = menu.findItem(R.id.options_menu_main_search);
-
-
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-
         if (searchItem != null) {
             searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         }
-
         if (searchView != null) {
             searchView.setQuery(queryText, false);
 
@@ -587,7 +581,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
                 @Override
                 protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
+                    Map<String, String> params = new HashMap<>();
                     params.put("accountId", Long.toString(App.getInstance().getId()));
                     params.put("accessToken", App.getInstance().getAccessToken());
                     params.put("itemId", Integer.toString(itemId));
