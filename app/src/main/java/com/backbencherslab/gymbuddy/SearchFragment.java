@@ -405,84 +405,84 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    public void search() {
-        mItemsContainer.setRefreshing(true);
-
-        CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_SEARCH, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            if (!loadingMore) {
-                                itemsList.clear();
-                            }
-
-                            arrayLength = 0;
-
-                            if (!response.getBoolean("error")) {
-
-                                itemCount = response.getInt("itemCount");
-                                oldQuery = response.getString("query");
-                                userId = response.getInt("userId");
-
-                                if (response.has("users")) {
-
-                                    JSONArray usersArray = response.getJSONArray("users");
-
-                                    arrayLength = usersArray.length();
-
-                                    if (arrayLength > 0) {
-
-                                        for (int i = 0; i < usersArray.length(); i++) {
-
-                                            JSONObject profileObj = (JSONObject) usersArray.get(i);
-
-                                            Profile profile = new Profile(profileObj);
-
-                                            itemsList.add(profile);
-                                        }
-                                    }
-                                }
-                            }
-
-                        } catch (JSONException e) {
-
-                            e.printStackTrace();
-
-                        } finally {
-
-                            loadingComplete();
-
-                            Log.e("response", response.toString());
-
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                loadingComplete();
-                Toast.makeText(getActivity(), getString(R.string.error_data_loading), Toast.LENGTH_LONG).show();
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("accountId", Long.toString(App.getInstance().getId()));
-                params.put("accessToken", App.getInstance().getAccessToken());
-                params.put("query", currentQuery);
-                params.put("userId", Integer.toString(userId));
-                params.put("gender", Integer.toString(search_gender));
-                params.put("online", Integer.toString(search_online));
-                params.put("ageFrom", Integer.toString(search_age_from));
-                params.put("ageTo", Integer.toString(search_age_to));
-                return params;
-            }
-        };
-
-        App.getInstance().addToRequestQueue(jsonReq);
-    }
+//    public void search() {
+//        mItemsContainer.setRefreshing(true);
+//
+//        CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_SEARCH, null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            if (!loadingMore) {
+//                                itemsList.clear();
+//                            }
+//
+//                            arrayLength = 0;
+//
+//                            if (!response.getBoolean("error")) {
+//
+//                                itemCount = response.getInt("itemCount");
+//                                oldQuery = response.getString("query");
+//                                userId = response.getInt("userId");
+//
+//                                if (response.has("users")) {
+//
+//                                    JSONArray usersArray = response.getJSONArray("users");
+//
+//                                    arrayLength = usersArray.length();
+//
+//                                    if (arrayLength > 0) {
+//
+//                                        for (int i = 0; i < usersArray.length(); i++) {
+//
+//                                            JSONObject profileObj = (JSONObject) usersArray.get(i);
+//
+//                                            Profile profile = new Profile(profileObj);
+//
+//                                            itemsList.add(profile);
+//                                        }
+//                                    }
+//                                }
+//                            }
+//
+//                        } catch (JSONException e) {
+//
+//                            e.printStackTrace();
+//
+//                        } finally {
+//
+//                            loadingComplete();
+//
+//                            Log.e("response", response.toString());
+//
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                loadingComplete();
+//                Toast.makeText(getActivity(), getString(R.string.error_data_loading), Toast.LENGTH_LONG).show();
+//            }
+//        }) {
+//
+//            @Override
+//            protected Map<String, String> getParams() {
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put("accountId", Long.toString(App.getInstance().getId()));
+//                params.put("accessToken", App.getInstance().getAccessToken());
+//                params.put("query", currentQuery);
+//                params.put("userId", Integer.toString(userId));
+//                params.put("gender", Integer.toString(search_gender));
+//                params.put("online", Integer.toString(search_online));
+//                params.put("ageFrom", Integer.toString(search_age_from));
+//                params.put("ageTo", Integer.toString(search_age_to));
+//                return params;
+//            }
+//        };
+//
+//        App.getInstance().addToRequestQueue(jsonReq);
+//    }
 
     public void search2() {
         mItemsContainer.setRefreshing(true);
