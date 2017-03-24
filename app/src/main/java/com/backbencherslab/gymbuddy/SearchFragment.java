@@ -513,13 +513,14 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "Headers: " + error.networkResponse.headers.toString() + " Data:" + error.networkResponse.data.toString(), Toast.LENGTH_LONG);
                 loadingComplete();
-                Toast.makeText(getActivity(), getString(R.string.error_data_loading), Toast.LENGTH_LONG).show();
+                //   Toast.makeText(getActivity(), getString(R.string.error_data_loading), Toast.LENGTH_LONG).show();
             }
         }) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("accountId", Long.toString(App.getInstance().getId()));
                 params.put("accessToken", App.getInstance().getAccessToken());
                 params.put("query", currentQuery);
@@ -573,11 +574,11 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getActivity(), "Headers: " + error.networkResponse.headers.toString() + " Data:" + error.networkResponse.data.toString(), Toast.LENGTH_LONG);
                     loadingComplete();
-                    Toast.makeText(getActivity(), getString(R.string.error_data_loading), Toast.LENGTH_LONG).show();
+                    // Toast.makeText(getActivity(), getString(R.string.error_data_loading), Toast.LENGTH_LONG).show();
                 }
             }) {
-
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
