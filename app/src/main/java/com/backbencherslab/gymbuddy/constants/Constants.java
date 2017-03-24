@@ -193,6 +193,4 @@ public interface Constants {
     int CREATE_PHOTO_IMG = 21;
 
     String TAG = "TAG";
-
-    String HASHTAGS_COLOR = "#5BCFF2";
 }
