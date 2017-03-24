@@ -170,7 +170,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
                     if (preload) {
                         loadingMore = true;
-                        preload();
+                        preload2();
                     } else {
                         currentQuery = getCurrentQuery();
 
@@ -266,7 +266,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         });
         if (!restore) {
             if (preload) {
-                preload();
+                preload2();
             }
         }
         return rootView;
@@ -294,7 +294,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
 
         if (preload) {
             itemId = 0;
-            preload();
+            preload2();
         } else {
             if (q.length() > 0) {
                 searchStart();
@@ -513,7 +513,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
                 loadingComplete();
                 Toast.makeText(getActivity(), getString(R.string.error_data_loading), Toast.LENGTH_LONG).show();
             }
@@ -531,14 +530,15 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 params.put("ageTo", Integer.toString(search_age_to));
                 params.put("workoutType", Integer.toString(search_workout_type));
                 params.put("fitnessGoals", Integer.toString(search_fitness_goals));
+                params.put("workoutTime", Integer.toString(search_workout_time));
+                params.put("workoutDistance", Integer.toString(search_workout_distance));
                 return params;
             }
         };
-
         App.getInstance().addToRequestQueue(jsonReq);
     }
 
-    public void preload() {
+    public void preload2() {
         if (preload) {
             mItemsContainer.setRefreshing(true);
             CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_SEARCH_PRELOAD2, null,
@@ -573,7 +573,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
                     loadingComplete();
                     Toast.makeText(getActivity(), getString(R.string.error_data_loading), Toast.LENGTH_LONG).show();
                 }
@@ -591,6 +590,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                     params.put("ageTo", Integer.toString(search_age_to));
                     params.put("workoutType", Integer.toString(search_workout_type));
                     params.put("fitnessGoals", Integer.toString(search_fitness_goals));
+                    params.put("workoutTime", Integer.toString(search_workout_time));
+                    params.put("workoutDistance", Integer.toString(search_workout_distance));
                     return params;
                 }
             };

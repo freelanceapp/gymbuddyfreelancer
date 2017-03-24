@@ -17,7 +17,6 @@ import android.widget.Spinner;
 import com.backbencherslab.gymbuddy.R;
 import com.backbencherslab.gymbuddy.constants.Constants;
 
-
 public class SearchSettingsDialog extends DialogFragment implements Constants {
     CheckBox genderMaleCheckBox, genderFemaleCheckBox, onlineCheckBox;
     Spinner ageTo, ageFrom, workoutType, fitnessGoals, workoutTime, workoutDistance;
@@ -154,7 +153,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
         /** Workout Type Filter */
         workoutType = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_type);
-
         ArrayAdapter<String> workoutTypeSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         workoutTypeSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         workoutType.setAdapter(workoutTypeSpinnerAdapter);
@@ -173,7 +171,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
         /** Fitness Goals Filter */
         fitnessGoals = (Spinner) view.findViewById(R.id.dropdown_filter_by_fitness_goals);
-
         ArrayAdapter<String> fitnessGoalsSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         fitnessGoalsSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fitnessGoals.setAdapter(fitnessGoalsSpinnerAdapter);
@@ -192,7 +189,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
         /** Workout Time Filter */
         workoutTime = (Spinner) view.findViewById(R.id.dropdown_filter_by_workout_time);
-
         ArrayAdapter<String> workoutTimeSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         workoutTimeSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         workoutTime.setAdapter(workoutTimeSpinnerAdapter);
@@ -206,7 +202,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
 
         /** Distance Filter */
         workoutDistance = (Spinner) view.findViewById(R.id.dropdown_filter_by_distance);
-
         ArrayAdapter<String> distanceSpinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, android.R.id.text1);
         distanceSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         workoutDistance.setAdapter(distanceSpinnerAdapter);
