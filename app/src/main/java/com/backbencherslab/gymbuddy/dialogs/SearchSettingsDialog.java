@@ -347,62 +347,37 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public void setAgeFrom(int age) {
-
         switch (age) {
-
             case 13: {
-
                 ageFrom.setSelection(0);
-
                 break;
             }
-
             case 18: {
-
                 ageFrom.setSelection(1);
-
                 break;
             }
-
             case 25: {
-
                 ageFrom.setSelection(2);
-
                 break;
             }
-
             case 30: {
-
                 ageFrom.setSelection(3);
-
                 break;
             }
-
             case 35: {
-
                 ageFrom.setSelection(4);
-
                 break;
             }
-
             case 40: {
-
                 ageFrom.setSelection(5);
-
                 break;
             }
-
             case 45: {
-
                 ageFrom.setSelection(6);
-
                 break;
             }
-
             default: {
-
                 ageFrom.setSelection(0);
-
                 break;
             }
         }
@@ -599,7 +574,52 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public void setWorkoutType(int searchWorkoutType) {
-        this.searchWorkoutType = searchWorkoutType;
+        switch (searchWorkoutType) {
+            case 0: {
+                workoutType.setSelection(0);
+                break;
+            }
+            case 1: {
+                workoutType.setSelection(1);
+                break;
+            }
+            case 2: {
+                workoutType.setSelection(2);
+                break;
+            }
+            case 3: {
+                workoutType.setSelection(3);
+                break;
+            }
+            case 4: {
+                workoutType.setSelection(4);
+                break;
+            }
+            case 5: {
+                workoutType.setSelection(5);
+                break;
+            }
+            case 6: {
+                workoutType.setSelection(6);
+                break;
+            }
+            case 7: {
+                workoutType.setSelection(7);
+                break;
+            }
+            case 8: {
+                workoutType.setSelection(8);
+                break;
+            }
+            case 9: {
+                workoutType.setSelection(9);
+                break;
+            }
+            default: {
+                workoutType.setSelection(0);
+                break;
+            }
+        }
     }
 
     public int getFitnessGoals() {
@@ -658,7 +678,56 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public void setFitnessGoals(int searchFitnessGoals) {
-        this.searchFitnessGoals = searchFitnessGoals;
+        switch (searchFitnessGoals) {
+            case 0: {
+                fitnessGoals.setSelection(0);
+                break;
+            }
+            case 1: {
+                fitnessGoals.setSelection(1);
+                break;
+            }
+            case 2: {
+                fitnessGoals.setSelection(2);
+                break;
+            }
+            case 3: {
+                fitnessGoals.setSelection(3);
+                break;
+            }
+            case 4: {
+                fitnessGoals.setSelection(4);
+                break;
+            }
+            case 5: {
+                fitnessGoals.setSelection(5);
+                break;
+            }
+            case 6: {
+                fitnessGoals.setSelection(6);
+                break;
+            }
+            case 7: {
+                fitnessGoals.setSelection(7);
+                break;
+            }
+            case 8: {
+                fitnessGoals.setSelection(8);
+                break;
+            }
+            case 9: {
+                fitnessGoals.setSelection(9);
+                break;
+            }
+            case 10: {
+                fitnessGoals.setSelection(10);
+                break;
+            }
+            default: {
+                fitnessGoals.setSelection(0);
+                break;
+            }
+        }
     }
 
     public int getWorkoutTime() {
@@ -692,8 +761,31 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public void setWorkoutTime(int searchWorkoutTime) {
-        //TODO THIS METHOD NEEDS TO BE USED TO SET THE SELECTION UPON CREATION OF EACH SETTINGS DIALOG
-        this.searchWorkoutTime = searchWorkoutTime;
+        switch (searchWorkoutTime) {
+            case 0: {
+                workoutTime.setSelection(0);
+                break;
+            }
+            case 1: {
+                workoutTime.setSelection(1);
+                break;
+            }
+            case 2: {
+                workoutTime.setSelection(2);
+                break;
+            }
+            case 3: {
+                workoutTime.setSelection(3);
+                break;
+            }
+            case 4: {
+                workoutTime.setSelection(4);
+                break;
+            }
+            default: {
+                workoutTime.setSelection(0);
+            }
+        }
     }
 
     public int getWorkoutDistance() {
@@ -727,6 +819,30 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
     }
 
     public void setWorkoutDistance(int searchWorkoutDistance) {
-        this.searchWorkoutDistance = searchWorkoutDistance;
+        switch (searchWorkoutDistance) {
+            case 0: {
+                workoutDistance.setSelection(0);
+                break;
+            }
+            case 1: {
+                workoutDistance.setSelection(1);
+                break;
+            }
+            case 2: {
+                workoutDistance.setSelection(2);
+                break;
+            }
+            case 3: {
+                workoutDistance.setSelection(3);
+                break;
+            }
+            case 4: {
+                workoutDistance.setSelection(4);
+                break;
+            }
+            default: {
+                workoutDistance.setSelection(0);
+            }
+        }
     }
 }
