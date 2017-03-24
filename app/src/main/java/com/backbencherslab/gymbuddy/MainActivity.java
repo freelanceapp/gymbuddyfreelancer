@@ -172,9 +172,9 @@ public class MainActivity extends ActivityBase implements FragmentDrawer.Fragmen
     }
 
     @Override
-    public void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, String workoutType, String fitnessGoals) {
+    public void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, int workoutType, int fitnessGoals, int workoutTime, int workoutDistance) {
         SearchFragment p = (SearchFragment) fragment;
-        p.onCloseSettingsDialog(searchGender, searchOnline, searchAgeFrom, searchAgeTo, workoutType, fitnessGoals);
+        p.onCloseSettingsDialog(searchGender, searchOnline, searchAgeFrom, searchAgeTo, workoutType, fitnessGoals, workoutTime, workoutDistance);
     }
 
     @Override

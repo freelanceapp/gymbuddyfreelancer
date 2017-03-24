@@ -45,7 +45,6 @@ import com.backbencherslab.gymbuddy.dialogs.SearchSettingsDialog;
 import com.backbencherslab.gymbuddy.dialogs.SearchTextDialog;
 import com.backbencherslab.gymbuddy.model.Profile;
 import com.backbencherslab.gymbuddy.util.CustomRequest;
-import com.backbencherslab.gymbuddy.util.Helper;
 
 public class SearchFragment extends Fragment implements Constants, SwipeRefreshLayout.OnRefreshListener {
     private static final String STATE_LIST = "State Adapter Data";
@@ -72,8 +71,10 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     private int userId = 0;
 
     private int search_gender = -1, search_online = -1, search_age_from = 18, search_age_to = 110, preload_gender = -1;
-    private int search_workout_type = -1;
-    private int search_fitness_goals = -1;
+    private int search_workout_type = 0;
+    private int search_fitness_goals = 0;
+    private int search_workout_time = 0;
+    private int search_workout_distance = 0;
     private String search_text = "";
 
     private int itemId = 0;
@@ -90,9 +91,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setRetainInstance(true);
-
         setHasOptionsMenu(true);
     }
 
@@ -112,7 +111,7 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
             search_gender = savedInstanceState.getInt("search_gender");
             preload_gender = savedInstanceState.getInt("preload_gender");
         } else {
-            itemsList = new ArrayList<Profile>();
+            itemsList = new ArrayList<>();
             itemsAdapter = new PeopleListAdapter(getActivity(), itemsList);
 
             currentQuery = queryText = "";
@@ -148,12 +147,9 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         }
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
                 Profile profile = (Profile) adapterView.getItemAtPosition(position);
-
                 Intent intent = new Intent(getActivity(), ProfileActivity.class);
                 intent.putExtra("profileId", profile.getId());
                 startActivity(intent);
@@ -161,7 +157,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         });
 
         mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
-
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
 
@@ -193,18 +188,16 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
             if (mListView.getAdapter().getCount() == 0) {
                 showMessage(getString(R.string.label_search_start_screen_msg));
             } else {
-            /*   if (preload) {
+                    /*   if (preload) {
                     mHeaderText.setVisibility(View.GONE);
-                } else {
+                    } else {
                     mHeaderText.setVisibility(View.VISIBLE);
                     mHeaderText.setText(getText(R.string.label_search_results) + " " + Integer.toString(itemCount));
-                }
-*/
+                     }*/
                 hideMessage();
             }
 
         } else {
-
             if (mListView.getAdapter().getCount() == 0) {
                 showMessage(getString(R.string.label_search_results_error));
             } else {
@@ -231,6 +224,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 b.putInt("searchAgeTo", search_age_to);
                 b.putInt("searchWorkoutType", search_workout_type);
                 b.putInt("searchFitnessGoals", search_fitness_goals);
+                b.putInt("searchWorkoutTime", search_workout_time);
+                b.putInt("searchWorkoutDistance", search_workout_distance);
 
                 /** Setting the bundle object to the dialog fragment object */
                 alert.setArguments(b);
@@ -246,7 +241,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         searchTextFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 /** Getting the fragment manager */
                 android.app.FragmentManager fm = getActivity().getFragmentManager();
 
@@ -270,17 +264,15 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
             }
         });
-
         if (!restore) {
             if (preload) {
                 preload();
             }
         }
-
         return rootView;
     }
 
-    public void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, String searchWorkoutType, String searchFitnessGoals) {
+    public void onCloseSettingsDialog(int searchGender, int searchOnline, int searchAgeFrom, int searchAgeTo, int searchWorkoutType, int searchFitnessGoals, int searchWorkoutTime, int searchWorkoutDistance) {
         if (searchAgeFrom < 0) {
             searchAgeFrom = 13;
         }
@@ -293,8 +285,10 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         search_online = searchOnline;
         search_age_from = searchAgeFrom;
         search_age_to = searchAgeTo;
-        search_workout_type = Helper.getWorkoutTypeInt(searchWorkoutType);
-        search_fitness_goals = Helper.getFitnessGoalsInt(searchFitnessGoals);
+        search_workout_type = searchWorkoutType;
+        search_fitness_goals = searchFitnessGoals;
+        search_workout_time = searchWorkoutTime;
+        search_workout_distance = searchWorkoutDistance;
 
         String q = getCurrentQuery();
 
@@ -353,6 +347,10 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
         outState.putInt("itemCount", itemCount);
         outState.putInt("search_gender", search_gender);
         outState.putInt("preload_gender", preload_gender);
+        outState.putInt("search_workout_type", search_workout_type);
+        outState.putInt("search_fitness_goals", search_fitness_goals);
+        outState.putInt("search_workout_time", search_workout_time);
+        outState.putInt("search_workout_distance", search_workout_distance);
         outState.putParcelableArrayList(STATE_LIST, itemsList);
     }
 
@@ -549,7 +547,6 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
     public void preload() {
         if (preload) {
             mItemsContainer.setRefreshing(true);
-
             CustomRequest jsonReq = new CustomRequest(Request.Method.POST, METHOD_APP_SEARCH_PRELOAD2, null,
                     new Response.Listener<JSONObject>() {
                         @Override
