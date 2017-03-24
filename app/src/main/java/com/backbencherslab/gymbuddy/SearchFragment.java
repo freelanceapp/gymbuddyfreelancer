@@ -229,8 +229,8 @@ public class SearchFragment extends Fragment implements Constants, SwipeRefreshL
                 b.putInt("searchOnline", search_online);
                 b.putInt("searchAgeFrom", search_age_from);
                 b.putInt("searchAgeTo", search_age_to);
-                b.putString("searchWorkoutType", Integer.toString(search_workout_type));
-                b.putString("searchFitnessGoals", Integer.toString(search_fitness_goals));
+                b.putInt("searchWorkoutType", search_workout_type);
+                b.putInt("searchFitnessGoals", search_fitness_goals);
 
                 /** Setting the bundle object to the dialog fragment object */
                 alert.setArguments(b);
