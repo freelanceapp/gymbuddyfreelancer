@@ -223,7 +223,6 @@ public class SearchSettingsDialog extends DialogFragment implements Constants {
         setWorkoutDistance(searchWorkoutDistance);
 
         /** Setting a positive button and its listener */
-
         b.setPositiveButton(getText(R.string.action_ok), positiveListener);
 
         b.setNegativeButton(getText(R.string.action_cancel), negativeListener);
