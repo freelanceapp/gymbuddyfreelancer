@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <item
-        android:id="@+id/searchTextView"
-        android:actionViewClass="android.widget.SearchView"
-        android:icon="@android:drawable/ic_menu_search"
-        android:showAsAction="collapseActionView|ifRoom"
-        android:title="@string/hint_search_text" />
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/friend_text_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:actionViewClass="android.widget.SearchView" />
 </LinearLayout>
